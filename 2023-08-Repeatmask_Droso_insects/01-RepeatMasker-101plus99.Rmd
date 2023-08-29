@@ -1,0 +1,48 @@
+---
+title: "01-origin-gypsy7/29"
+author: "roko"
+date: "8/28/2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# The Repeat Library
+
+Just the sequences of gypsy7 and gypsy29
+
+
+
+```{bash eval=FALSE}
+# first minor formatting issue
+fasta-reader.py seqs-gypsy.fasta |fasta-writter.py > seqs-rm.fasta
+head seqs-rm.fasta
+# >gypsy-7
+#TATGAGTGTGAGGCATTTCGCAGGAATGTTATTTCATCATTATTTGGCAATTGCATCAGCCTTTAATTGAGTTGCGATTG
+#GCTGATGGCATTTGGTAGTTTTGGAAGGTACCGTTTTAGCGCGGCGACAGCGCCACAACGCTGTCGCCGAGCGTGGTTCG
+#ATGGTAGGCACAAAAGAAGAAGTGTGCGACGCAAGTCAGTTCAATTCTAGACTTCGACCACCGAAACTCGCTGCGCGATT
+#....
+# which sequences + length
+fasta-reader.py seqs-rm.fasta |fasta-length.py
+#gypsy-7	5087
+#gypsy-29	6634
+```
+
+# Repeatmask 101 Droso
+```{bash eval=FALSE}
+for i in *.fa; do RepeatMasker -pa 20 -no_is -s -nolow -dir out-gypsy -lib replib-gypsy/seqs-rm.fasta $i;done 
+```
+### Self masking to get the max score for each TE
+```{bash eval=FALSE}
+RepeatMasker -pa 20 -no_is -s -nolow -dir selfmask -lib seqs-rm.fasta seqs-rm.fasta
+```
+
+
+# Repeatmaks 99 insects
+```{bash eval=FALSE}
+for i in *.fa; do RepeatMasker -pa 20 -no_is -s -nolow -dir out-gypsy -lib replib-gypsy/seqs-rm.fasta $i;done
+```
+
+
