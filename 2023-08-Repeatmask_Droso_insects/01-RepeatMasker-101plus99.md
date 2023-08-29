@@ -1,21 +1,13 @@
----
-title: "01-origin-gypsy7/29"
-author: "roko"
-date: "8/28/2023"
-output: github_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+01-origin-gypsy7/29
+================
+roko
+8/28/2023
 
 # The Repeat Library
 
 Just the sequences of gypsy7 and gypsy29
 
-
-
-```{bash eval=FALSE}
+``` bash
 # first minor formatting issue
 fasta-reader.py seqs-gypsy.fasta |fasta-writter.py > seqs-rm.fasta
 head seqs-rm.fasta
@@ -26,44 +18,51 @@ head seqs-rm.fasta
 #....
 # which sequences + length
 fasta-reader.py seqs-rm.fasta |fasta-length.py
-#gypsy-7	5087
-#gypsy-29	6634
+#gypsy-7    5087
+#gypsy-29   6634
 ```
+
 # RepeatMask
+
 ## Droso
-```{bash eval=FALSE}
+
+``` bash
 for i in *.fa; do RepeatMasker -pa 20 -no_is -s -nolow -dir out-gypsy -lib replib-gypsy/seqs-rm.fasta $i;done 
 ```
+
 ## Self masking to get the max score for each TE
-```{bash eval=FALSE}
+
+``` bash
 RepeatMasker -pa 20 -no_is -s -nolow -dir selfmask -lib seqs-rm.fasta seqs-rm.fasta
 ```
 
-
 ## 99 insects
-```{bash eval=FALSE}
+
+``` bash
 for i in *.fa; do RepeatMasker -pa 20 -no_is -s -nolow -dir out-gypsy -lib replib-gypsy/seqs-rm.fasta $i;done
 ```
 
 # Process (merge and score)
+
 ## Merge Droso
-```{bash eval=FALSE}
+
+``` bash
  awk '{print $0,FILENAME}' *.ori.out|perl -pe 's/\.fa\.ori\.out//' >tmp-merged-101.ori.out
  # merge with self
  cat tmp-merged-101.ori.out ../replib-gypsy/selfmask/self.ori.out > merged-101-self.ori.out
 ```
 
 ## score
-```{bash eval=FALSE}
+
+``` bash
 python ../process-score.py --rm merged-101-self.ori.out > Droso.score
 ```
 
-
-
-
 # Visualize
+
 ## Droso
-```{R}
+
+``` r
 sortorder<-c( 
   # melanogaster group
   "D.mel.Iso1","D.mel.Pi2","D.sim.006","D.sim.SZ232","D.sim.SZ129","D.mauritiana","D.sechellia", "D.yakuba", "D.teissieri.273.3","D.teissieri.ct02","D.erecta", # melanogaster subgroup
@@ -111,7 +110,20 @@ sortorder<-c(
 )
 
 library(tidyverse)
+```
 
+    ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+
+    ## ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+    ## ✔ tibble  3.1.7     ✔ dplyr   1.0.9
+    ## ✔ tidyr   1.2.0     ✔ stringr 1.4.0
+    ## ✔ readr   2.1.2     ✔ forcats 0.5.1
+
+    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+    ## ✖ dplyr::filter() masks stats::filter()
+    ## ✖ dplyr::lag()    masks stats::lag()
+
+``` r
 theme_set(theme_bw())
 
 h<-read.table("/Users/rokofler/analysis/simulans-clade-TEs/2023-08-Repeatmask_Droso_insects/raw-ori-out/Droso.score",header=F)
@@ -128,6 +140,4 @@ p<- ggplot(t,aes(y=score,x=spec))+geom_bar(stat="identity")+facet_grid(te~.)+yla
 plot(p)
 ```
 
-
-
-
+![](01-RepeatMasker-101plus99_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->

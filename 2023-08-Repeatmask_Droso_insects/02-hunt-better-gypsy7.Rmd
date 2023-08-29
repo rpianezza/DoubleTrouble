@@ -1,0 +1,32 @@
+---
+title: "02-hunt-better-gypsy7"
+author: "roko"
+date: "8/29/2023"
+output: github_document
+---
+
+
+# Hunt for a better gypsy-7
+
+## Dsec assembly seems to have nice ones
+
+```{bash eval=FALSE}
+# RepeatMasker Hit 1
+  2926 1.25 0.00 0.00    JAEIGV010000528.1  17425995  17426315 (2339392) +              gypsy-7     Unspecified    4767    5087     (0)    
+ 37166 0.20 0.02 0.64    JAEIGV010000528.1  17426467  17430549 (2335158) +              gypsy-7     Unspecified     272    4329   (758)    
+  7805 0.89 1.56 0.11    JAEIGV010000528.1  17430321  17431217 (2334490) +              gypsy-7     Unspecified    4178    5087     (0)  
+  
+# RepeatMasker Hit 2
+    2907 1.55 0.00 0.00    JAEIGV010000163.1   1594933   1595254 (5065360) +              gypsy-7     Unspecified    4766    5087     (0)    
+ 37303 0.20 0.02 0.64    JAEIGV010000163.1   1595406   1599488 (5061126) +              gypsy-7     Unspecified     272    4329   (758)    
+  7807 0.90 2.13 0.00    JAEIGV010000163.1   1599260   1600150 (5060464) +              gypsy-7     Unspecified    4178    5087     (0)    
+  
+  
+# Resulting bed file 
+JAEIGV010000528.1	17425995	17431217	gypsy-7-sec1
+JAEIGV010000163.1	1594933	1600150	gypsy-7-sec2
+```
+
+## Extract the two sequences
+
+
