@@ -73,7 +73,7 @@ plot_map <- function(dataset, ages){
     geom_point(data = dataset, aes(x = lon, y = lat, color = presence), size = 3, position = position_jitter(width = 2, height = 2), alpha = 0.5) +
     scale_colour_manual(values = c("darkgreen", "red")) + 
     theme(plot.title = element_text(hjust = 0.5), axis.text = element_blank(), axis.title = element_blank(), axis.ticks = element_blank(), legend.position = "none") + 
-    facet_wrap(~TE*age)
+    facet_grid(TE~age)
 }
 
 dsim_ages <- c("Before 1994", "Between 1994 and 2016", "After 2016")
