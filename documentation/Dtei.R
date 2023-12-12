@@ -1,21 +1,5 @@
----
-title: "Drosophila teissieri"
-output: github_document
-author: "Almorò Scarpa"
----
-
----
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-Setting the environment
-``` {r, message = FALSE}
 library(tidyverse)
 theme_set(theme_bw())
-```
-
-```{r, warning=FALSE}
 
 df_matute_supp <- read.csv("/Users/ascarpa/DoubleTrouble/data/dtei/Matute_clean.csv", header = TRUE, sep = ",")
 
@@ -68,9 +52,9 @@ plot_map <- function(dataset) {
 }
 
 plot_map(result3)
-```
 
-```{r, warning=FALSE}
+
+
 pca_dtei_eigenval <- read.csv("/Users/ascarpa/DoubleTrouble/data/dtei/dtei.pca.eigenval", header = FALSE)
 names(pca_dtei_eigenval) <- c("col_val")
 
@@ -107,4 +91,3 @@ eigen2pca <- function(vec, val, title) {
 }
 
 eigen2pca(pca_dtei_eigenvec, pca_dtei_eigenval, "PCA 7412533 SNPs Drosophila teissieri")
-```
