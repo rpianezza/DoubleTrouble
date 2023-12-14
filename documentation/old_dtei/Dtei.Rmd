@@ -1,0 +1,41 @@
+---
+title: "Drosophila teissieri - Copynumber analysis"
+output: rmarkdown::github_document
+editor_options: 
+  markdown: 
+    wrap: sentence
+    author: Riccardo
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(knitr))
+suppressPackageStartupMessages(library(kableExtra))
+theme_set(theme_bw())
+
+knitr::opts_knit$set(root.dir = "/Volumes/Temp1/simulans-old-strains/analysis/plots")
+```
+
+## New TEs
+
+```{r}
+pool <- read_csv("/Volumes/Temp1/simulans-old-strains/analysis/csv/Dtei/Dtei_new_TEs.csv", show_col_types = FALSE) %>% filter(Sample!="Sample") %>% type_convert() #%>% inner_join(meta_pool, by="Sample")
+
+gypsy29_pool <- pool %>% filter(TE=="gypsy-29-dsim")
+(gypsy7_pool <- pool %>% filter(TE=="gypsy-7-sim1")) # %>% arrange(year))
+
+years_pool <- gypsy7_pool# %>% select(year)# %>% arrange(year)
+
+(plot_29 <- ggplot(gypsy29_pool, aes(x=Sample, y=HQ_reads)) + geom_point()) +
+  labs(y = "copynumber", x = "collection year") + ggtitle("gypsy29-dsim") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, size = 6))
+(plot_7 <- ggplot(gypsy7_pool, aes(x=Sample, y=HQ_reads)) + geom_point() +
+    labs(y = "copynumber", x = "collection year") + ggtitle("gypsy7-sim1") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, size = 6))+
+  ylim(0,15))
+```
+

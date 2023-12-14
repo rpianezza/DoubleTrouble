@@ -1,67 +1,120 @@
-Drosophila teissieri - Copynumber analysis
+Drosophila teissieri
 ================
+Almorò Scarpa
+
+------------------------------------------------------------------------
+
+Setting the environment
 
 ``` r
-suppressPackageStartupMessages(library(tidyverse))
-suppressPackageStartupMessages(library(knitr))
-suppressPackageStartupMessages(library(kableExtra))
+library(tidyverse)
 theme_set(theme_bw())
-
-knitr::opts_knit$set(root.dir = "/Volumes/Temp1/simulans-old-strains/analysis/plots")
 ```
 
-## New TEs
-
 ``` r
-pool <- read_csv("/Volumes/Temp1/simulans-old-strains/analysis/csv/Dtei/Dtei_new_TEs.csv", show_col_types = FALSE) %>% filter(Sample!="Sample") %>% type_convert() #%>% inner_join(meta_pool, by="Sample")
-```
+df_matute_supp <- read.csv("/Users/ascarpa/DoubleTrouble/data/dtei/Matute_clean.csv", header = TRUE, sep = ",")
 
-    ## 
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## cols(
-    ##   Sample = col_character(),
-    ##   TE = col_character(),
-    ##   All_reads = col_double(),
-    ##   HQ_reads = col_double()
-    ## )
+df_TE <- read.csv("/Users/ascarpa/DoubleTrouble/data/dtei/Dtei_new_TEs.csv", header = TRUE, sep = ",")
+df_TE <- df_TE%>%
+  filter(Sample != "Sample")%>%
+  filter(TE == "gypsy-29-dsim")
 
-``` r
-gypsy29_pool <- pool %>% filter(TE=="gypsy-29-dsim")
-(gypsy7_pool <- pool %>% filter(TE=="gypsy-7-sim1")) # %>% arrange(year))
-```
+df_tsv <- read.csv("/Users/ascarpa/DoubleTrouble/data/dtei/filereport_read_run_PRJNA395473_tsv.txt", header = TRUE, sep = "\t")
 
-    ## # A tibble: 13 × 4
-    ##    Sample     TE           All_reads HQ_reads
-    ##    <chr>      <chr>            <dbl>    <dbl>
-    ##  1 SRR5860571 gypsy-7-sim1      0.46     0.08
-    ##  2 SRR5860572 gypsy-7-sim1      0.5      0.07
-    ##  3 SRR5860576 gypsy-7-sim1      0.79     0.08
-    ##  4 SRR5860577 gypsy-7-sim1      0.85     0.11
-    ##  5 SRR5860615 gypsy-7-sim1      0.52     0.08
-    ##  6 SRR5860616 gypsy-7-sim1      0.49     0.09
-    ##  7 SRR5860617 gypsy-7-sim1      0.53     0.1 
-    ##  8 SRR5860618 gypsy-7-sim1      0.46     0.06
-    ##  9 SRR5860619 gypsy-7-sim1      0.53     0.11
-    ## 10 SRR5860620 gypsy-7-sim1      0.52     0.08
-    ## 11 SRR5860621 gypsy-7-sim1      0.54     0.07
-    ## 12 SRR5860622 gypsy-7-sim1      0.57     0.08
-    ## 13 SRR5860623 gypsy-7-sim1      0.49     0.06
 
-``` r
-years_pool <- gypsy7_pool# %>% select(year)# %>% arrange(year)
+result <- merge(df_TE, df_tsv, by.x = "Sample", by.y = "run_accession", all = FALSE)
+result2 <- merge(result, df_matute_supp, by.x = "sample_alias", by.y = "Line", all = FALSE)
 
-(plot_29 <- ggplot(gypsy29_pool, aes(x=Sample, y=HQ_reads)) + geom_point()) +
-  labs(y = "copynumber", x = "collection year") + ggtitle("gypsy29-dsim") +
-    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, size = 6))
+ggplot(result2, aes(x = Sample, y = as.numeric(All_reads), fill = Population)) +
+  geom_bar(stat = "identity")
 ```
 
 ![](Dtei_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
 ``` r
-(plot_7 <- ggplot(gypsy7_pool, aes(x=Sample, y=HQ_reads)) + geom_point() +
-    labs(y = "copynumber", x = "collection year") + ggtitle("gypsy7-sim1") +
-    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, size = 6))+
-  ylim(0,15))
+countries <- c("Bioko", "Equatorial Guinea", "Gabon", "Zimbabwe")
+lat <- c(3.558445,1.547533, -0.989408, -19.150480)
+long <- c(8.731123, 10.416840,11.561101,30.339835)
+coordinates <- tibble(Population=countries, lat=lat, long=long)
+
+
+result3 <-inner_join(result2, coordinates, by = "Population")
+
+
+plot_map <- function(dataset) {
+  dataset$TE <- factor(dataset$TE, levels = c("gypsy-29-dsim"))
+  world_map <- map_data("world")
+  africa_map <- subset(world_map, region %in% c(
+    "Algeria", "Angola", "Benin", "Botswana", "Burundi", "Cameroon", "Cape Verde", 
+    "Central African Republic", "Chad", "Comoros", "Congo", "Democratic Republic of the Congo",
+    "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", "Swaziland", "Ethiopia", "Gabon",
+    "Gambia", "Ghana", "Guinea", "Guinea-Bissau", "Ivory Coast", "Kenya", "Lesotho", 
+    "Liberia", "Libya", "Madagascar", "Malawi", "Mali", "Mauritania", "Mauritius", "Morocco", 
+    "Mozambique", "Namibia", "Niger", "Nigeria", "Rwanda", "Sao Tome and Principe", "Senegal", 
+    "Seychelles", "Sierra Leone", "Somalia", "South Africa", "South Sudan", "Sudan", 
+    "Tanzania", "Togo", "Tunisia", "Uganda", "Zambia", "Zimbabwe", "Western Sahara", 
+    "Mauritania", "Mali", "Niger", "Chad", "Sudan", "Libya", "Egypt", 
+    "Burkina Faso", "Lesotho", "Republic of Congo"
+  ))
+  
+  ggplot() +
+    geom_map(data = africa_map, map = africa_map,
+             aes(long, lat, map_id = region),
+             color = "white", fill = "burlywood3", size = 0) +
+    geom_point(data = dataset, aes(x = long, y = lat, color = as.numeric(HQ_reads)), size = 2, position = position_jitter(width = 0.1, height = 0.1), alpha = 0.7) +
+    scale_colour_gradient(low = "darkgreen", high = "red") + 
+    theme(plot.title = element_text(hjust = 0.5), axis.text = element_blank(), axis.title = element_blank(), axis.ticks = element_blank(), legend.position = "none")
+}
+
+plot_map(result3)
 ```
 
 ![](Dtei_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->
+
+``` r
+pca_dtei_eigenval <- read.csv("/Users/ascarpa/DoubleTrouble/data/dtei/dtei.pca.eigenval", header = FALSE)
+names(pca_dtei_eigenval) <- c("col_val")
+
+pca_dtei_eigenvec <- read.csv("/Users/ascarpa/DoubleTrouble/data/dtei/dtei.pca.eigenvec", sep = "", header = FALSE)
+PCs <-c("PC1", "PC2", "PC3", "PC4", "PC5", "PC6", "PC7", "PC8", "PC9", "PC10", "PC11", "PC12", "PC13")
+names(pca_dtei_eigenvec) <- c("ID","ID2","PC1", "PC2", "PC3", "PC4", "PC5", "PC6", "PC7", "PC8", "PC9", "PC10", "PC11", "PC12", "PC13")
+
+pca_dtei_eigenvec <- pca_dtei_eigenvec %>%
+  mutate(ID = str_extract(ID, "(?<=/)[^/]+(?=.fastq)"))
+
+miniinfo <- subset(result3, select = c("Sample", "Population", "HQ_reads"))
+pca_dtei_eigenvec <- merge(pca_dtei_eigenvec, miniinfo, by.x = "ID", by.y = "Sample", all = FALSE)
+
+pca_dtei_eigenvec <- pca_dtei_eigenvec %>%
+  mutate(Presence = ifelse(HQ_reads > 1, "present", "absent"))
+
+
+eigen2pca <- function(vec, val, title) {
+  
+  eigenval <-  val %>% mutate(PC = PCs, variability_explained = paste0(round((col_val/sum(col_val)*100),2), "%"))
+  
+  var_explained <- eigenval %>% select(variability_explained) %>% pull()
+  
+  pca_plot_islands <- ggplot(vec, aes(x=PC1, y=PC3, color=Population)) + geom_point(alpha=0.5, size=4) +
+    xlab(paste0("PC1: ", var_explained[1])) + ylab(paste0("PC3: ", var_explained[3])) +
+    ggtitle(title) + theme(plot.title = element_text(hjust = 0.5), legend.position = "bottom")
+  
+  pca_plot_presence <- ggplot(vec, aes(x=PC1, y=PC3, color=Presence)) + geom_point(alpha=0.5, size=4) +
+    xlab(paste0("PC1: ", var_explained[1])) + ylab(paste0("PC3: ", var_explained[3])) +
+    scale_color_manual(values = c("darkgreen", "red")) + labs(color = "Shellder") +
+    ggtitle(title) + theme(plot.title = element_text(hjust = 0.5), legend.position = "bottom")
+  
+  list(islands = pca_plot_islands, presence = pca_plot_presence)
+}
+
+eigen2pca(pca_dtei_eigenvec, pca_dtei_eigenval, "PCA 7412533 SNPs Drosophila teissieri")
+```
+
+    ## $islands
+
+![](Dtei_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+
+    ## 
+    ## $presence
+
+![](Dtei_files/figure-gfm/unnamed-chunk-3-2.png)<!-- -->
