@@ -14,8 +14,25 @@ theme_set(theme_bw())
 ``` r
 dsec_csv <- read_csv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/time-series/dsec.csv", show_col_types = FALSE) %>% filter(Sample!="Sample")
 
-dsec_metadata <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/metadata.txt", show_col_types = FALSE)
+(dsec_metadata <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/metadata.txt", show_col_types = FALSE))
+```
 
+    ## # A tibble: 47 × 6
+    ##    Sample     library_name island     lat  long  year
+    ##    <chr>      <chr>        <chr>    <dbl> <dbl> <dbl>
+    ##  1 SRR5860583 PNF4         Praslin  -4.32  55.7  2012
+    ##  2 SRR5860625 DenisNF155   Denis    -3.81  55.7  2012
+    ##  3 SRR5860626 DenisNoni10  Denis    -3.81  55.7  2012
+    ##  4 SRR5860628 DenisNoni60  Denis    -3.81  55.7  2012
+    ##  5 SRR5860631 Denis124     Denis    -3.81  55.7  2012
+    ##  6 SRR5860632 Denis7_2     Denis    -3.81  55.7  2012
+    ##  7 SRR5860645 Anro_B7      Mahé     -4.73  55.5  2012
+    ##  8 SRR5860656 LD16         La Digue -4.36  55.8  2012
+    ##  9 SRR5860659 mariane_1    Mariane  -4.34  55.9  2012
+    ## 10 SRR5860661 Anro_B2      Mahé     -4.73  55.5  2012
+    ## # ℹ 37 more rows
+
+``` r
 dsec <- inner_join(dsec_metadata, dsec_csv, by="Sample") %>% type_convert() %>% mutate(presence = ifelse(HQ_reads > 2, "present", "absent"), TE = case_when(TE == "spoink" ~ "Spoink", TE == "PPI251" ~ "P-element", TRUE ~ TE)) %>% filter(TE %in% c("Spoink", "Shellder", "P-element"))
 ```
 
@@ -194,8 +211,42 @@ values of each PC for each sample) and the **.eigenval** file
 (variability explained by each PC, easily convertible in % value).
 
 ``` r
-pca_metadata <- dsec %>% select(Sample, island, year, presence)
+(pca_metadata <- left_join(dsec_metadata, dsec_csv, by="Sample") %>% type_convert() %>% mutate(presence = ifelse(HQ_reads > 2, "present", "absent"), TE = case_when(TE == "spoink" ~ "Spoink", TE == "PPI251" ~ "P-element", TRUE ~ TE)) %>% filter(TE %in% c("Spoink", "Shellder", "P-element", NA)) %>% select(-All_reads, -HQ_reads) %>% pivot_wider(names_from = TE, values_from = presence) %>% mutate(Shellder = ifelse(library_name=="14021-0248.01", "absent", Shellder), Spoink = ifelse(library_name=="14021-0248.01", "present", Spoink)) %>% mutate(presence = case_when(
+    Spoink == "present" & Shellder == "present" ~ "both",
+    Spoink == "present" & Shellder != "present" ~ "Spoink only",
+    Spoink != "present" & Shellder == "present" ~ "Shellder only",
+    TRUE ~ "none"
+  )) %>% select(-"NA"))
+```
 
+    ## 
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## cols(
+    ##   Sample = col_character(),
+    ##   library_name = col_character(),
+    ##   island = col_character(),
+    ##   TE = col_character(),
+    ##   All_reads = col_double(),
+    ##   HQ_reads = col_double()
+    ## )
+
+    ## # A tibble: 47 × 10
+    ##    Sample     library_name island    lat  long  year `P-element` Shellder Spoink
+    ##    <chr>      <chr>        <chr>   <dbl> <dbl> <dbl> <chr>       <chr>    <chr> 
+    ##  1 SRR5860583 PNF4         Praslin -4.32  55.7  2012 absent      present  prese…
+    ##  2 SRR5860625 DenisNF155   Denis   -3.81  55.7  2012 absent      present  prese…
+    ##  3 SRR5860626 DenisNoni10  Denis   -3.81  55.7  2012 absent      absent   absent
+    ##  4 SRR5860628 DenisNoni60  Denis   -3.81  55.7  2012 absent      present  prese…
+    ##  5 SRR5860631 Denis124     Denis   -3.81  55.7  2012 absent      present  prese…
+    ##  6 SRR5860632 Denis7_2     Denis   -3.81  55.7  2012 absent      present  prese…
+    ##  7 SRR5860645 Anro_B7      Mahé    -4.73  55.5  2012 absent      absent   absent
+    ##  8 SRR5860656 LD16         La Dig… -4.36  55.8  2012 absent      absent   absent
+    ##  9 SRR5860659 mariane_1    Mariane -4.34  55.9  2012 absent      absent   absent
+    ## 10 SRR5860661 Anro_B2      Mahé    -4.73  55.5  2012 absent      absent   absent
+    ## # ℹ 37 more rows
+    ## # ℹ 1 more variable: presence <chr>
+
+``` r
 PCs <- c("PC1", "PC2", "PC3", "PC4", "PC5", "PC6", "PC7", "PC8", "PC9", "PC10", "PC11", "PC12", "PC13", "PC14", "PC15", "PC16", "PC17", "PC18", "PC19", "PC20")
 ```
 
@@ -223,10 +274,15 @@ pca_plot_islands <- ggplot(pcaable, aes(x=PC1, y=PC2, color=island)) + geom_poin
 
 pca_plot_presence <- ggplot(pcaable, aes(x=PC1, y=PC2, color=presence)) + geom_point(alpha=0.5, size=4) +
     xlab(paste0("PC1: ", var_explained[1])) + ylab(paste0("PC2: ", var_explained[2])) +
-    scale_color_manual(values = c("darkgreen", "red")) + labs(color = "Spoink and Shellder") +
+    scale_color_manual(values = c("red", "darkgreen", "orange")) + labs(color = "TE carried") +
     ggtitle(title) + theme(plot.title = element_text(hjust = 0.5), legend.position = "bottom")
 
-list(islands = pca_plot_islands, presence = pca_plot_presence)
+pca_plot_merged <- ggplot(pcaable, aes(x=PC1, y=PC2, color=presence, fill=island)) + geom_point(shape=21, alpha=0.5, size=4, stroke=2) +
+    xlab(paste0("PC1: ", var_explained[1])) + ylab(paste0("PC2: ", var_explained[2])) +
+    scale_color_manual(values = c("red", "darkgreen", "orange")) + labs(color = "TE carried") +
+    ggtitle(title) + theme(plot.title = element_text(hjust = 0.5), legend.position = "bottom")
+
+list(islands = pca_plot_islands, presence = pca_plot_presence, data = pcaable, pca = pca_plot_merged)
 }
 ```
 
@@ -235,7 +291,7 @@ second one is performed removing the 2 suspicious strains of unknown
 origin.
 
 ``` r
-all_samples <- eigen2pca("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/v1/dsec.pca.eigenvec", "/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/v1/dsec.pca.eigenval", pca_metadata, "PCA with all samples")
+all_samples <- eigen2pca("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/matute+chopped/dsec.pca.eigenvec", "/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/matute+chopped/dsec.pca.eigenval", pca_metadata, "PCA on 645.917 SNPs")
 ```
 
     ## 
@@ -254,37 +310,30 @@ all_samples <- eigen2pca("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-st
     ## )
 
 ``` r
-#eigen2pca("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/v2/dsec.pca.eigenvec", "/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/v2/dsec.pca.eigenval", pca_metadata)
-
-good_samples <- eigen2pca("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/v3/dsec.pca.eigenvec", "/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/v3/dsec.pca.eigenval", pca_metadata, "PCA on 645.917 SNPs")
-```
-
-    ## 
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## cols(
-    ##   .default = col_double(),
-    ##   Sample = col_character(),
-    ##   Sample2 = col_character()
-    ## )
-    ## ℹ Use `spec()` for the full column specifications.
-    ## 
-    ## 
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## cols(
-    ##   val = col_double()
-    ## )
-
-``` r
-print(good_samples$islands)
+print(all_samples$islands)
 ```
 
 ![](dsec_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 ``` r
-print(good_samples$presence)
+print(all_samples$presence)
 ```
 
 ![](dsec_files/figure-gfm/unnamed-chunk-9-2.png)<!-- -->
+
+``` r
+print(all_samples$pca)
+```
+
+![](dsec_files/figure-gfm/unnamed-chunk-9-3.png)<!-- -->
+
+``` r
+#eigen2pca("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/v2/dsec.pca.eigenvec", "/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/v2/dsec.pca.eigenval", pca_metadata)
+
+#good_samples <- eigen2pca("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/v3/dsec.pca.eigenvec", "/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/v3/dsec.pca.eigenval", pca_metadata, "PCA on 645.917 SNPs")
+#print(good_samples$islands)
+#print(good_samples$presence)
+```
 
 ``` r
 (LD <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/popgen-parameters/popgen.txt") %>% mutate(avg_LD = round(avg_LD, digits = 2), pi = round(pi, digits = 2)))
@@ -325,3 +374,36 @@ plottable_pi <- LD %>% filter(samples %in% c("Denis", "Praslin", "Mahé", "La Di
     ## `binwidth`, `bins`, and `pad`
 
 ![](dsec_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+
+To construct the phylogeny tree starting from the merged VCF file, I
+used a python script which can be found at
+<https://github.com/edgardomortiz/vcf2phylip> with a call like this to
+obtain the NEXUS file:
+
+    python vcf2phylip.py --input myfile.vcf --phylip-disable --nexus
+
+From the nexus file I used BEAUti to get the XML file and used it as
+input for BEAST. Then I extracted the maximum credibility tree with
+TreeAnnotator and visualized it with FigTree.
+
+## Outliers investigation
+
+SRR9913024 and SRR7697345 (SynA) come from two different studies where
+they crossed Dsim and Dsec in the lab, but they are the Dsec parental
+strain.
+
+SRR5514394 (sech25) are chopped long reads.
+
+``` r
+(outliers <- dsec %>% filter(library_name %in% c("SynA","sech25"), TE!="P-element"))
+```
+
+    ## # A tibble: 6 × 10
+    ##   Sample library_name island   lat  long  year TE    All_reads HQ_reads presence
+    ##   <chr>  <chr>        <chr>  <dbl> <dbl> <dbl> <chr>     <dbl>    <dbl> <chr>   
+    ## 1 SRR99… SynA         <NA>   NA     NA    1980 Shel…      6.04     5.28 present 
+    ## 2 SRR99… SynA         <NA>   NA     NA    1980 Spoi…     16.3     13.0  present 
+    ## 3 SRR76… SynA         <NA>   NA     NA    1980 Shel…      0.1      0.03 absent  
+    ## 4 SRR76… SynA         <NA>   NA     NA    1980 Spoi…     13.7     10.3  present 
+    ## 5 SRR55… sech25       Cousin -4.33  55.7  2003 Shel…      0.01     0    absent  
+    ## 6 SRR55… sech25       Cousin -4.33  55.7  2003 Spoi…      9.04     3.74 present
