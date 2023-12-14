@@ -103,7 +103,13 @@ eigen2pca <- function(vec, val, title) {
     scale_color_manual(values = c("darkgreen", "red")) + labs(color = "Shellder") +
     ggtitle(title) + theme(plot.title = element_text(hjust = 0.5), legend.position = "bottom")
   
-  list(islands = pca_plot_islands, presence = pca_plot_presence)
+  pca_plot_merged <- ggplot(vec, aes(x=PC1, y=PC3, color=Presence, fill=Population)) + geom_point(shape=21, alpha=0.5, size=4, stroke=2) +
+    xlab(paste0("PC1: ", var_explained[1])) + ylab(paste0("PC3: ", var_explained[3])) +
+    scale_color_manual(values = c("red", "darkgreen", "orange")) + labs(color = "TE carried") +
+    ggtitle(title) + theme(plot.title = element_text(hjust = 0.5), legend.position = "bottom")
+  
+  list(islands = pca_plot_islands, presence = pca_plot_presence, merged = pca_plot_merged)
+  
 }
 
 eigen2pca(pca_dtei_eigenvec, pca_dtei_eigenval, "PCA 7412533 SNPs Drosophila teissieri")
