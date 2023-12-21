@@ -1,0 +1,368 @@
+#NEXUS
+begin taxa;
+	dimensions ntax=266;
+	taxlabels
+	'A.communis'
+	'A.mariae'
+	'A.minor'
+	'C.amoena'
+	'C.caudatula'
+	'C.costata'
+	'C.indagator'
+	'C.procnemis'
+	'D.acutilabella'
+	'D.aff.chauv'
+	'D.affinis'
+	'D.aldrichi'
+	'D.algonquin'
+	'D.ambigua'
+	'D.americana'
+	'D.ananassae'
+	'D.anceps'
+	'D.anomalata'
+	'D.anomalipes'
+	'D.anomelani'
+	'D.arawakana'
+	'D.atripex'
+	'D.atroscutellata'
+	'D.austrosaltans'
+	'D.basisetae'
+	'D.biarmipes'
+	'D.bipectinata'
+	'D.birchii'
+	'D.bocqueti'
+	'D.borealis'
+	'D.bunnanda'
+	'D.buzzatii'
+	'D.cardini'
+	'D.carrolli'
+	'D.cognata'
+	'D.colorata'
+	'D.conformis'
+	'D.cracens'
+	'D.crucigera'
+	'D.cyrtoloma'
+	'D.demipolita'
+	'D.differens'
+	'D.dives'
+	'D.dunni'
+	'D.elegans'
+	'D.emarginata'
+	'D.engyochracea'
+	'D.eohydei'
+	'D.equinoxialis'
+	'D.ercepeae'
+	'D.erecta'
+	'D.eugracilis'
+	'D.ezoana'
+	'D.falleni'
+	'D.ficusphila'
+	'D.flavopinicola'
+	'D.formosana'
+	'D.fulvimacula'
+	'D.funebris'
+	'D.fungiperda'
+	'D.fuyamai'
+	'D.gaucha'
+	'D.glabriapex'
+	'D.grimshawi'
+	'D.gunungcola'
+	'D.hamatofila'
+	'D.hawaiiensis'
+	'D.helvetica'
+	'D.heteroneura'
+	'D.histrio'
+	'D.immigrans.12'
+	'D.immigrans.k17'
+	'D.imparisetae'
+	'D.incognita'
+	'D.infuscata'
+	'D.insularis'
+	'D.jambulina'
+	'D.kambysellisi'
+	'D.kanekoi'
+	'D.kikkawai'
+	'D.kokeensis'
+	'D.kuntzei'
+	'D.kurseongensis'
+	'D.lacicola'
+	'D.leonis'
+	'D.littoralis'
+	'D.longiperda'
+	'D.lutescens'
+	'D.macrospina'
+	'D.macrothrix'
+	'D.maculinotata'
+	'D.mal.mal.'
+	'D.mal.pallens'
+	'D.mau.01'
+	'D.mau.r31'
+	'D.mau.r32'
+	'D.mau.r39'
+	'D.mau.r61'
+	'D.mayaguana'
+	'D.mel.es.ten'
+	'D.mel.iso1'
+	'D.mel.pi2'
+	'D.mel.ral176'
+	'D.mel.ral732'
+	'D.mel.ral737'
+	'D.mel.ral91'
+	'D.mel.se.sto'
+	'D.melanocephala'
+	'D.melanogaster'
+	'D.melanosoma'
+	'D.mercatorum'
+	'D.meridiana'
+	'D.meridionalis'
+	'D.merina'
+	'D.mettleri'
+	'D.mimetica'
+	'D.mimica'
+	'D.miranda'
+	'D.mojavensis'
+	'D.monieri'
+	'D.montana'
+	'D.mulleri'
+	'D.multiciliata'
+	'D.murphyi'
+	'D.neocordata'
+	'D.neotestacea'
+	'D.neutralis'
+	'D.nigricruria'
+	'D.nigritarsus'
+	'D.niveifrons'
+	'D.nrfundita'
+	'D.nrmedialis2'
+	'D.nrmedialis3'
+	'D.nrperissopoda1'
+	'D.nrperissopoda5'
+	'D.obscura'
+	'D.ochracea'
+	'D.oshimai'
+	'D.pallidosa'
+	'D.parabipectinata'
+	'D.paracracens'
+	'D.paramelanica'
+	'D.paranaensis'
+	'D.parthenogenetica'
+	'D.paucipuncta'
+	'D.paulistorum.06'
+	'D.paulistorum.12'
+	'D.pegasa'
+	'D.peninsularis'
+	'D.percnosoma'
+	'D.persimilis'
+	'D.phalerata'
+	'D.picticornis'
+	'D.planitibia'
+	'D.prosaltans'
+	'D.prostipennis'
+	'D.pruinosa'
+	'D.pseuan.nigrens'
+	'D.pseuan.pseuan.'
+	'D.pseudoobscura'
+	'D.pseudotakahashii'
+	'D.pseudotalamancana'
+	'D.pullipes'
+	'D.putrida'
+	'D.quadrilineata'
+	'D.quasianomalipes'
+	'D.quinaria'
+	'D.recens'
+	'D.rellima'
+	'D.repleta'
+	'D.repletoides'
+	'D.rhopaloa'
+	'D.robusta'
+	'D.rubida'
+	'D.rufa'
+	'D.saltans'
+	'D.sechellia'
+	'D.seclusa'
+	'D.serrata'
+	'D.setosimentum'
+	'D.siamana'
+	'D.silvestris'
+	'D.sim.006'
+	'D.sim.sz129'
+	'D.sim.sz232'
+	'D.sordidapex'
+	'D.sordidula'
+	'D.sp.14030-0761.01'
+	'D.sp.st01m'
+	'D.sproati'
+	'D.stalkeri'
+	'D.sturtevanti'
+	'D.subobscura'
+	'D.suboccidentalis'
+	'D.subpulchrella'
+	'D.subquinaria'
+	'D.subsilvestris'
+	'D.sucinea'
+	'D.takahashii'
+	'D.tanythrix'
+	'D.teissieri.273.3'
+	'D.teissieri.ct02'
+	'D.testacea'
+	'D.triauraria'
+	'D.trichaetosa'
+	'D.tripunctata'
+	'D.tristis'
+	'D.tropicalis'
+	'D.ustulata'
+	'D.vallismaia'
+	'D.varians'
+	'D.villosipedis'
+	'D.virilis'
+	'D.willistoni.00'
+	'D.willistoni.17'
+	'D.yakuba'
+	'D.yooni'
+	'H.alboralis'
+	'H.confusa'
+	'H.duncani'
+	'H.guttata'
+	'H.histrioides'
+	'H.trivittata'
+	'L.aerea'
+	'L.andalusiaca'
+	'L.clarofinis'
+	'L.collinella'
+	'L.maculata'
+	'L.magnipectinata'
+	'L.mommai'
+	'L.montana'
+	'L.stackelbergi'
+	'L.varia'
+	'S.caliginosa'
+	'S.cyrtandrae'
+	'S.graminum'
+	'S.hsui'
+	'S.latifasciaeformis'
+	'S.montana'
+	'S.nigrithorax'
+	'S.pallida'
+	'S.parva'
+	'S.polygonia'
+	'S.reducta'
+	'S.tumidula'
+	'Z.africanus'
+	'Z.bogoriensis'
+	'Z.camerounensis'
+	'Z.capensis'
+	'Z.davidi'
+	'Z.flavofinira'
+	'Z.gabonicus'
+	'Z.ghesquierei'
+	'Z.indianus.bs02'
+	'Z.indianus.d18'
+	'Z.indianus.r04'
+	'Z.indianus.v01'
+	'Z.inermis'
+	'Z.kolodkinae'
+	'Z.lachaisei'
+	'Z.nigranus'
+	'Z.ornatus'
+	'Z.taronus'
+	'Z.tsacasi.car7'
+	'Z.tsacasi.jd01t'
+	'Z.vittiger'
+;
+end;
+
+begin trees;
+	tree tree_1 = [&R] ('D.flavopinicola':1.0,('D.maculinotata':1.0,((('S.hsui':1.0,(('S.polygonia':1.0,('S.montana':1.0,'S.graminum':1.0)[&label=0.98]:0.162763)[&label=1]:2.477743,('S.caliginosa':1.0,('S.parva':1.0,('S.pallida':1.0,('S.reducta':1.0,('S.tumidula':1.0,'S.cyrtandrae':1.0)[&label=1]:1.895649)[&label=1]:1.916619)[&label=1]:0.212655)[&label=1]:0.271483)[&label=0.94]:0.127319)[&label=1]:0.257872)[&label=1]:2.205176,(('D.setosimentum':1.0,((('D.quasianomalipes':1.0,'D.anomalipes':1.0)[&label=1]:1.781207,(('D.cyrtoloma':1.0,'D.melanocephala':1.0)[&label=1]:2.232422,(('D.differens':1.0,'D.planitibia':1.0)[&label=1]:0.524631,('D.silvestris':1.0,'D.heteroneura':1.0)[&label=1]:1.107794)[&label=1]:1.688667)[&label=1]:0.837344)[&label=1]:0.784066,('D.picticornis':1.0,(('D.basisetae':1.0,'D.paucipuncta':1.0)[&label=1]:1.630248,('D.glabriapex':1.0,('D.macrothrix':1.0,(('D.hawaiiensis':1.0,('D.crucigera':1.0,('D.pullipes':1.0,'D.grimshawi':1.0)[&label=1]:0.845022)[&label=1]:0.777377)[&label=0.4]:0.015369,('D.engyochracea':1.0,('D.villosipedis':1.0,('D.ochracea':1.0,('D.murphyi':1.0,'D.sproati':1.0)[&label=1]:0.82743)[&label=0.75]:0.090161)[&label=1]:0.556002)[&label=1]:0.689221)[&label=1]:0.30578)[&label=0.56]:0.049936)[&label=0.95]:0.156705)[&label=1]:0.931382)[&label=0.9]:0.129098)[&label=1]:1.06123)[&label=1]:0.61244,((('D.dives':1.0,('D.multiciliata':1.0,'D.demipolita':1.0)[&label=1]:0.693829)[&label=1]:1.122945,('D.longiperda':1.0,('D.melanosoma':1.0,'D.fungiperda':1.0)[&label=1]:0.306759)[&label=1]:0.754246)[&label=1]:2.746768,(('D.mimica':1.0,('D.infuscata':1.0,'D.kambysellisi':1.0)[&label=1]:1.675899)[&label=1]:2.348865,(('D.cognata':1.0,('D.tanythrix':1.0,'D.yooni':1.0)[&label=1]:0.943853)[&label=1]:2.101885,(('D.kokeensis':1.0,('D.nrfundita':1.0,('D.cracens':1.0,'D.paracracens':1.0)[&label=1]:2.332758)[&label=1]:0.314639)[&label=1]:0.540401,(('D.nigritarsus':1.0,(('D.nrmedialis2':1.0,'D.nrmedialis3':1.0)[&label=1]:2.493947,('D.seclusa':1.0,('D.nrperissopoda1':1.0,'D.nrperissopoda5':1.0)[&label=1]:0.818892)[&label=1]:0.305287)[&label=0.42]:0.016586)[&label=0.59]:0.052446,('D.atroscutellata':1.0,('D.imparisetae':1.0,('D.trichaetosa':1.0,(('D.percnosoma':1.0,'D.neutralis':1.0)[&label=1]:1.276382,('D.incognita':1.0,('D.sordidapex':1.0,'D.conformis':1.0)[&label=1]:0.719356)[&label=1]:1.032402)[&label=1]:0.632712)[&label=0.97]:0.172509)[&label=0.49]:0.087352)[&label=0.98]:0.19787)[&label=1]:0.5463)[&label=1]:0.748682)[&label=1]:1.871546)[&label=0.93]:0.125705)[&label=0.93]:0.170555)[&label=1]:3.632874)[&label=1]:1.337506,((('D.paramelanica':1.0,('D.colorata':1.0,('D.robusta':1.0,'D.sordidula':1.0)[&label=1]:2.206214)[&label=0.99]:0.171146)[&label=1]:2.125076,((('D.borealis':1.0,('D.montana':1.0,'D.lacicola':1.0)[&label=1]:0.546913)[&label=1]:1.422639,(('D.americana':1.0,'D.virilis':1.0)[&label=1]:1.238878,('D.littoralis':1.0,('D.ezoana':1.0,'D.kanekoi':1.0)[&label=0.94]:0.135422)[&label=1]:0.215105)[&label=1]:0.384528)[&label=1]:3.37079,('D.pseudotalamancana':1.0,('D.gaucha':1.0,('D.mettleri':1.0,(('D.eohydei':1.0,'D.pegasa':1.0)[&label=1]:0.29223,(('D.nigricruria':1.0,('D.fulvimacula':1.0,('D.peninsularis':1.0,('D.paranaensis':1.0,('D.repleta':1.0,'D.mercatorum':1.0)[&label=1]:1.580192)[&label=1]:2.26045)[&label=0.87]:0.105345)[&label=1]:0.706649)[&label=1]:0.875666,(('D.leonis':1.0,'D.anceps':1.0)[&label=1]:0.685564,(('D.meridiana':1.0,'D.meridionalis':1.0)[&label=1]:3.565699,(('D.stalkeri':1.0,'D.buzzatii':1.0)[&label=1]:2.248162,('D.hamatofila':1.0,('D.mayaguana':1.0,('D.mojavensis':1.0,('D.aldrichi':1.0,'D.mulleri':1.0)[&label=1]:0.710673)[&label=1]:0.706526)[&label=1]:2.50007)[&label=1]:0.622335)[&label=1]:0.590183)[&label=1]:0.709839)[&label=0.41]:0.017671)[&label=1]:0.334849)[&label=0.66]:0.059028)[&label=1]:1.542655)[&label=1]:1.566102)[&label=1]:1.729269)[&label=1]:0.894418)[&label=1]:1.073286,((('Z.flavofinira':1.0,'H.trivittata':1.0)[&label=1]:0.791697,('H.alboralis':1.0,('H.confusa':1.0,'H.histrioides':1.0)[&label=1]:3.582998)[&label=1]:1.195251)[&label=1]:0.270614,(('D.repletoides':1.0,((('H.guttata':1.0,'L.aerea':1.0)[&label=1]:2.831638,('Z.bogoriensis':1.0,(('Z.ghesquierei':1.0,('Z.inermis':1.0,('Z.kolodkinae':1.0,('Z.tsacasi.jd01t':1.0,'Z.tsacasi.car7':1.0)[&label=1]:4.513596)[&label=1]:1.430891)[&label=1]:1.537313)[&label=1]:0.201376,('Z.ornatus':1.0,(('Z.africanus':1.0,(('Z.indianus.bs02':1.0,'Z.indianus.d18':1.0)[&label=1]:0.421009,('Z.gabonicus':1.0,('Z.indianus.r04':1.0,'Z.indianus.v01':1.0)[&label=0.75]:0.091547)[&label=0.98]:0.198043)[&label=1]:1.492933)[&label=1]:1.409846,(('Z.capensis':1.0,('Z.taronus':1.0,'Z.davidi':1.0)[&label=1]:0.347224)[&label=1]:0.482204,(('Z.camerounensis':1.0,'Z.nigranus':1.0)[&label=1]:0.396495,('Z.lachaisei':1.0,'Z.vittiger':1.0)[&label=0.5]:0.041622)[&label=1]:1.158132)[&label=1]:1.328195)[&label=1]:0.246885)[&label=1]:2.141412)[&label=1]:2.678011)[&label=1]:2.086197)[&label=1]:0.324343,('D.quadrilineata':1.0,(('D.pruinosa':1.0,('D.niveifrons':1.0,(('D.rubida':1.0,'D.siamana':1.0)[&label=1]:1.266658,(('D.immigrans.12':1.0,'D.immigrans.k17':1.0)[&label=1]:1.891926,('D.ustulata':1.0,'D.formosana':1.0)[&label=0.99]:0.219277)[&label=1]:3.636013)[&label=0.42]:0.021803)[&label=1]:1.832992)[&label=1]:1.716939,(('D.tripunctata':1.0,('D.cardini':1.0,('D.parthenogenetica':1.0,('D.acutilabella':1.0,('D.arawakana':1.0,'D.dunni':1.0)[&label=1]:0.464479)[&label=1]:0.804164)[&label=1]:0.709958)[&label=1]:3.104126)[&label=1]:1.3115,(('D.macrospina':1.0,'D.funebris':1.0)[&label=1]:1.882162,(('D.putrida':1.0,('D.neotestacea':1.0,'D.testacea':1.0)[&label=1]:1.603925)[&label=1]:3.412528,('D.histrio':1.0,(('D.kuntzei':1.0,('D.sp.st01m':1.0,('D.phalerata':1.0,'D.falleni':1.0)[&label=1]:1.404742)[&label=1]:0.65609)[&label=1]:0.610724,('D.rellima':1.0,('D.quinaria':1.0,('D.suboccidentalis':1.0,('D.recens':1.0,'D.subquinaria':1.0)[&label=1]:1.107482)[&label=1]:0.419774)[&label=1]:2.012217)[&label=1]:1.509629)[&label=1]:0.932447)[&label=1]:0.343306)[&label=0.99]:0.177546)[&label=1]:0.229377)[&label=1]:0.911345)[&label=1]:0.87529)[&label=1]:0.361278)[&label=1]:0.227491)[&label=0.9]:0.127368,((('S.latifasciaeformis':1.0,('C.caudatula':1.0,('C.procnemis':1.0,('C.amoena':1.0,'C.costata':1.0)[&label=1]:1.504931)[&label=1]:1.45908)[&label=1]:3.604572)[&label=0.67]:0.057997,('S.nigrithorax':1.0,(('L.varia':1.0,('L.montana':1.0,'L.maculata':1.0)[&label=1]:1.642228)[&label=1]:2.705814,('C.indagator':1.0,('A.minor':1.0,('A.mariae':1.0,'A.communis':1.0)[&label=0.92]:0.121697)[&label=1]:3.721905)[&label=1]:0.694778)[&label=0.86]:0.106392)[&label=1]:3.416663)[&label=1]:2.043824,('H.duncani':1.0,((('L.mommai':1.0,(('L.collinella':1.0,'L.andalusiaca':1.0)[&label=1]:0.888344,('L.magnipectinata':1.0,('L.clarofinis':1.0,'L.stackelbergi':1.0)[&label=1]:1.003473)[&label=1]:1.52525)[&label=1]:0.972551)[&label=1]:3.19704,(('D.sturtevanti':1.0,(('D.neocordata':1.0,'D.emarginata':1.0)[&label=1]:0.245996,('D.saltans':1.0,('D.prosaltans':1.0,'D.austrosaltans':1.0)[&label=1]:0.51385)[&label=1]:3.054568)[&label=1]:0.629119)[&label=1]:2.495083,(('D.sucinea':1.0,'D.sp.14030-0761.01':1.0)[&label=1]:4.550955,('D.insularis':1.0,('D.tropicalis':1.0,(('D.willistoni.00':1.0,'D.willistoni.17':1.0)[&label=1]:2.574766,('D.equinoxialis':1.0,('D.paulistorum.12':1.0,'D.paulistorum.06':1.0)[&label=1]:1.96215)[&label=1]:1.35369)[&label=1]:0.638359)[&label=1]:0.624886)[&label=1]:2.338479)[&label=1]:1.268117)[&label=1]:3.669596)[&label=1]:1.381402,((('D.subobscura':1.0,('D.subsilvestris':1.0,('D.obscura':1.0,('D.ambigua':1.0,'D.tristis':1.0)[&label=1]:0.631659)[&label=1]:1.241792)[&label=1]:1.494476)[&label=1]:0.621273,(('D.miranda':1.0,('D.persimilis':1.0,'D.pseudoobscura':1.0)[&label=1]:1.166043)[&label=1]:2.706116,('D.helvetica':1.0,('D.algonquin':1.0,'D.affinis':1.0)[&label=1]:1.88224)[&label=1]:0.986127)[&label=1]:0.927531)[&label=1]:3.677985,((('D.varians':1.0,('D.vallismaia':1.0,('D.merina':1.0,'D.ercepeae':1.0)[&label=1]:0.541164)[&label=1]:2.954041)[&label=1]:0.328782,((('D.atripex':1.0,'D.monieri':1.0)[&label=1]:0.706453,('D.anomalata':1.0,('D.ananassae':1.0,'D.pallidosa':1.0)[&label=1]:0.516347)[&label=1]:2.321257)[&label=1]:1.181127,(('D.pseuan.pseuan.':1.0,'D.pseuan.nigrens':1.0)[&label=1]:1.890758,(('D.mal.mal.':1.0,'D.mal.pallens':1.0)[&label=1]:0.321957,('D.parabipectinata':1.0,'D.bipectinata':1.0)[&label=0.78]:0.091631)[&label=1]:1.354864)[&label=1]:1.931029)[&label=1]:1.713923)[&label=1]:3.313986,(('D.oshimai':1.0,((('D.gunungcola':1.0,'D.elegans':1.0)[&label=1]:3.739551,('D.fuyamai':1.0,('D.kurseongensis':1.0,('D.rhopaloa':1.0,'D.carrolli':1.0)[&label=1]:0.671208)[&label=0.94]:0.137568)[&label=1]:2.385874)[&label=1]:1.506442,('D.ficusphila':1.0,((('D.biarmipes':1.0,'D.subpulchrella':1.0)[&label=1]:1.483074,('D.mimetica':1.0,(('D.lutescens':1.0,'D.takahashii':1.0)[&label=0.7]:0.1283,('D.pseudotakahashii':1.0,'D.prostipennis':1.0)[&label=1]:0.21615)[&label=1]:1.191972)[&label=1]:1.354248)[&label=1]:1.014262,('D.eugracilis':1.0,(('D.erecta':1.0,('D.yakuba':1.0,('D.teissieri.273.3':1.0,'D.teissieri.ct02':1.0)[&label=1]:2.160716)[&label=1]:1.388818)[&label=1]:0.597492,((('D.mel.ral732':1.0,'D.mel.ral737':1.0)[&label=0.48]:0.036671,(('D.mel.pi2':1.0,'D.mel.ral176':1.0)[&label=0.46]:0.027334,('D.mel.ral91':1.0,(('D.mel.se.sto':1.0,'D.mel.es.ten':1.0)[&label=0.75]:0.108099,('D.melanogaster':1.0,'D.mel.iso1':1.0)[&label=1]:2.431418)[&label=0.47]:0.041786)[&label=0.52]:0.04538)[&label=0.45]:0.025976)[&label=1]:2.471039,(('D.sechellia':1.0,('D.sim.006':1.0,('D.sim.sz232':1.0,'D.sim.sz129':1.0)[&label=0.56]:0.05001)[&label=1]:0.671673)[&label=0.72]:0.091809,('D.mau.01':1.0,('D.mau.r31':1.0,('D.mau.r61':1.0,('D.mau.r32':1.0,'D.mau.r39':1.0)[&label=0.86]:0.141618)[&label=0.43]:0.026059)[&label=0.52]:0.040874)[&label=1]:0.913617)[&label=1]:1.246676)[&label=1]:1.798111)[&label=1]:3.018888)[&label=1]:0.21652)[&label=1]:0.724649)[&label=0.63]:0.071586)[&label=1]:0.907616)[&label=1]:1.778378,(('D.rufa':1.0,'D.triauraria':1.0)[&label=1]:1.922377,('D.kikkawai':1.0,((('D.birchii':1.0,'D.anomelani':1.0)[&label=1]:1.587295,('D.serrata':1.0,'D.bunnanda':1.0)[&label=1]:0.843452)[&label=1]:0.361695,(('D.aff.chauv':1.0,'D.bocqueti':1.0)[&label=1]:2.574978,'D.jambulina':1.0)[&label=1]:0.631644)[&label=1]:0.343574)[&label=1]:1.31755)[&label=1]:2.84997)[&label=1]:0.882277)[&label=1]:2.327266)[&label=1]:1.887779)[&label=1]:1.026892)[&label=1]:0.678896)[&label=1]:3.17945)[&label=1]:0.257177)[&label=1]:1.022796)[&label=1]:1.578746)[&label=1]:0.932705):0.0);
+end;
+
+begin figtree;
+	set appearance.backgroundColorAttribute="Default";
+	set appearance.backgroundColour=#ffffff;
+	set appearance.branchColorAttribute="User selection";
+	set appearance.branchColorGradient=false;
+	set appearance.branchLineWidth=1.0;
+	set appearance.branchMinLineWidth=0.0;
+	set appearance.branchWidthAttribute="Fixed";
+	set appearance.foregroundColour=#000000;
+	set appearance.hilightingGradient=false;
+	set appearance.selectionColour=#2d3680;
+	set branchLabels.colorAttribute="User selection";
+	set branchLabels.displayAttribute="Branch times";
+	set branchLabels.fontName="sansserif";
+	set branchLabels.fontSize=8;
+	set branchLabels.fontStyle=0;
+	set branchLabels.isShown=false;
+	set branchLabels.significantDigits=4;
+	set layout.expansion=0;
+	set layout.layoutType="RECTILINEAR";
+	set layout.zoom=0;
+	set legend.attribute=null;
+	set legend.fontSize=10.0;
+	set legend.isShown=false;
+	set legend.significantDigits=4;
+	set nodeBars.barWidth=4.0;
+	set nodeBars.displayAttribute=null;
+	set nodeBars.isShown=false;
+	set nodeLabels.colorAttribute="User selection";
+	set nodeLabels.displayAttribute="Node ages";
+	set nodeLabels.fontName="sansserif";
+	set nodeLabels.fontSize=8;
+	set nodeLabels.fontStyle=0;
+	set nodeLabels.isShown=false;
+	set nodeLabels.significantDigits=4;
+	set nodeShapeExternal.colourAttribute=null;
+	set nodeShapeExternal.isShown=false;
+	set nodeShapeExternal.minSize=10.0;
+	set nodeShapeExternal.scaleType=Width;
+	set nodeShapeExternal.shapeType=Circle;
+	set nodeShapeExternal.size=4.0;
+	set nodeShapeExternal.sizeAttribute=null;
+	set nodeShapeInternal.colourAttribute=null;
+	set nodeShapeInternal.isShown=false;
+	set nodeShapeInternal.minSize=10.0;
+	set nodeShapeInternal.scaleType=Width;
+	set nodeShapeInternal.shapeType=Circle;
+	set nodeShapeInternal.size=4.0;
+	set nodeShapeInternal.sizeAttribute=null;
+	set polarLayout.alignTipLabels=false;
+	set polarLayout.angularRange=0;
+	set polarLayout.rootAngle=0;
+	set polarLayout.rootLength=100;
+	set polarLayout.showRoot=true;
+	set radialLayout.spread=0.0;
+	set rectilinearLayout.alignTipLabels=false;
+	set rectilinearLayout.curvature=0;
+	set rectilinearLayout.rootLength=100;
+	set scale.offsetAge=0.0;
+	set scale.rootAge=1.0;
+	set scale.scaleFactor=1.0;
+	set scale.scaleRoot=false;
+	set scaleAxis.automaticScale=true;
+	set scaleAxis.fontSize=8.0;
+	set scaleAxis.isShown=false;
+	set scaleAxis.lineWidth=1.0;
+	set scaleAxis.majorTicks=1.0;
+	set scaleAxis.minorTicks=0.5;
+	set scaleAxis.origin=0.0;
+	set scaleAxis.reverseAxis=false;
+	set scaleAxis.showGrid=true;
+	set scaleBar.automaticScale=true;
+	set scaleBar.fontSize=10.0;
+	set scaleBar.isShown=false;
+	set scaleBar.lineWidth=1.0;
+	set scaleBar.scaleRange=3.0;
+	set tipLabels.colorAttribute="User selection";
+	set tipLabels.displayAttribute="Names";
+	set tipLabels.fontName="sansserif";
+	set tipLabels.fontSize=8;
+	set tipLabels.fontStyle=0;
+	set tipLabels.isShown=true;
+	set tipLabels.significantDigits=4;
+	set trees.order=true;
+	set trees.orderType="decreasing";
+	set trees.rooting=false;
+	set trees.rootingType="User Selection";
+	set trees.transform=true;
+	set trees.transformType="proportional";
+end;
+

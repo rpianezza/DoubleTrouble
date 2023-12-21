@@ -1,0 +1,23 @@
+# Run BUSCO on all the genomes in a folder
+bash busco.sh
+
+# Extract BUSCO entries present in all the genomes, then create a FASTA file for each gene with each entry named like the species
+python busco-extractor.py busco/output/folder output/folder
+
+# Rename all the entries the FASTA file as lowercase (apart from the genus letter). To iterate over all the files in the folder
+rename-fasta-lowercase.py output/folder/.fasta
+
+# MSA the FASTA file. To iterate over all the FASTA.
+muscle -align file.fasta -output file.MSA
+
+# Clean MSA from duplicates clade
+python clean-MSA-from-duplicates.py file.MSA file-cleaned.MSA
+
+# Do trees from the cleaned MSA using RaxML
+for file in ../../../../../mnt/curana/riccardo/DoubleTrouble/renamed/MSA/*MSA; do     filename=$(basename "$file" .MSA);     ./raxml-ng --force --threads 20 --seed 12345 --msa "$file" --data-type AA --prefix RAxML_"$filename" --model LG; done
+
+# Concatenate all the .bestTree files
+cat *bestTree > trees.phy
+
+# From the merged tree file, run ASTRAL to get the species tree
+java -jar ../../../../../home/riccardo/programs/Astral/astral.5.7.8.jar -i trees.phy -o tree.phy
