@@ -8,6 +8,7 @@ suppressPackageStartupMessages(library(kableExtra))
 suppressPackageStartupMessages(library(ggpubr))
 suppressPackageStartupMessages(library(umap))
 suppressPackageStartupMessages(library(sf))
+suppressPackageStartupMessages(library(svglite))
 theme_set(theme_bw())
 ```
 
@@ -33,7 +34,7 @@ dsec_csv <- read_csv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/time-series/dsec.
     ## # ℹ 37 more rows
 
 ``` r
-dsec <- inner_join(dsec_metadata, dsec_csv, by="Sample") %>% type_convert() %>% mutate(presence = ifelse(HQ_reads > 2, "present", "absent"), TE = case_when(TE == "spoink" ~ "Spoink", TE == "PPI251" ~ "P-element", TRUE ~ TE)) %>% filter(TE %in% c("Spoink", "Shellder", "P-element"))
+dsec <- inner_join(dsec_metadata, dsec_csv, by="Sample") %>% type_convert() %>% mutate(presence = ifelse(HQ_reads > 2, "present", "absent"), TE = case_when(TE == "spoink" ~ "Spoink", TE == "PPI251" ~ "P-element", TRUE ~ TE)) %>% filter(TE %in% c("Spoink", "Shellder", "P-element")) %>% filter(island!="Cousin")
 ```
 
     ## 
@@ -61,9 +62,21 @@ map <- st_read("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/seychelles-latest-free.
     ## Geodetic CRS:  WGS 84
 
 ``` r
+dsec$TE <- factor(dsec$TE, levels = c("Spoink", "Shellder", "P-element"))
+
+(barplot <- ggplot(dsec, aes(x=library_name, y=HQ_reads, fill=island)) +
+   geom_bar(stat = "identity")+
+    labs(x="", y="copy number")+
+    facet_wrap(~TE)+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size=4)))
+```
+
+![](dsec_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+
+``` r
 plot_map_seychelles <- function(dataset) {
   limits <- c(xmin = 55.35, xmax = 55.95, ymin = -4.8, ymax = -3.78)
-  dataset$TE <- factor(dataset$TE, levels = c("Shellder", "Spoink", "P-element"))
+  dataset$TE <- factor(dataset$TE, levels = c("Spoink", "Shellder", "P-element"))
   
   island_labels <- dataset %>% distinct(island, lat, long)
   
@@ -71,20 +84,21 @@ plot_map_seychelles <- function(dataset) {
     geom_sf(data = map) +
     geom_point(data = dataset, aes(long, lat, color = presence), position = position_jitter(width = 0.01, height = 0.02), alpha = 0.5, size=5) +
     scale_colour_manual(values=c("darkgreen", "red")) +
-    theme(legend.position = "none", axis.text = element_blank(), axis.title = element_blank(), axis.ticks = element_blank()) +
+    theme(legend.position = "bottom", axis.text = element_blank(), axis.title = element_blank(), axis.ticks = element_blank()) +
     coord_sf(xlim = c(limits["xmin"], limits["xmax"]), ylim = c(limits["ymin"], limits["ymax"])) +
     facet_wrap(~TE)+
-    geom_text(data = island_labels, aes(label = island, x = long, y = lat), vjust = 3, size = 3, color = "black")
+    geom_text(data = island_labels, aes(label = island, x = long, y = lat), vjust = 3, size = 3, color = "black")+
+    labs(color="Spoink and Shellder")
 }
 
-plot_map_seychelles(dsec)
+(map <- plot_map_seychelles(dsec))
 ```
 
-    ## Warning: Removed 6 rows containing missing values (`geom_point()`).
+![](dsec_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
-    ## Warning: Removed 3 rows containing missing values (`geom_text()`).
-
-![](dsec_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+``` r
+#ggsave(map, filename="/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/map.svg", dpi=1000)
+```
 
 ``` r
 PCA <- function(pcaable, titlee){
@@ -93,17 +107,23 @@ PCA <- function(pcaable, titlee){
   pca_result <- prcomp(pcaable[, -c(1:9)], center = TRUE, scale = TRUE)
   var_explained <- pca_result$sdev^2/sum(pca_result$sdev^2)
   
-  plot1 <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$island), aes(x=PC1,y=PC2, color=location)) + geom_point(size=2) + labs(x=paste0("PC1: ",round(var_explained[1]*100,1),"%"), y=paste0("PC2: ",round(var_explained[2]*100,1),"%"), color="island") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5, face = "bold"), legend.title = element_text(face = "bold"))
+  plot1 <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$island), aes(x=PC1,y=PC2, color=location)) + geom_point(size=4) + labs(x=paste0("PC1: ",round(var_explained[1]*100,1),"%"), y=paste0("PC2: ",round(var_explained[2]*100,1),"%"), color="island") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5, face = "bold"), legend.title = element_text(face = "bold"))+
+scale_colour_manual(values=c("#F8766D", "#DB72FB"))
   
-  plot2 <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$island), aes(x=PC1,y=PC3, color=location)) + geom_point(size=2) + labs(x=paste0("PC1: ",round(var_explained[1]*100,1),"%"), y=paste0("PC3: ",round(var_explained[3]*100,1),"%"), color="island") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5, face = "bold"), legend.title = element_text(face = "bold"))
+  plot2 <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$island), aes(x=PC1,y=PC3, color=location)) + geom_point(size=4) + labs(x=paste0("PC1: ",round(var_explained[1]*100,1),"%"), y=paste0("PC3: ",round(var_explained[3]*100,1),"%"), color="island") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5, face = "bold"), legend.title = element_text(face = "bold"))+
+scale_colour_manual(values=c("#F8766D", "#DB72FB"))
   
-  plot3 <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$island), aes(x=PC3,y=PC2, color=location)) + geom_point(size=2) + labs(x=paste0("PC3: ",round(var_explained[3]*100,1),"%"), y=paste0("PC2: ",round(var_explained[2]*100,1),"%"), color="island") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5, face = "bold"), legend.title = element_text(face = "bold"))
+  plot3 <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$island), aes(x=PC3,y=PC2, color=location)) + geom_point(size=4) + labs(x=paste0("PC3: ",round(var_explained[3]*100,1),"%"), y=paste0("PC2: ",round(var_explained[2]*100,1),"%"), color="island") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5, face = "bold"), legend.title = element_text(face = "bold"))+
+scale_colour_manual(values=c("#F8766D", "#DB72FB"))
   
-  plot4 <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$island), aes(x=PC1,y=PC4, color=location)) + geom_point(size=2) + labs(x=paste0("PC1: ",round(var_explained[1]*100,1),"%"), y=paste0("PC4: ",round(var_explained[4]*100,1),"%"), color="island") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5, face = "bold"), legend.title = element_text(face = "bold"))
+  plot4 <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$island), aes(x=PC1,y=PC4, color=location)) + geom_point(size=4) + labs(x=paste0("PC1: ",round(var_explained[1]*100,1),"%"), y=paste0("PC4: ",round(var_explained[4]*100,1),"%"), color="island") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5, face = "bold"), legend.title = element_text(face = "bold"))+
+scale_colour_manual(values=c("#F8766D", "#DB72FB"))
   
-  plot5 <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$island), aes(x=PC4,y=PC2, color=location)) + geom_point(size=2) + labs(x=paste0("PC4: ",round(var_explained[4]*100,1),"%"), y=paste0("PC2: ",round(var_explained[2]*100,1),"%"), color="island") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5, face = "bold"), legend.title = element_text(face = "bold"))
+  plot5 <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$island), aes(x=PC4,y=PC2, color=location)) + geom_point(size=4) + labs(x=paste0("PC4: ",round(var_explained[4]*100,1),"%"), y=paste0("PC2: ",round(var_explained[2]*100,1),"%"), color="island") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5, face = "bold"), legend.title = element_text(face = "bold"))+
+scale_colour_manual(values=c("#F8766D", "#DB72FB"))
   
-  plot6 <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$island), aes(x=PC3,y=PC4, color=location)) + geom_point(size=2) + labs(x=paste0("PC3: ",round(var_explained[3]*100,1),"%"), y=paste0("PC4: ",round(var_explained[4]*100,1),"%"), color="island") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5, face = "bold"), legend.title = element_text(face = "bold"))
+  plot6 <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$island), aes(x=PC3,y=PC4, color=location)) + geom_point(size=4) + labs(x=paste0("PC3: ",round(var_explained[3]*100,1),"%"), y=paste0("PC4: ",round(var_explained[4]*100,1),"%"), color="island") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5, face = "bold"), legend.title = element_text(face = "bold"))+
+scale_colour_manual(values=c("#F8766D", "#DB72FB"))
 
   list(pc1_2 = plot1, pc1_3 = plot2, pc2_3 = plot3, pc1_4 = plot4, pc2_4 = plot5, pc3_4 = plot6)
 }
@@ -129,7 +149,7 @@ pca_shellder <- PCA(shellder_pcaable, "Shellder")
 pca_shellder$pc1_2
 ```
 
-![](dsec_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](dsec_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
 ``` r
 #pca_shellder$pc1_3
@@ -159,7 +179,7 @@ pca_spoink <- PCA(spoink_pcaable, "Spoink")
 pca_spoink$pc1_2
 ```
 
-![](dsec_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](dsec_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
 ``` r
 #pca_spoink$pc1_3
@@ -212,10 +232,10 @@ values of each PC for each sample) and the **.eigenval** file
 
 ``` r
 (pca_metadata <- left_join(dsec_metadata, dsec_csv, by="Sample") %>% type_convert() %>% mutate(presence = ifelse(HQ_reads > 2, "present", "absent"), TE = case_when(TE == "spoink" ~ "Spoink", TE == "PPI251" ~ "P-element", TRUE ~ TE)) %>% filter(TE %in% c("Spoink", "Shellder", "P-element", NA)) %>% select(-All_reads, -HQ_reads) %>% pivot_wider(names_from = TE, values_from = presence) %>% mutate(Shellder = ifelse(library_name=="14021-0248.01", "absent", Shellder), Spoink = ifelse(library_name=="14021-0248.01", "present", Spoink)) %>% mutate(presence = case_when(
-    Spoink == "present" & Shellder == "present" ~ "both",
+    Spoink == "present" & Shellder == "present" ~ "present",
     Spoink == "present" & Shellder != "present" ~ "Spoink only",
     Spoink != "present" & Shellder == "present" ~ "Shellder only",
-    TRUE ~ "none"
+    TRUE ~ "absent"
   )) %>% select(-"NA"))
 ```
 
@@ -270,17 +290,17 @@ pcaable <- inner_join(pca_metadata, eigenvec, by="Sample")
 
 pca_plot_islands <- ggplot(pcaable, aes(x=PC1, y=PC2, color=island)) + geom_point(alpha=0.5, size=4) +
     xlab(paste0("PC1: ", var_explained[1])) + ylab(paste0("PC2: ", var_explained[2])) +
-    ggtitle(title) + theme(plot.title = element_text(hjust = 0.5), legend.position = "bottom")
+    ggtitle(title) + theme(plot.title = element_text(hjust = 0.5), legend.position = "right")
 
 pca_plot_presence <- ggplot(pcaable, aes(x=PC1, y=PC2, color=presence)) + geom_point(alpha=0.5, size=4) +
     xlab(paste0("PC1: ", var_explained[1])) + ylab(paste0("PC2: ", var_explained[2])) +
-    scale_color_manual(values = c("red", "darkgreen", "orange")) + labs(color = "TE carried") +
-    ggtitle(title) + theme(plot.title = element_text(hjust = 0.5), legend.position = "bottom")
+    scale_color_manual(values = c("darkgreen","red")) + labs(color = "Spoink and Shellder") +
+    ggtitle(title) + theme(plot.title = element_text(hjust = 0.5), legend.position = "right")
 
 pca_plot_merged <- ggplot(pcaable, aes(x=PC1, y=PC2, color=presence, fill=island)) + geom_point(shape=21, alpha=0.5, size=4, stroke=2) +
     xlab(paste0("PC1: ", var_explained[1])) + ylab(paste0("PC2: ", var_explained[2])) +
-    scale_color_manual(values = c("red", "darkgreen", "orange")) + labs(color = "TE carried") +
-    ggtitle(title) + theme(plot.title = element_text(hjust = 0.5), legend.position = "bottom")
+    scale_color_manual(values = c("darkgreen","red")) + labs(color = "Spoink and Shellder") +
+    ggtitle(title) + theme(plot.title = element_text(hjust = 0.5), legend.position = "right")
 
 list(islands = pca_plot_islands, presence = pca_plot_presence, data = pcaable, pca = pca_plot_merged)
 }
@@ -291,7 +311,7 @@ second one is performed removing the 2 suspicious strains of unknown
 origin.
 
 ``` r
-all_samples <- eigen2pca("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/matute+chopped/dsec.pca.eigenvec", "/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/matute+chopped/dsec.pca.eigenval", pca_metadata, "PCA on 645.917 SNPs")
+all_samples <- eigen2pca("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/matute/dsec-matute.pca.eigenvec", "/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/matute/dsec-matute.pca.eigenval", pca_metadata, "PCA on 645.917 SNPs")
 ```
 
     ## 
@@ -313,19 +333,19 @@ all_samples <- eigen2pca("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-st
 print(all_samples$islands)
 ```
 
-![](dsec_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](dsec_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
 ``` r
 print(all_samples$presence)
 ```
 
-![](dsec_files/figure-gfm/unnamed-chunk-9-2.png)<!-- -->
+![](dsec_files/figure-gfm/unnamed-chunk-10-2.png)<!-- -->
 
 ``` r
 print(all_samples$pca)
 ```
 
-![](dsec_files/figure-gfm/unnamed-chunk-9-3.png)<!-- -->
+![](dsec_files/figure-gfm/unnamed-chunk-10-3.png)<!-- -->
 
 ``` r
 #eigen2pca("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/v2/dsec.pca.eigenvec", "/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/v2/dsec.pca.eigenval", pca_metadata)
@@ -366,14 +386,14 @@ LD$samples <- factor(LD$samples, levels = c("all", "present", "absent", "Denis",
 plottable_pi <- LD %>% filter(samples %in% c("Denis", "Praslin", "Mahé", "La Digue"))
 (pi__plot <- ggplot(plottable_pi, aes(x = samples, y = pi, fill = samples)) +
   geom_histogram(stat="identity") +
-  scale_fill_manual(values=c("#CD9600","#FF61CC","#00BFC4","#00BE67")) +
+  #scale_fill_manual(values=c("#CD9600","#FF61CC","#00BFC4","#00BE67","#00B9E3")) +
     xlab("island") + labs(fill="island"))
 ```
 
     ## Warning in geom_histogram(stat = "identity"): Ignoring unknown parameters:
     ## `binwidth`, `bins`, and `pad`
 
-![](dsec_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](dsec_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 To construct the phylogeny tree starting from the merged VCF file, I
 used a python script which can be found at
@@ -385,25 +405,3 @@ obtain the NEXUS file:
 From the nexus file I used BEAUti to get the XML file and used it as
 input for BEAST. Then I extracted the maximum credibility tree with
 TreeAnnotator and visualized it with FigTree.
-
-## Outliers investigation
-
-SRR9913024 and SRR7697345 (SynA) come from two different studies where
-they crossed Dsim and Dsec in the lab, but they are the Dsec parental
-strain.
-
-SRR5514394 (sech25) are chopped long reads.
-
-``` r
-(outliers <- dsec %>% filter(library_name %in% c("SynA","sech25"), TE!="P-element"))
-```
-
-    ## # A tibble: 6 × 10
-    ##   Sample library_name island   lat  long  year TE    All_reads HQ_reads presence
-    ##   <chr>  <chr>        <chr>  <dbl> <dbl> <dbl> <chr>     <dbl>    <dbl> <chr>   
-    ## 1 SRR99… SynA         <NA>   NA     NA    1980 Shel…      6.04     5.28 present 
-    ## 2 SRR99… SynA         <NA>   NA     NA    1980 Spoi…     16.3     13.0  present 
-    ## 3 SRR76… SynA         <NA>   NA     NA    1980 Shel…      0.1      0.03 absent  
-    ## 4 SRR76… SynA         <NA>   NA     NA    1980 Spoi…     13.7     10.3  present 
-    ## 5 SRR55… sech25       Cousin -4.33  55.7  2003 Shel…      0.01     0    absent  
-    ## 6 SRR55… sech25       Cousin -4.33  55.7  2003 Spoi…      9.04     3.74 present

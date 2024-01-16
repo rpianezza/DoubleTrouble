@@ -1,0 +1,15 @@
+find . -name "*.fastq.gz" | parallel -j 4 'n={/.}; bwa bwasw -t 4 /Volumes/Temp/Riccardo/simulans-clade-TE-invasions/sechellia-population-structure/GCF_004382195.2_ASM438219v2_genomic.fna {} | samtools sort -@ 4 -m 3G - > /Volumes/Temp/Riccardo/simulans-clade-TE-invasions/sechellia-population-structure/${n}.sort.bam'
+
+find . -name "*.bam" | parallel -j 20 'n={/.}; samtools mpileup -uf /Volumes/Temp/Riccardo/simulans-clade-TE-invasions/sechellia-population-structure/reference/GCF_004382195.2_ASM438219v2_genomic.fna {} -o ${n}.bcf'
+
+find . -name "*.bcf" | parallel -j 20 'n={/.}; bcftools call -mv -Ov {} -o ${n}.vcf'
+
+find . -name "*.vcf" | parallel -j 20 'n={/.}; bgzip {}'
+
+find . -name "*.vcf.gz" | parallel -j 20 'n={/.}; bcftools index {}'
+
+bcftools merge *vcf.gz -o dsec.vcf
+
+plink2 --vcf dsec.vcf --double-id --allow-extra-chr  --indep-pairwise 50 10 0.1 --out dsec.pruned
+
+plink2 --vcf dsec.vcf --double-id --allow-extra-chr --extract dsec.pruned.prune.in --make-bed --pca --out dsec.pca
