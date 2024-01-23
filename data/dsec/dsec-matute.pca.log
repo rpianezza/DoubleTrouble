@@ -1,0 +1,51 @@
+PLINK v1.90b5 64-bit (14 Nov 2017)
+Options in effect:
+  --allow-extra-chr
+  --double-id
+  --extract /Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/matute/dsec.pruned.prune.in
+  --make-bed
+  --out /Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/matute/dsec-matute.pca
+  --pca
+  --vcf /Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/matute/dsec-matute.vcf
+
+Hostname: i122srv53.vu-wien.ac.at
+Working directory: /Users/rpianezza
+Start time: Tue Jan 16 15:38:29 2024
+
+Random number seed: 1705415909
+32768 MB RAM detected; reserving 16384 MB for main workspace.
+--vcf:
+/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/matute/dsec-matute.pca-temporary.bed
++
+/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/matute/dsec-matute.pca-temporary.bim
++
+/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/matute/dsec-matute.pca-temporary.fam
+written.
+638916 variants loaded from .bim file.
+43 people (0 males, 0 females, 43 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to
+/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/matute/dsec-matute.pca.nosex
+.
+--extract: 638916 variants remaining.
+Warning: At least 33529 duplicate IDs in --extract file.
+Using up to 23 threads (change this with --threads).
+Before main variant filters, 43 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.332619.
+638916 variants and 43 people pass filters and QC.
+Note: No phenotypes present.
+Relationship matrix calculation complete.
+--pca: Results saved to
+/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/matute/dsec-matute.pca.eigenval
+and
+/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/matute/dsec-matute.pca.eigenvec
+.
+--make-bed to
+/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/matute/dsec-matute.pca.bed
++
+/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/matute/dsec-matute.pca.bim
++
+/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/population-structure/matute/dsec-matute.pca.fam
+... done.
+
+End time: Tue Jan 16 15:38:33 2024

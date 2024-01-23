@@ -1,0 +1,104 @@
+Sample	strain	publication	study	study_id	year	location	lat	lon
+SRR12340887	w501		PRJNA377886		1945			
+SRR2132976	w501		PRJNA290665		1945			
+SRR22548179	Guy56	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1956	Guyana	5	-59
+SRR6425999	14021-0251.006		PRJNA427774		1961			
+SRR22548180	Cal61	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1961	California, USA	37	-121
+SRR22548178	Ken75	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1975	Kenya	1	38
+SRR5491305	wxd1		PRJNA383250		1980			
+SRR22548183	Sey81_rep2	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1981	Seychelles	-5	55
+SRR22548195	Sey81_rep1	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1981	Seychelles	-5	55
+SRR22548198	Tun83_rep1	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1983	Tunisia	34	9
+SRR22548184	Tun83_rep2	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1983	Tunisia	34	9
+SRR22548189	New91	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1991	New Caledonia	-21	165
+SRR22548186	Fra93	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1993	France	48	2
+SRR22548196	Tan96	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1996	Tanzania	-5	35
+SRR22548177	Zim97	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1997	Zimbabwe	-18	30
+SRR22548187	Mad98	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1998	Madagascar	-19	46
+SRR22548191	Sao01	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2001	Sao Tome	-19	46
+ERR668322	MD225a	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46
+ERR668323	MD225b	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46
+ERR668324	MD235	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46
+ERR668317	MD72	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46
+ERR668318	MD146	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46
+ERR668320	MD201	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46
+ERR668321	MD224	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46
+ERR668325	MD238	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46
+ERR668326	MD243	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46
+ERR668327	MD255	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46
+ERR668316	MD03	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46
+ERR668319	MD197	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46
+SRR22548185	Sey03	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2003	Seychelles	-5	55
+SRR3091605	QLD(AU)	https://doi.org/10.1534/genetics.115.185496	PRJNA307610	Sedghifar2016	2004	Australia	-29	149
+SRR3091579	TAS(AU)	https://doi.org/10.1534/genetics.115.185496	PRJNA307610	Sedghifar2016	2004	Tasmania, Australia	-42	147
+ERR668310	NS64	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38
+ERR668314	NS111	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38
+ERR668315	NS116	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38
+ERR668308	NS49	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38
+ERR668312	NS95	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38
+ERR668313	NS96	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38
+ERR668305	NS11	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38
+ERR668306	NS19	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38
+ERR668307	NS37	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38
+ERR668309	NS63	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38
+ERR668311	NS89	 https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38
+SRR22548188	Haw07	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2007	Hawaii	22	-158
+SRR22548197	Egy08	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2008	Egypt	31	30
+SRR22548194	May09	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2009	Mayotte	-13	45
+SRR22548193	Fra09	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2009	France	48	2
+ERR694696	c174	https://doi.org/10.1073/pnas.1500758112	PRJEB7936	Kofler2015	2010	Florida, USA	27	-81
+ERR694697	c211	https://doi.org/10.1073/pnas.1500758112	PRJEB7936	Kofler2015	2010	Florida, USA	27	-81
+ERR694694	basepop	https://doi.org/10.1073/pnas.1500758112	PRJEB7936	Kofler2015	2010	Florida, USA	27	-81
+ERR694695	c116	https://doi.org/10.1073/pnas.1500758112	PRJEB7936	Kofler2015	2010	Florida, USA	27	-81
+SRR22548182	Aus11	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2011	Australia	-29	149
+SRR3084252	FL(US)	https://doi.org/10.1534/genetics.115.185496	PRJNA307610	Sedghifar2016	2011	Florida, USA	27	-81
+SRR3091655	RI(US)	https://doi.org/10.1534/genetics.115.185496	PRJNA307610	Sedghifar2016	2011	Rhode Island, USA	42	-71
+SRR3585779	SZ232	 https://doi.org/10.1002/ece3.6134	PRJNA318623	Signor2020	2012	California, USA	37	-121
+SRR3585391	SZ244	 https://doi.org/10.1002/ece3.6134	PRJNA318623	Signor2020	2012	California, USA	37	-121
+SRR3585440	SZ45	 https://doi.org/10.1002/ece3.6134	PRJNA318623	Signor2020	2012	California, USA	37	-121
+SRR22548181	Mor12	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2012	Morocco	33	-6
+SRR22548176	Egy12	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2012	Egypt	31	30
+SRR11456783	BiokoH9	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2013	Equatorial Guinea	1	10
+SRR11456781	BiokoLB1	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2013	Equatorial Guinea	1	10
+SRR11456780	cascade1	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2013	Equatorial Guinea	1	10
+SRR11456779	H1	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2013	Equatorial Guinea	1	10
+SRR11456776	Riaba	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2013	Equatorial Guinea	1	10
+SRR11456775	Riaba9	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2013	Equatorial Guinea	1	10
+SRR22548190	Cam16	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2016	Cameroon	5	13
+SRR22548192	Mor16	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2016	Morocco	33	-6
+SRR11456805	18BOMA03	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456804	18boma1	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456793	18CHAALES15	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456782	18KARI01	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456771	18KARI03	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456760	18KARI04	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456753	18KARI05	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456752	18KARI06	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456751	18KARI09	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456750	18KARI10	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456803	18KARI26	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456802	18KARI37	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456801	18KARITANA20	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456800	18MPALA02	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456799	18MPALA02B	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456798	18MPALA02C	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456797	18MPALA03	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456796	18MPALA05	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456795	18MPALA08	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456794	18MPALA09	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456792	18MPALA11	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456791	18MPALA12	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456790	18MPALA13	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+SRR11456789	18MU04	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Senegal	15	-15
+SRR11456788	18MU05	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Senegal	15	-15
+SRR11456787	18NANY04	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Senegal	15	-15
+SRR11456786	18NANY10	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Senegal	15	-15
+SRR11456785	18NANY15	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Senegal	15	-15
+SRR11456784	18NANY16	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Senegal	15	-15
+SRR11456778	KARI25	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38
+ERR9452541	dsim_27_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3
+ERR9452754	dsim_31_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3
+ERR9439680	dsim_28_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3
+ERR9453536	dsim_29_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3
+ERR9436064	dsim_25_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3
+ERR9452532	dsim_26_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3
