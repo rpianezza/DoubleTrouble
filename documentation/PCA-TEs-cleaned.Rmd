@@ -1,0 +1,256 @@
+---
+title: "PCA of Spoink and Shellder - removing ancient sites"
+output: rmarkdown::github_document
+editor_options: 
+  markdown: 
+    wrap: sentence
+    author: Riccardo
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(knitr))
+suppressPackageStartupMessages(library(kableExtra))
+suppressPackageStartupMessages(library(ggpubr))
+suppressPackageStartupMessages(library(umap))
+suppressPackageStartupMessages(library(sf))
+suppressPackageStartupMessages(library(svglite))
+theme_set(theme_bw())
+```
+
+PCA function.
+```{r}
+PCA <- function(pcaable, titlee, scale){
+  
+  pcaable <- pcaable %>% select_if(~ !all(. == .[1]))
+  pca_result <- prcomp(pcaable[, -c(1:9)], center = TRUE, scale = TRUE)
+  var_explained <- pca_result$sdev^2/sum(pca_result$sdev^2)
+  
+  plot1 <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$location), aes(x=PC1,y=PC2, color=location)) + geom_point(size=4, alpha=0.8) + labs(x=paste0("PC1: ",round(var_explained[1]*100,1),"%"), y=paste0("PC2: ",round(var_explained[2]*100,1),"%"), color="location") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5))+
+ # geom_text(aes(label=strain), vjust=1.5, hjust=1.5, size=3) +
+scale_colour_manual(values=scale)
+  
+  plot2 <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$location), aes(x=PC1,y=PC3, color=location)) + geom_point(size=4) + labs(x=paste0("PC1: ",round(var_explained[1]*100,1),"%"), y=paste0("PC3: ",round(var_explained[3]*100,1),"%"), color="location") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5))+
+scale_colour_manual(values=scale)
+  
+  plot3 <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$location), aes(x=PC3,y=PC2, color=location)) + geom_point(size=4) + labs(x=paste0("PC3: ",round(var_explained[3]*100,1),"%"), y=paste0("PC2: ",round(var_explained[2]*100,1),"%"), color="location") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5))+
+scale_colour_manual(values=scale)
+  
+  plot4 <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$location), aes(x=PC1,y=PC4, color=location)) + geom_point(size=4) + labs(x=paste0("PC1: ",round(var_explained[1]*100,1),"%"), y=paste0("PC4: ",round(var_explained[4]*100,1),"%"), color="location") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5))+
+scale_colour_manual(values=scale)
+  
+  plot5 <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$location), aes(x=PC4,y=PC2, color=location)) + geom_point(size=4) + labs(x=paste0("PC4: ",round(var_explained[4]*100,1),"%"), y=paste0("PC2: ",round(var_explained[2]*100,1),"%"), color="location") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5))+
+scale_colour_manual(values=scale)
+  
+  plot6 <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$location), aes(x=PC3,y=PC4, color=location)) + geom_point(size=4) + labs(x=paste0("PC3: ",round(var_explained[3]*100,1),"%"), y=paste0("PC4: ",round(var_explained[4]*100,1),"%"), color="location") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5))+
+   # geom_text(aes(label=strain), vjust=1.5, hjust=1.5, size=3) +
+scale_colour_manual(values=scale)
+  
+    plot_bonus <- ggplot(data.frame(pca_result$x, ID=pcaable$Sample, location=pcaable$location), aes(x=PC5,y=PC6, color=location)) + geom_point(size=4) + labs(x=paste0("PC5: ",round(var_explained[5]*100,1),"%"), y=paste0("PC6: ",round(var_explained[6]*100,1),"%"), color="location") + ggtitle(titlee) + theme(plot.title = element_text(hjust = 0.5))+
+   # geom_text(aes(label=strain), vjust=1.5, hjust=1.5, size=3) +
+scale_colour_manual(values=scale)
+
+  list(pc1_2 = plot1, pc1_3 = plot2, pc2_3 = plot3, pc1_4 = plot4, pc2_4 = plot5, pc3_4 = plot6, pc_bonus = plot_bonus)
+}
+```
+
+I remove all the positions in the TEs which have a coverage > 0.5 in the old samples without the TE.
+```{r}
+(Spoink_old_coverage <- read_table("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsim/time-series/deviaTE/SRR22548187.fastq.sort.bam.spoink", skip = 3, col_names = c("TE","file","base","ref","A","C","G","T","cov","phys_cov","hq_cov","snp","refsnp","int_del", "int_del_freq","trunc_left","trunc_right","ins","delet","annotation")) %>% select(TE, base, cov) %>% filter(cov>0.5))
+
+(Shellder_old_coverage <- read_table("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsim/time-series/deviaTE/SRR22548187.fastq.sort.bam.Shellder", skip = 3, col_names = c("TE","file","base","ref","A","C","G","T","cov","phys_cov","hq_cov","snp","refsnp","int_del", "int_del_freq","trunc_left","trunc_right","ins","delet","annotation")) %>% select(TE, base, cov) %>% filter(cov>0.5))
+
+write_tsv(Spoink_old_coverage, "/Volumes/EXT-RICCARDO/DoubleTrouble/Dsim/spoink-ancient-coverage.txt")
+write_tsv(Shellder_old_coverage, "/Volumes/EXT-RICCARDO/DoubleTrouble/Dsim/shellder-ancient-coverage.txt")
+```
+
+Here is the version with coverage > 0 (Shellder) or coverage > 0.3 (Spoink), more stringent.
+```{r}
+(Spoink_old_coverage0 <- read_table("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsim/time-series/deviaTE/SRR22548187.fastq.sort.bam.spoink", skip = 3, col_names = c("TE","file","base","ref","A","C","G","T","cov","phys_cov","hq_cov","snp","refsnp","int_del", "int_del_freq","trunc_left","trunc_right","ins","delet","annotation")) %>% select(TE, base, cov) %>% filter(cov>0.3))
+
+(Shellder_old_coverage0 <- read_table("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsim/time-series/deviaTE/SRR22548187.fastq.sort.bam.Shellder", skip = 3, col_names = c("TE","file","base","ref","A","C","G","T","cov","phys_cov","hq_cov","snp","refsnp","int_del", "int_del_freq","trunc_left","trunc_right","ins","delet","annotation")) %>% select(TE, base, cov) %>% filter(cov>0))
+
+write_tsv(Spoink_old_coverage, "/Volumes/EXT-RICCARDO/DoubleTrouble/Dsim/spoink-ancient-coverage-0.txt")
+write_tsv(Shellder_old_coverage, "/Volumes/EXT-RICCARDO/DoubleTrouble/Dsim/shellder-ancient-coverage-0.txt")
+```
+
+## Drosophila sechellia
+
+```{r}
+dsec_csv <- read_csv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/time-series/dsec.csv", show_col_types = FALSE) %>% filter(Sample!="Sample")
+
+dsec_metadata <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/metadata.txt", show_col_types = FALSE)
+
+dsec <- inner_join(dsec_metadata, dsec_csv, by="Sample") %>% type_convert() %>% mutate(presence = ifelse(HQ_reads > 2, "present", "absent"), TE = case_when(TE == "spoink" ~ "Spoink", TE == "PPI251" ~ "P-element", TRUE ~ TE)) %>% filter(TE %in% c("Spoink", "Shellder", "P-element")) %>% filter(island!="Cousin") %>% rename(location=island)
+```
+
+```{r}
+dsec_scale <- c("#ABA300", "#ED68ED")
+
+shellder <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/PCA/Dsec-shellder.PCAable") %>% rename(Sample = ID) %>% mutate(Sample = str_remove(Sample, "\\.cleaned$"))
+
+shellder_pcaable <- inner_join(dsec, shellder, by="Sample") %>% filter(TE=="Shellder", presence == "present", location %in% c("Praslin", "Denis")) %>% select(-All_reads)
+colnames(shellder_pcaable) <- str_remove(colnames(shellder_pcaable), "^.+?_")
+
+shellder_pcaable_cleaned <- shellder_pcaable %>% select(-matches(as.character(Shellder_old_coverage$base)))
+
+pca_shellder <- PCA(shellder_pcaable, "D. sechellia - Shellder - 17 SNPs", dsec_scale)
+pca_shellder$pc1_2
+
+pca_shellder_clean <- PCA(shellder_pcaable_cleaned, "D. sechellia - Shellder - 7 SNPs", dsec_scale)
+pca_shellder_clean$pc1_2
+
+spoink <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/PCA/Dsec-spoink.PCAable") %>% rename(Sample = ID) %>% mutate(Sample = str_remove(Sample, "\\.cleaned$"))
+
+spoink_pcaable <- inner_join(dsec, spoink, by="Sample") %>% filter(TE=="Spoink", presence == "present", location %in% c("Praslin", "Denis")) %>% select(-All_reads)
+colnames(spoink_pcaable) <- str_remove(colnames(spoink_pcaable), "^.+?_")
+
+spoink_pcaable_cleaned <- spoink_pcaable %>% select(-matches(as.character(Spoink_old_coverage$base)))
+
+pca_spoink <- PCA(spoink_pcaable, "D. sechellia - Spoink - 282 SNPs", dsec_scale)
+pca_spoink$pc1_2
+
+pca_spoink_clean <- PCA(spoink_pcaable_cleaned, "D. sechellia - Spoink - 20 SNPs", dsec_scale)
+pca_spoink_clean$pc1_2
+
+
+#ggsave("/Volumes/EXT-RICCARDO/DoubleTrouble/figures/sup-figures/dsec-TE-pca/dsec-shellder-pca.png", pca_shellder$pc1_2, dpi=300)
+#ggsave("/Volumes/EXT-RICCARDO/DoubleTrouble/figures/sup-figures/dsec-TE-pca/dsec-spoink-pca.png", pca_spoink$pc1_2, dpi=300)
+```
+
+## Drosophila melanogaster
+
+min-freq 0.2
+min-count 10
+
+```{r}
+dmel_scale <- c("#F8766D","#A3A500","#00BF7D","#00B0F6","#E76BF3")
+dmel_metadata <- read_tsv("/Volumes/Storage/dmel-full-story/metadata.tsv", show_col_types = FALSE)
+
+spoink_dmel <- read_tsv("/Volumes/Storage/Dmel-spoink/PCA-UMAP/GDL/gdl-gypsy7.PCAable") %>% rename(Sample = ID) %>% mutate(Sample = str_remove(Sample, "\\.cleaned$"))
+
+spoink_pcaable_dmel <- inner_join(dmel_metadata, spoink_dmel, by="Sample") %>% filter(strain != "ZS10")
+colnames(spoink_pcaable_dmel) <- str_remove(colnames(spoink_pcaable_dmel), "^.+?_")
+
+spoink_pcaable_dmel_cleaned <- spoink_pcaable_dmel %>% select(-matches(as.character(Spoink_old_coverage$base)))
+
+pca_spoink_dmel <- PCA(spoink_pcaable_dmel, "D. melanogaster - Spoink - 23 SNPs", dmel_scale)
+pca_spoink_dmel$pc1_2
+
+pca_spoink_dmel_cleaned <- PCA(spoink_pcaable_dmel_cleaned, "D. melanogaster - Spoink - 6 SNPs", dmel_scale)
+pca_spoink_dmel_cleaned$pc1_2
+
+
+#ggsave("/Volumes/EXT-RICCARDO/DoubleTrouble/figures/sup-figures/dsec-TE-pca/dsec-shellder-pca.png", pca_shellder$pc1_2, dpi=300)
+#ggsave("/Volumes/EXT-RICCARDO/DoubleTrouble/figures/sup-figures/dsec-TE-pca/dsec-spoink-pca.png", pca_spoink$pc1_2, dpi=300)
+```
+
+## Drosophila simulans
+
+```{r}
+dsim_scale <- c("#00B0F6","dodgerblue2","#E31A1C","green4","palegreen2","#A3A500","#FF7F00","#6A3D9A","darkorchid","#E76BF3","#CAB2D6","#FDBF6F")
+dsim_metadata <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsim/metadata.txt", show_col_types = FALSE)
+
+dsim_csv <- read_csv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsim/time-series/dsim.csv", show_col_types = FALSE) %>% filter(Sample!="Sample")
+
+dsim <- inner_join(dsim_metadata, dsim_csv, by="Sample") %>% type_convert() %>% mutate(presence = ifelse(HQ_reads > 2, "present", "absent"), TE = case_when(TE == "spoink" ~ "Spoink", TRUE ~ TE)) %>% filter(TE %in% c("Spoink", "Shellder"), presence=="present") %>% select(-presence, -HQ_reads, -All_reads, -TE) %>% distinct() %>% filter(!(strain %in% c("18KARI03", "FL(US)", "Ken75")))
+
+dsim$location <- factor(dsim$location, levels = c("Australia", "Tasmania, Australia", "Spain", "California, USA", "Florida, USA", "Rhode Island, USA", "Egypt", "Kenya", "Senegal", "Tanzania", "Zimbabwe", "Madagascar"))
+
+spoink_dsim <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsim/time-series/raw/Spoink-out/merged.PCAable") %>% rename(Sample = ID) %>% mutate(Sample = str_remove(Sample, "\\.cleaned$"))
+colnames(spoink_dsim) <- str_remove(colnames(spoink_dsim), "^.+?_")
+
+spoink_pcaable_dsim <- inner_join(dsim, spoink_dsim, by="Sample")
+
+spoink_pcaable_dsim_cleaned <- spoink_pcaable_dsim %>% select(-matches(as.character(Spoink_old_coverage$base)))
+
+pca_spoink_dsim <- PCA(spoink_pcaable_dsim, "D. simulans - Spoink - 301 SNPs", dsim_scale)
+pca_spoink_dsim$pc1_2
+
+pca_spoink_dsim_cleaned <- PCA(spoink_pcaable_dsim_cleaned, "D. simulans - Spoink - 38 SNPs", dsim_scale)
+pca_spoink_dsim_cleaned$pc1_3
+
+shellder_dsim <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsim/time-series/raw/Shellder-out/merged.PCAable") %>% rename(Sample = ID) %>% mutate(Sample = str_remove(Sample, "\\.cleaned$"))
+colnames(shellder_dsim) <- str_remove(colnames(shellder_dsim), "^.+?_")
+
+shellder_pcaable_dsim <- inner_join(dsim, shellder_dsim, by="Sample")
+
+shellder_pcaable_dsim_cleaned <- shellder_pcaable_dsim %>% select(-matches(as.character(Shellder_old_coverage$base)))
+
+pca_shellder_dsim <- PCA(shellder_pcaable_dsim, "D. simulans - Shellder - 25 SNPs", dsim_scale)
+pca_shellder_dsim$pc1_2
+
+pca_shellder_dsim_cleaned <- PCA(shellder_pcaable_dsim_cleaned, "D. simulans - Shellder - 16 SNPs", dsim_scale)
+pca_shellder_dsim_cleaned$pc1_2
+```
+
+```{r}
+ggsave("/Volumes/EXT-RICCARDO/DoubleTrouble/figures/sup-figures/PCA-TE-noancient/dsec-spoink-pca.png", pca_spoink_clean$pc1_2)
+ggsave("/Volumes/EXT-RICCARDO/DoubleTrouble/figures/sup-figures/PCA-TE-noancient/dsec-shellder-pca.png", pca_shellder_clean$pc1_2)
+ggsave("/Volumes/EXT-RICCARDO/DoubleTrouble/figures/sup-figures/PCA-TE-noancient/dmel-spoink-pca.png", pca_spoink_dmel_cleaned$pc1_2)
+ggsave("/Volumes/EXT-RICCARDO/DoubleTrouble/figures/sup-figures/PCA-TE-noancient/dsim-spoink-pca.png", pca_spoink_dsim_cleaned$pc1_2)
+ggsave("/Volumes/EXT-RICCARDO/DoubleTrouble/figures/sup-figures/PCA-TE-noancient/dsim-shellder-pca.png", pca_shellder_dsim_cleaned$pc1_2)
+```
+
+
+## SNPs ratio
+
+```{r}
+dmel_sp <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dmel/spoink-out-mf1-mc1/merged.PCAable") %>% select(-ID)
+dsim_sh <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsim/time-series/raw/Shellder-out-mc1-mf1/merged.PCAable") %>% select(-ID)
+dsim_sp <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsim/time-series/raw/Spoink-out-mc1-mf1/merged.PCAable") %>% select(-ID)
+dsec_sh <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/PCA/Shellder-out-mf1-mc1/merged.PCAable") %>% select(-ID)
+dsec_sp <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsec/PCA/Spoink-out-mf1-mc1/merged.PCAable") %>% select(-ID)
+dmau_sh <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dmau/time-series/Shellder-out-mf1-mc1/merged.PCAable") %>% select(-ID)
+dmau_sp <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dmau/time-series/Spoink-out-mf1-mc1/merged.PCAable") %>% select(-ID)
+dtei_sh <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dtei/raw/Shellder-out-mc1-mf1/merged.PCAable") %>% select(-ID)
+
+colnames(dmel_sp) <- str_remove(colnames(dmel_sp), "^.+?_")
+colnames(dsim_sh) <- str_remove(colnames(dsim_sh), "^.+?_")
+colnames(dsim_sp) <- str_remove(colnames(dsim_sp), "^.+?_")
+colnames(dsec_sh) <- str_remove(colnames(dsec_sh), "^.+?_")
+colnames(dsec_sp) <- str_remove(colnames(dsec_sp), "^.+?_")
+colnames(dmau_sh) <- str_remove(colnames(dmau_sh), "^.+?_")
+colnames(dmau_sp) <- str_remove(colnames(dmau_sp), "^.+?_")
+colnames(dtei_sh) <- str_remove(colnames(dtei_sh), "^.+?_")
+
+dmel_sp_clean <- dmel_sp %>% select(-matches(as.character(Spoink_old_coverage$base)))
+dsim_sh_clean <- dsim_sh %>% select(-matches(as.character(Shellder_old_coverage$base)))
+dsim_sp_clean <- dsim_sp %>% select(-matches(as.character(Spoink_old_coverage$base)))
+dsec_sh_clean <- dsec_sh %>% select(-matches(as.character(Shellder_old_coverage$base)))
+dsec_sp_clean <- dsec_sp %>% select(-matches(as.character(Spoink_old_coverage$base)))
+dmau_sh_clean <- dmau_sh %>% select(-matches(as.character(Shellder_old_coverage$base)))
+dmau_sp_clean <- dmau_sp %>% select(-matches(as.character(Spoink_old_coverage$base)))
+dtei_sh_clean <- dtei_sh %>% select(-matches(as.character(Shellder_old_coverage$base)))
+
+snps_info <- tibble(
+  species = c("D.mel", "D.sim", "D.sim", "D.sec", "D.sec", "D.mau", "D.mau", "D.tei"),
+  transposon = c("Spoink", "Shellder", "Spoink", "Shellder", "Spoink", "Shellder", "Spoink", "Shellder"),
+  bp = c(5216,6635,5216,6635,5216,6635,5216,6635),
+  ancient_sites = c(2258,83,2258,83,2258,83,2258,83),
+  copies = c(16, 12, 25, 9, 20, 14, 30, 13),
+  SNPs = c(ncol(dmel_sp_clean), ncol(dsim_sh_clean), ncol(dsim_sp_clean), ncol(dsec_sh_clean), ncol(dsec_sp_clean), ncol(dmau_sh_clean), ncol(dmau_sp_clean),ncol(dtei_sh_clean)),
+  samples = c(nrow(dmel_sp), nrow(dsim_sh), nrow(dsim_sp), nrow(dsec_sh), nrow(dsec_sp), nrow(dmau_sh), nrow(dmau_sp),nrow(dtei_sh))
+)
+
+(snps <- snps_info %>% mutate(total_bp = bp-ancient_sites, heterozigosity = SNPs/total_bp, het_normalized = heterozigosity/copies))
+snps$species <- factor(snps$species, levels = c("D.sim", "D.sec", "D.mau", "D.tei", "D.mel"))
+```
+
+```{r}
+(snps_plot <- ggplot(snps, aes(x=species, y=heterozigosity, fill=transposon))+
+  geom_col(position = position_dodge2(width = 0.9, preserve = "single"))+
+   labs(x="", fill="", y="proportion of polymorphic loci")+
+   scale_fill_manual(values=c("#6A3D9A","lightpink1")))
+
+(snps_plot_norm <- ggplot(snps, aes(x=species, y=het_normalized, fill=transposon))+
+  geom_col(position = position_dodge2(width = 0.9, preserve = "single"))+
+   labs(x="", fill="", y="proportion of polymorphic loci per copy")+
+   scale_fill_manual(values=c("#6A3D9A","lightpink1")))
+
+#ggsave("/Volumes/EXT-RICCARDO/DoubleTrouble/figures/sup-figures/heterozigosity-TE/het-TEs.png", snps_plot)
+```
