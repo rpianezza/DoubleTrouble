@@ -1,26 +1,21 @@
----
-title: "Repeat Mask Spoink Shellder Pelement"
-author: "roko"
-date: "9/8/2023"
-output: github_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, python.reticulate = FALSE)
-```
+Repeat Mask Spoink Shellder Pelement
+================
+roko
+9/8/2023
 
 # Overview of assemblies
 
 # Overview of sequences to RM
-```{bash eval=FALSE}
+
+``` bash
 # format sequences; all identical, reduce potential problems
 [0,9482]rokofler%cat Shellder-consensus.fasta Spoink_consensus.fasta pelement.fasta|reader-fasta.py|fasta-formatter-fasta.py --upper| fasta-writter.py >ShelSpoiPele.fasta
 [0,9483]rokofler%samtools faidx ShelSpoiPele.fasta
 # size of the TEs
 [0,9484]rokofler%cat ShelSpoiPele.fasta.fai
-Shellder	6635	10	80	81
-Spoink	5216	6736	80	81
-PPI251	2907	12026	80	81
+Shellder    6635    10  80  81
+Spoink  5216    6736    80  81
+PPI251  2907    12026   80  81
 # which seqs
 [0,9485]rokofler%cat ShelSpoiPele.fasta|grep '>'
 >Shellder
@@ -41,7 +36,8 @@ CAACAACAACAACAACAACTACAACAGCAGCAGCAACAACAACAACAACAACCAATCCAGTGGCTGTCAAACAAAGATGT
 ```
 
 # the files
-```{bash eval=FALSE}
+
+``` bash
 (base) [0,10374]fschwarz% ls *fa                                                                                                 /Volumes/Temp3/Robert/2024-DoubleTrouble/assemblies
 A.communis.fa          D.crucigera.fa         D.jambulina.fa         D.mettleri.fa          D.picticornis.fa       D.stalkeri.fa          L.magnipectinata.fa
 A.mariae.fa            D.cyrtoloma.fa         D.kambysellisi.fa      D.mimetica.fa          D.planitibia.fa        D.sturtevanti.fa       L.mommai.fa
@@ -84,20 +80,37 @@ D.cracens.fa           D.insularis.fa         D.merina.fa            D.phalerata
 ```
 
 # RepeatMask
-```{bash eval=FALSE}
+
+``` bash
 for i in *.fa ; do RepeatMasker -pa 20 -no_is -s -nolow -dir ../rm -lib ../DoubleTrouble/sequences/ShelSpoiPele.fasta $i;done 
 for i in *.ori.out; do cat $i|reader-rm.py|rm-cleanup.py > $i.clean; done
 for i in *ori.out.clean; do awk '{print $0,FILENAME}' $i |perl -pe 's/\.fa\.ori\.out\.clean//'; done > merged.clean.sum
 ```
 
 # Visualize
+
 ## Sort order
-```{R}
+
+``` r
 sortorder<-c("D.flavopinicola","D.maculinotata","S.hsui","S.polygonia","S.montana","S.graminum","S.caliginosa","S.parva","S.pallida","S.reducta","S.tumidula","S.cyrtandrae","D.setosimentum","D.quasianomalipes","D.anomalipes","D.cyrtoloma","D.melanocephala","D.differens","D.planitibia","D.silvestris","D.heteroneura","D.picticornis","D.basisetae","D.paucipuncta","D.glabriapex","D.macrothrix","D.hawaiiensis","D.crucigera","D.pullipes","D.grimshawi","D.engyochracea","D.villosipedis","D.ochracea","D.murphyi","D.sproati","D.dives","D.multiciliata","D.demipolita","D.longiperda","D.melanosoma","D.fungiperda","D.mimica","D.infuscata","D.kambysellisi","D.cognata","D.tanythrix","D.yooni","D.kokeensis","D.nrfundita","D.cracens","D.paracracens","D.nigritarsus","D.nrmedialis2","D.nrmedialis3","D.seclusa","D.nrperissopoda1","D.nrperissopoda5","D.atroscutellata","D.imparisetae","D.trichaetosa","D.percnosoma","D.neutralis","D.incognita","D.sordidapex","D.conformis","D.paramelanica","D.colorata","D.robusta","D.sordidula","D.borealis","D.montana","D.lacicola","D.americana","D.virilis","D.littoralis","D.ezoana","D.kanekoi","D.pseudotalamancana","D.gaucha","D.mettleri","D.eohydei","D.pegasa","D.nigricruria","D.fulvimacula","D.peninsularis","D.paranaensis","D.repleta","D.mercatorum","D.leonis","D.anceps","D.meridiana","D.meridionalis","D.stalkeri","D.buzzatii","D.hamatofila","D.mayaguana","D.mojavensis","D.aldrichi","D.mulleri","Z.flavofinira","H.trivittata","H.alboralis","H.confusa","H.histrioides","D.repletoides","H.guttata","L.aerea","Z.bogoriensis","Z.ghesquierei","Z.inermis","Z.kolodkinae","Z.tsacasi.jd01t","Z.tsacasi.car7","Z.ornatus","Z.africanus","Z.indianus.bs02","Z.indianus.d18","Z.gabonicus","Z.indianus.r04","Z.indianus.v01","Z.capensis","Z.taronus","Z.davidi","Z.camerounensis","Z.nigranus","Z.lachaisei","Z.vittiger","D.quadrilineata","D.pruinosa","D.niveifrons","D.rubida","D.siamana","D.immigrans.12","D.immigrans.k17","D.ustulata","D.formosana","D.tripunctata","D.cardini","D.parthenogenetica","D.acutilabella","D.arawakana","D.dunni","D.macrospina","D.funebris","D.putrida","D.neotestacea","D.testacea","D.histrio","D.kuntzei","D.sp.st01m","D.phalerata","D.falleni","D.rellima","D.quinaria","D.suboccidentalis","D.recens","D.subquinaria","S.latifasciaeformis","C.caudatula","C.procnemis","C.amoena","C.costata","S.nigrithorax","L.varia","L.montana","L.maculata","C.indagator","A.minor","A.mariae","A.communis","H.duncani","L.mommai","L.collinella","L.andalusiaca","L.magnipectinata","L.clarofinis","L.stackelbergi","D.sturtevanti","D.neocordata","D.emarginata","D.saltans","D.prosaltans","D.austrosaltans","D.sucinea","D.sp.14030-0761.01","D.insularis","D.tropicalis","D.willistoni.00","D.willistoni.17","D.equinoxialis","D.paulistorum.12","D.paulistorum.06","D.subobscura","D.subsilvestris","D.obscura","D.ambigua","D.tristis","D.miranda","D.persimilis","D.pseudoobscura","D.helvetica","D.algonquin","D.affinis","D.varians","D.vallismaia","D.merina","D.ercepeae","D.atripex","D.monieri","D.anomalata","D.ananassae","D.pallidosa","D.pseuan.pseuan.","D.pseuan.nigrens","D.mal.mal.","D.mal.pallens","D.parabipectinata","D.bipectinata","D.rufa","D.triauraria","D.kikkawai","D.jambulina","D.aff.chauv","D.bocqueti","D.birchii","D.anomelani","D.serrata","D.bunnanda","D.oshimai","D.gunungcola","D.elegans","D.fuyamai","D.kurseongensis","D.rhopaloa","D.carrolli","D.ficusphila","D.biarmipes","D.subpulchrella","D.mimetica","D.lutescens","D.takahashii","D.pseudotakahashii","D.prostipennis","D.eugracilis","D.erecta","D.yakuba","D.teissieri.273.3","D.teissieri.ct02","D.mel.ral732","D.mel.ral737","D.mel.pi2","D.mel.ral176","D.mel.ral91","D.mel.se.sto","D.mel.es.ten","D.melanogaster","D.mel.iso1","D.sechellia","D.sim.006","D.sim.sz232","D.sim.sz129","D.mau.01","D.mau.r31","D.mau.r61","D.mau.r32","D.mau.r39")
 ```
 
-```{R}
+``` r
 library(tidyverse)
+```
+
+    ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+
+    ## ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+    ## ✔ tibble  3.1.7     ✔ dplyr   1.0.9
+    ## ✔ tidyr   1.2.0     ✔ stringr 1.4.0
+    ## ✔ readr   2.1.2     ✔ forcats 0.5.1
+
+    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+    ## ✖ dplyr::filter() masks stats::filter()
+    ## ✖ dplyr::lag()    masks stats::lag()
+
+``` r
 theme_set(theme_bw())
 h<-read.table("/Users/rokofler/analysis/2024-DoubleTrouble/2024-01-rm-266species/raw/merged.clean.sum.score",header=F)
 names(h)<-c("te","species","score")
@@ -109,32 +122,50 @@ t$te <- factor(t$te, levels=teorder)
 p<- ggplot(t,aes(y=score,x=species))+geom_bar(stat="identity")+facet_grid(te~.)+ylab("similarity")+
   theme(axis.title.x=element_blank(),axis.text.x = element_blank())
 plot(p)
+```
 
+![](01-RM-SpoiShelPele_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+
+``` r
 pdf(file="/Users/rokofler/analysis/2024-DoubleTrouble/2024-01-rm-266species/graph/Double-trouble-origin.pdf",width=7,height=3.5)
 plot(p)
 dev.off()
+```
 
+    ## quartz_off_screen 
+    ##                 2
+
+``` r
 p<- ggplot(t,aes(x=score,y=species))+geom_bar(stat="identity")+facet_grid(.~te)+xlab("similarity")+
   theme(axis.title.y=element_blank(),axis.text.y = element_text(vjust = 0.5, hjust=1,size=4))
 plot(p)
+```
 
+![](01-RM-SpoiShelPele_files/figure-gfm/unnamed-chunk-5-2.png)<!-- -->
+
+``` r
 pdf(file="/Users/rokofler/analysis/2024-DoubleTrouble/2024-01-rm-266species/graph/Double-trouble-origin-landscape.pdf",height=10,width=6)
 plot(p)
 dev.off()
+```
 
+    ## quartz_off_screen 
+    ##                 2
+
+``` r
 t$nr<-as.factor(as.numeric(as.factor(t$species)))
 p<- ggplot(t,aes(y=score,x=nr))+geom_bar(stat="identity")+facet_grid(te~.)+xlab("similarity")+
   theme(axis.title.x=element_blank(),axis.text.x = element_text(angle = 90,vjust = 0.5, hjust=1,size=4))
 plot(p)
+```
 
+![](01-RM-SpoiShelPele_files/figure-gfm/unnamed-chunk-5-3.png)<!-- -->
+
+``` r
 pdf(file="/Users/rokofler/analysis/2024-DoubleTrouble/2024-01-rm-266species/graph/Double-trouble-origin-debug.pdf",height=6,width=15)
 plot(p)
 dev.off()
-
 ```
 
-
-
-
-
-
+    ## quartz_off_screen 
+    ##                 2
