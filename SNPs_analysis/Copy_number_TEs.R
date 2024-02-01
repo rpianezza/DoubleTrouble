@@ -1,272 +1,129 @@
 library(tidyverse)
 theme_set(theme_bw())
 
-col_names <- c("run_accession","TE", "All_reads", "HQ_reads")
+df_mel <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/dmel.csv", header = TRUE)
+df_sim <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/dsim.csv", header = TRUE)
+df_sec <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/dsec.csv", header = TRUE)
+df_mau <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/dmau.csv", header = TRUE)
+df_tei <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/dtei.csv", header = TRUE)
+df_yak <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/dyak.csv", header = TRUE)
+df_san <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/dsan.csv", header = TRUE)
+df_ere <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/dere.csv", header = TRUE)
+df_ore <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/dore.csv", header = TRUE)
+
+df_mel <- df_mel %>%filter(TE != "TE")
+df_sim <- df_sim %>%filter(TE != "TE")
+df_sec <- df_sec %>%filter(TE != "TE")
+df_mau <- df_mau %>%filter(TE != "TE")
+df_tei <- df_tei %>%filter(TE != "TE")
+df_yak <- df_yak %>%filter(TE != "TE")
+df_san <- df_san %>%filter(TE != "TE")
+df_ere <- df_ere %>%filter(TE != "TE")
+df_ore <- df_ore %>%filter(TE != "TE")
 
 df_overview <- data.frame(
   Species = c("D. mel", "D. sim", "D. sec", "D. mau", "D. tei", "D. yak", "D. san", "D. ere", "D. ore"),
   Samples = numeric(9),
-  Spoink_copies_haploid_genome = numeric(9),
+  Shellder_positive_samples = numeric(9),
+  spoink_positive_samples = numeric(9),
+  PPI251_positive_samples = numeric(9),
   Shellder_copies_haploid_genome = numeric(9),
-  P_element_copies_haploid_genome = numeric(9)
+  spoink_copies_haploid_genome = numeric(9),
+  PPI251_copies_haploid_genome = numeric(9)
 )
 
-# Drosophila melanogaster
-
-df_mel <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/dmel.csv", header = FALSE)
-names(df_mel) <- col_names
-
-df_mel <- df_mel %>%
-  filter(TE != "TE")
-
-df_overview$Samples[1] <- df_mel %>%
-  filter(TE == "spoink") %>%
-  count()
-
-df_overview$Spoink_copies_haploid_genome[1] <- df_mel %>%
-  filter(TE == "spoink") %>%
-  filter(HQ_reads > 1 ) %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-df_overview$P_element_copies_haploid_genome[1] <- df_mel %>%
-  filter(TE == "PPI251") %>%
-  filter(HQ_reads > 1 ) %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-
-# Drosophila simulans
-
-df_sim <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/dsim.csv", header = FALSE)
-names(df_sim) <- col_names
-
-df_sim <- df_sim %>%
-  filter(TE != "TE")
-
-df_overview$Samples[2] <- df_sim %>%
-  filter(TE == "Shellder") %>%
-  count()
-
-df_overview$Spoink_copies_haploid_genome[2] <- df_sim %>%
-  filter(TE == "spoink") %>%
-  filter(HQ_reads > 1 ) %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-df_overview$Shellder_copies_haploid_genome[2] <- df_sim %>%
-  filter(TE == "Shellder") %>%
-  filter(HQ_reads > 1 ) %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-df_overview$P_element_copies_haploid_genome[2] <- df_sim %>%
-  filter(TE == "PPI251") %>%
-  filter(HQ_reads > 1 ) %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-# Drosophila sechelia
-
-df_sec <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/dsec.csv", header = FALSE)
-names(df_sec) <- col_names
-
-df_sec <- df_sec %>%
-  filter(TE != "TE")
-
-
-df_overview$Samples[3] <- df_sec %>%
-  filter(TE == "Shellder") %>%
-  count()
-
-df_overview$Spoink_copies_haploid_genome[3] <- df_sec %>%
-  filter(TE == "spoink") %>%
-  filter(HQ_reads > 1 ) %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-df_overview$Shellder_copies_haploid_genome[3] <- df_sec %>%
-  filter(TE == "Shellder") %>%
-  filter(HQ_reads > 1 ) %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-df_overview$P_element_copies_haploid_genome[3] <- df_sec %>%
-  filter(TE == "PPI251") %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-# Drosophila mauritiana
-
-df_mau <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/dmau.csv", header = FALSE)
-names(df_mau) <- col_names
-
-df_mau <- df_mau %>%
-  filter(TE != "TE")
-
-df_overview$Samples[4] <- df_mau %>%
-  filter(TE == "Shellder") %>%
-  count()
-
-df_overview$Spoink_copies_haploid_genome[4] <- df_mau %>%
-  filter(TE == "spoink") %>%
-  filter(HQ_reads > 1 ) %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-df_overview$Shellder_copies_haploid_genome[4] <- df_mau %>%
-  filter(TE == "Shellder") %>%
-  filter(HQ_reads > 1 ) %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-df_overview$P_element_copies_haploid_genome[4] <- df_mau %>%
-  filter(TE == "PPI251") %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-
-# Drosophila teissieri
-df_tei <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/dtei.csv", header = FALSE)
-names(df_tei) <- col_names
-
-df_tei <- df_tei %>%
-  mutate(TE = ifelse(TE == "gypsy-29-dsim", "Shellder", ifelse(TE == "gypsy-7-sim1", "Spoink", TE)))
-
-
-df_tei <- df_tei %>%
-  filter(TE != "TE")
-
-df_overview$Samples[5] <- df_tei %>%
-  filter(TE == "Shellder") %>%
-  count()
-
-df_overview$Spoink_copies_haploid_genome[5] <- df_tei %>%
-  filter(TE == "Spoink") %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-df_overview$Shellder_copies_haploid_genome[5] <- df_tei %>%
-  filter(TE == "Shellder") %>%
-  filter(HQ_reads > 1 ) %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-
-# Drosophila yakuba
-
-df_yak_Santome <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/Dyak_Santome.csv", header = FALSE)
-df_yak_Africa <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/Dyak_Africa.csv", header = FALSE)
-
-names(df_yak_Santome) <- col_names
-names(df_yak_Africa) <- col_names
-
-df_yak <- rbind(df_yak_Santome, df_yak_Africa)
-
-df_yak <- df_yak %>%
-  filter(TE != "TE")
-
-df_overview$Samples[6] <- df_yak %>%
-  filter(TE == "Shellder") %>%
-  count()
-
-df_overview$Spoink_copies_haploid_genome[6] <- df_yak %>%
-  filter(TE == "Spoink") %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-df_overview$Shellder_copies_haploid_genome[6] <- df_yak %>%
-  filter(TE == "Shellder") %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-df_overview$P_element_copies_haploid_genome[6] <- df_yak %>%
-  filter(TE == "PPI251") %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-
-# Drosophila santomea
-df_san <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/dsan.csv", header = FALSE)
-names(df_san) <- col_names
-
-
-df_san <- df_san %>%
-  filter(TE != "TE")
-
-df_overview$Samples[7] <- 17
-
-df_overview$Spoink_copies_haploid_genome[7] <- df_san %>%
-  filter(TE == "Spoink") %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-df_overview$Shellder_copies_haploid_genome[7] <- df_san %>%
-  filter(TE == "Shellder") %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-df_overview$P_element_copies_haploid_genome[7] <- df_san %>%
-  filter(TE == "PPI251") %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-
-# Drosophila erecta
-df_ere <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/dere.csv", header = FALSE)
-names(df_ere) <- col_names
-
-
-df_ere <- df_ere %>%
-  filter(TE != "TE")
-
-df_overview$Samples[8] <- df_ere %>%
-  filter(TE == "Shellder") %>%
-  count()/2
-
-df_overview$Spoink_copies_haploid_genome[8] <- df_ere %>%
-  filter(TE == "Spoink") %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-df_overview$Shellder_copies_haploid_genome[8] <- df_ere %>%
-  filter(TE == "Shellder") %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-df_overview$P_element_copies_haploid_genome[8] <- df_ere %>%
-  filter(TE == "PPI251") %>%
-  summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
-  pull(mean_HQ_reads) %>%
-  round(digits = 0)
-
-
-#D ore 1 sample, no Spoink, no Shellder, no P-element
-df_ore <- read.csv("/Users/ascarpa/Downloads/Double_trouble_local/csv/dore.csv", header = FALSE)
-names(df_ore) <- col_names
-
-
-df_overview$Samples[9] <- df_ore %>%
-  filter(TE == "Shellder") %>%
-  count()
+mean_HQ_reads <- function(data_frame, TE_name) {
+  mean_HQ_reads <- data_frame %>%
+    filter(TE == TE_name) %>%
+    filter(HQ_reads > 1) %>%
+    summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
+    pull(mean_HQ_reads)
+  
+  # If mean_HQ_reads is NaN, set it to 0
+  if (is.nan(mean_HQ_reads)) {
+    mean_HQ_reads <- 0
+  } else {
+    mean_HQ_reads <- round(mean_HQ_reads, digits = 0)
+  }
+  
+  return(mean_HQ_reads)
+}
+
+df_overview$Samples[1] <- df_mel %>% filter(TE == "PPI251") %>% count()
+df_overview$Samples[2] <- df_sim %>% filter(TE == "PPI251") %>% count()
+df_overview$Samples[3] <- df_sec %>% filter(TE == "Shellder") %>% count()
+df_overview$Samples[4] <- df_mau %>% filter(TE == "Shellder") %>% count()
+df_overview$Samples[5] <- df_tei %>% filter(TE == "Shellder") %>% count()
+df_overview$Samples[6] <- df_yak %>% filter(TE == "Shellder") %>% count()
+df_overview$Samples[7] <- df_san %>% filter(TE == "Shellder") %>% count()-6
+df_overview$Samples[8] <- df_ere %>% filter(TE == "Shellder") %>% count()/2
+df_overview$Samples[9] <- df_ore %>% filter(TE == "Shellder") %>% count()
+
+
+TE_n = "Shellder"
+
+df_overview$Shellder_copies_haploid_genome[1] <- mean_HQ_reads(df_mel, TE_n)
+df_overview$Shellder_copies_haploid_genome[2] <- mean_HQ_reads(df_sim, TE_n)
+df_overview$Shellder_copies_haploid_genome[3] <- mean_HQ_reads(df_sec, TE_n)
+df_overview$Shellder_copies_haploid_genome[4] <- mean_HQ_reads(df_mau, TE_n)
+df_overview$Shellder_copies_haploid_genome[5] <- mean_HQ_reads(df_tei, TE_n)
+df_overview$Shellder_copies_haploid_genome[6] <- mean_HQ_reads(df_yak, TE_n)
+df_overview$Shellder_copies_haploid_genome[7] <- mean_HQ_reads(df_san, TE_n)
+df_overview$Shellder_copies_haploid_genome[8] <- mean_HQ_reads(df_ere, TE_n)
+df_overview$Shellder_copies_haploid_genome[9] <- mean_HQ_reads(df_ore, TE_n)
+
+df_overview$Shellder_positive_samples[1] <- df_mel %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$Shellder_positive_samples[2] <- df_sim %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$Shellder_positive_samples[3] <- df_sec %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$Shellder_positive_samples[4] <- df_mau %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$Shellder_positive_samples[5] <- df_tei %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$Shellder_positive_samples[6] <- df_yak %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$Shellder_positive_samples[7] <- df_san %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$Shellder_positive_samples[8] <- df_ere %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$Shellder_positive_samples[9] <- df_ore %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+
+
+TE_n = "spoink"
+
+df_overview$spoink_copies_haploid_genome[1] <- mean_HQ_reads(df_mel, TE_n)
+df_overview$spoink_copies_haploid_genome[2] <- mean_HQ_reads(df_sim, TE_n)
+df_overview$spoink_copies_haploid_genome[3] <- mean_HQ_reads(df_sec, TE_n)
+df_overview$spoink_copies_haploid_genome[4] <- mean_HQ_reads(df_mau, TE_n)
+df_overview$spoink_copies_haploid_genome[5] <- mean_HQ_reads(df_tei, TE_n)
+df_overview$spoink_copies_haploid_genome[6] <- mean_HQ_reads(df_yak, TE_n)
+df_overview$spoink_copies_haploid_genome[7] <- mean_HQ_reads(df_san, TE_n)
+df_overview$spoink_copies_haploid_genome[8] <- mean_HQ_reads(df_ere, TE_n)
+df_overview$spoink_copies_haploid_genome[9] <- mean_HQ_reads(df_ore, TE_n)
+
+df_overview$spoink_positive_samples[1] <- df_mel %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$spoink_positive_samples[2] <- df_sim %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$spoink_positive_samples[3] <- df_sec %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$spoink_positive_samples[4] <- df_mau %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$spoink_positive_samples[5] <- df_tei %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$spoink_positive_samples[6] <- df_yak %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$spoink_positive_samples[7] <- df_san %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$spoink_positive_samples[8] <- df_ere %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$spoink_positive_samples[9] <- df_ore %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+
+
+TE_n = "PPI251"
+
+df_overview$PPI251_copies_haploid_genome[1] <- mean_HQ_reads(df_mel, TE_n)
+df_overview$PPI251_copies_haploid_genome[2] <- mean_HQ_reads(df_sim, TE_n)
+df_overview$PPI251_copies_haploid_genome[3] <- mean_HQ_reads(df_sec, TE_n)
+df_overview$PPI251_copies_haploid_genome[4] <- mean_HQ_reads(df_mau, TE_n)
+df_overview$PPI251_copies_haploid_genome[5] <- mean_HQ_reads(df_tei, TE_n)
+df_overview$PPI251_copies_haploid_genome[6] <- mean_HQ_reads(df_yak, TE_n)
+df_overview$PPI251_copies_haploid_genome[7] <- mean_HQ_reads(df_san, TE_n)
+df_overview$PPI251_copies_haploid_genome[8] <- mean_HQ_reads(df_ere, TE_n)
+df_overview$PPI251_copies_haploid_genome[9] <- mean_HQ_reads(df_ore, TE_n)
+
+df_overview$PPI251_positive_samples[1] <- df_mel %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$PPI251_positive_samples[2] <- df_sim %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$PPI251_positive_samples[3] <- df_sec %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$PPI251_positive_samples[4] <- df_mau %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$PPI251_positive_samples[5] <- df_tei %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$PPI251_positive_samples[6] <- df_yak %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$PPI251_positive_samples[7] <- df_san %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$PPI251_positive_samples[8] <- df_ere %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$PPI251_positive_samples[9] <- df_ore %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
