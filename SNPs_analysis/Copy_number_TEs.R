@@ -35,8 +35,8 @@ df_overview <- data.frame(
 mean_HQ_reads <- function(data_frame, TE_name) {
   mean_HQ_reads <- data_frame %>%
     filter(TE == TE_name) %>%
-    filter(HQ_reads > 1) %>%
-    summarise(mean_HQ_reads = mean(as.numeric(HQ_reads), na.rm = TRUE)) %>%
+    filter(as.numeric(HQ_reads) > 4) %>%
+    summarise(mean_HQ_reads = mean(as.numeric(HQ_reads))) %>%
     pull(mean_HQ_reads)
   
   # If mean_HQ_reads is NaN, set it to 0
@@ -49,8 +49,9 @@ mean_HQ_reads <- function(data_frame, TE_name) {
   return(mean_HQ_reads)
 }
 
+
 df_overview$Samples[1] <- df_mel %>% filter(TE == "PPI251") %>% count()
-df_overview$Samples[2] <- df_sim %>% filter(TE == "PPI251") %>% count()
+df_overview$Samples[2] <- df_sim %>% filter(TE == "Shellder") %>% count()
 df_overview$Samples[3] <- df_sec %>% filter(TE == "Shellder") %>% count()
 df_overview$Samples[4] <- df_mau %>% filter(TE == "Shellder") %>% count()
 df_overview$Samples[5] <- df_tei %>% filter(TE == "Shellder") %>% count()
@@ -72,15 +73,15 @@ df_overview$Shellder_copies_haploid_genome[7] <- mean_HQ_reads(df_san, TE_n)
 df_overview$Shellder_copies_haploid_genome[8] <- mean_HQ_reads(df_ere, TE_n)
 df_overview$Shellder_copies_haploid_genome[9] <- mean_HQ_reads(df_ore, TE_n)
 
-df_overview$Shellder_positive_samples[1] <- df_mel %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$Shellder_positive_samples[2] <- df_sim %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$Shellder_positive_samples[3] <- df_sec %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$Shellder_positive_samples[4] <- df_mau %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$Shellder_positive_samples[5] <- df_tei %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$Shellder_positive_samples[6] <- df_yak %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$Shellder_positive_samples[7] <- df_san %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$Shellder_positive_samples[8] <- df_ere %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$Shellder_positive_samples[9] <- df_ore %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$Shellder_positive_samples[1] <- df_mel %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$Shellder_positive_samples[2] <- df_sim %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$Shellder_positive_samples[3] <- df_sec %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$Shellder_positive_samples[4] <- df_mau %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$Shellder_positive_samples[5] <- df_tei %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$Shellder_positive_samples[6] <- df_yak %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$Shellder_positive_samples[7] <- df_san %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$Shellder_positive_samples[8] <- df_ere %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$Shellder_positive_samples[9] <- df_ore %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
 
 
 TE_n = "spoink"
@@ -95,15 +96,15 @@ df_overview$spoink_copies_haploid_genome[7] <- mean_HQ_reads(df_san, TE_n)
 df_overview$spoink_copies_haploid_genome[8] <- mean_HQ_reads(df_ere, TE_n)
 df_overview$spoink_copies_haploid_genome[9] <- mean_HQ_reads(df_ore, TE_n)
 
-df_overview$spoink_positive_samples[1] <- df_mel %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$spoink_positive_samples[2] <- df_sim %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$spoink_positive_samples[3] <- df_sec %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$spoink_positive_samples[4] <- df_mau %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$spoink_positive_samples[5] <- df_tei %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$spoink_positive_samples[6] <- df_yak %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$spoink_positive_samples[7] <- df_san %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$spoink_positive_samples[8] <- df_ere %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$spoink_positive_samples[9] <- df_ore %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$spoink_positive_samples[1] <- df_mel %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$spoink_positive_samples[2] <- df_sim %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$spoink_positive_samples[3] <- df_sec %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$spoink_positive_samples[4] <- df_mau %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$spoink_positive_samples[5] <- df_tei %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$spoink_positive_samples[6] <- df_yak %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$spoink_positive_samples[7] <- df_san %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$spoink_positive_samples[8] <- df_ere %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$spoink_positive_samples[9] <- df_ore %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
 
 
 TE_n = "PPI251"
@@ -118,12 +119,12 @@ df_overview$PPI251_copies_haploid_genome[7] <- mean_HQ_reads(df_san, TE_n)
 df_overview$PPI251_copies_haploid_genome[8] <- mean_HQ_reads(df_ere, TE_n)
 df_overview$PPI251_copies_haploid_genome[9] <- mean_HQ_reads(df_ore, TE_n)
 
-df_overview$PPI251_positive_samples[1] <- df_mel %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$PPI251_positive_samples[2] <- df_sim %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$PPI251_positive_samples[3] <- df_sec %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$PPI251_positive_samples[4] <- df_mau %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$PPI251_positive_samples[5] <- df_tei %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$PPI251_positive_samples[6] <- df_yak %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$PPI251_positive_samples[7] <- df_san %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$PPI251_positive_samples[8] <- df_ere %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
-df_overview$PPI251_positive_samples[9] <- df_ore %>% filter(TE == TE_n) %>% filter(HQ_reads > 1) %>% count()
+df_overview$PPI251_positive_samples[1] <- df_mel %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$PPI251_positive_samples[2] <- df_sim %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$PPI251_positive_samples[3] <- df_sec %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$PPI251_positive_samples[4] <- df_mau %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$PPI251_positive_samples[5] <- df_tei %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$PPI251_positive_samples[6] <- df_yak %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$PPI251_positive_samples[7] <- df_san %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$PPI251_positive_samples[8] <- df_ere %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
+df_overview$PPI251_positive_samples[9] <- df_ore %>% filter(TE == TE_n) %>% filter(as.numeric(HQ_reads) > 4) %>% count()
