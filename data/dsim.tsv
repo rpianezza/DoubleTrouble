@@ -1,0 +1,265 @@
+Sample	strain	publication	study	study_id	year	location	lat	lon	TE	All_reads	HQ_reads	presence	age
+SRR12340887	w501	NA	PRJNA377886	NA	1945	NA	NA	NA	P-element	0	0	absent	Before 1994
+SRR12340887	w501	NA	PRJNA377886	NA	1945	NA	NA	NA	Shellder	0.12	0.02	absent	Before 1994
+SRR12340887	w501	NA	PRJNA377886	NA	1945	NA	NA	NA	Spoink	0.37	0.05	absent	Before 1994
+SRR2132976	w501	NA	PRJNA290665	NA	1945	NA	NA	NA	P-element	0	0	absent	Before 1994
+SRR2132976	w501	NA	PRJNA290665	NA	1945	NA	NA	NA	Shellder	0.04	0	absent	Before 1994
+SRR2132976	w501	NA	PRJNA290665	NA	1945	NA	NA	NA	Spoink	1.79	0.18	absent	Before 1994
+SRR22548179	Guy56	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1956	Guyana	5	-59	P-element	0	0	absent	Before 1994
+SRR22548179	Guy56	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1956	Guyana	5	-59	Shellder	0.04	0	absent	Before 1994
+SRR22548179	Guy56	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1956	Guyana	5	-59	Spoink	3.43	0.71	absent	Before 1994
+SRR6425999	14021-0251.006	NA	PRJNA427774	NA	1961	NA	NA	NA	P-element	0	0	absent	Before 1994
+SRR6425999	14021-0251.006	NA	PRJNA427774	NA	1961	NA	NA	NA	Shellder	0.03	0	absent	Before 1994
+SRR6425999	14021-0251.006	NA	PRJNA427774	NA	1961	NA	NA	NA	Spoink	2.03	0.18	absent	Before 1994
+SRR22548180	Cal61	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1961	California, USA	37	-121	P-element	0	0	absent	Before 1994
+SRR22548180	Cal61	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1961	California, USA	37	-121	Shellder	0.05	0	absent	Before 1994
+SRR22548180	Cal61	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1961	California, USA	37	-121	Spoink	2.71	0.19	absent	Before 1994
+SRR22548178	Ken75	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1975	Kenya	1	38	P-element	0	0	absent	Before 1994
+SRR22548178	Ken75	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1975	Kenya	1	38	Shellder	10.35	8.95	present	Before 1994
+SRR22548178	Ken75	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1975	Kenya	1	38	Spoink	19.72	15.31	present	Before 1994
+SRR5491305	wxd1	NA	PRJNA383250	NA	1980	NA	NA	NA	P-element	0	0	absent	Before 1994
+SRR5491305	wxd1	NA	PRJNA383250	NA	1980	NA	NA	NA	Shellder	0.01	0	absent	Before 1994
+SRR5491305	wxd1	NA	PRJNA383250	NA	1980	NA	NA	NA	Spoink	0.42	0	absent	Before 1994
+SRR22548183	Sey81_rep2	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1981	Seychelles	-5	55	P-element	0	0	absent	Before 1994
+SRR22548183	Sey81_rep2	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1981	Seychelles	-5	55	Shellder	0.05	0	absent	Before 1994
+SRR22548183	Sey81_rep2	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1981	Seychelles	-5	55	Spoink	2.84	0.18	absent	Before 1994
+SRR22548195	Sey81_rep1	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1981	Seychelles	-5	55	P-element	0	0	absent	Before 1994
+SRR22548195	Sey81_rep1	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1981	Seychelles	-5	55	Shellder	0.06	0	absent	Before 1994
+SRR22548195	Sey81_rep1	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1981	Seychelles	-5	55	Spoink	1.7	0.14	absent	Before 1994
+SRR22548198	Tun83_rep1	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1983	Tunisia	34	9	P-element	0	0	absent	Before 1994
+SRR22548198	Tun83_rep1	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1983	Tunisia	34	9	Shellder	0.05	0	absent	Before 1994
+SRR22548198	Tun83_rep1	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1983	Tunisia	34	9	Spoink	2.08	0.19	absent	Before 1994
+SRR22548184	Tun83_rep2	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1983	Tunisia	34	9	P-element	0	0	absent	Before 1994
+SRR22548184	Tun83_rep2	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1983	Tunisia	34	9	Shellder	0.05	0	absent	Before 1994
+SRR22548184	Tun83_rep2	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1983	Tunisia	34	9	Spoink	3.19	0.18	absent	Before 1994
+SRR22548189	New91	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1991	New Caledonia	-21	165	P-element	0	0	absent	Before 1994
+SRR22548189	New91	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1991	New Caledonia	-21	165	Shellder	0.71	0.58	absent	Before 1994
+SRR22548189	New91	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1991	New Caledonia	-21	165	Spoink	4.81	1.71	absent	Before 1994
+SRR22548186	Fra93	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1993	France	48	2	P-element	0	0	absent	Before 1994
+SRR22548186	Fra93	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1993	France	48	2	Shellder	0.05	0	absent	Before 1994
+SRR22548186	Fra93	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1993	France	48	2	Spoink	3.1	0.18	absent	Before 1994
+SRR22548196	Tan96	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1996	Tanzania	-5	35	P-element	0	0	absent	Between 1994 and 2016
+SRR22548196	Tan96	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1996	Tanzania	-5	35	Shellder	11.06	9.46	present	Between 1994 and 2016
+SRR22548196	Tan96	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1996	Tanzania	-5	35	Spoink	16.33	12.39	present	Between 1994 and 2016
+SRR22548177	Zim97	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1997	Zimbabwe	-18	30	P-element	0	0	absent	Between 1994 and 2016
+SRR22548177	Zim97	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1997	Zimbabwe	-18	30	Shellder	9.96	8.61	present	Between 1994 and 2016
+SRR22548177	Zim97	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1997	Zimbabwe	-18	30	Spoink	16.54	12.7	present	Between 1994 and 2016
+SRR22548187	Mad98	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1998	Madagascar	-19	46	P-element	0	0	absent	Between 1994 and 2016
+SRR22548187	Mad98	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1998	Madagascar	-19	46	Shellder	0.05	0	absent	Between 1994 and 2016
+SRR22548187	Mad98	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	1998	Madagascar	-19	46	Spoink	3.49	0.48	absent	Between 1994 and 2016
+SRR22548191	Sao01	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2001	Sao Tome	-19	46	P-element	0	0	absent	Between 1994 and 2016
+SRR22548191	Sao01	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2001	Sao Tome	-19	46	Shellder	0.05	0	absent	Between 1994 and 2016
+SRR22548191	Sao01	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2001	Sao Tome	-19	46	Spoink	2.89	0.2	absent	Between 1994 and 2016
+ERR668322	MD225a	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	P-element	0	0	absent	Between 1994 and 2016
+ERR668322	MD225a	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Shellder	17.39	15.86	present	Between 1994 and 2016
+ERR668322	MD225a	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Spoink	9.99	8.7	present	Between 1994 and 2016
+ERR668323	MD225b	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	P-element	0	0	absent	Between 1994 and 2016
+ERR668323	MD225b	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Shellder	16.75	15.13	present	Between 1994 and 2016
+ERR668323	MD225b	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Spoink	9.6	8.22	present	Between 1994 and 2016
+ERR668324	MD235	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	P-element	0	0	absent	Between 1994 and 2016
+ERR668324	MD235	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Shellder	21.75	19.21	present	Between 1994 and 2016
+ERR668324	MD235	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Spoink	14.11	12.35	present	Between 1994 and 2016
+ERR668317	MD72	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	P-element	0	0	absent	Between 1994 and 2016
+ERR668317	MD72	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Shellder	17.04	15.23	present	Between 1994 and 2016
+ERR668317	MD72	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Spoink	16.21	14.45	present	Between 1994 and 2016
+ERR668318	MD146	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	P-element	0	0	absent	Between 1994 and 2016
+ERR668318	MD146	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Shellder	31.89	28.26	present	Between 1994 and 2016
+ERR668318	MD146	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Spoink	24.86	21.15	present	Between 1994 and 2016
+ERR668320	MD201	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	P-element	0	0	absent	Between 1994 and 2016
+ERR668320	MD201	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Shellder	17.3	15.45	present	Between 1994 and 2016
+ERR668320	MD201	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Spoink	18.27	16.06	present	Between 1994 and 2016
+ERR668321	MD224	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	P-element	0	0	absent	Between 1994 and 2016
+ERR668321	MD224	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Shellder	16.17	14.42	present	Between 1994 and 2016
+ERR668321	MD224	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Spoink	5.05	4.09	present	Between 1994 and 2016
+ERR668325	MD238	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	P-element	0	0	absent	Between 1994 and 2016
+ERR668325	MD238	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Shellder	16.32	14.43	present	Between 1994 and 2016
+ERR668325	MD238	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Spoink	11.79	10.55	present	Between 1994 and 2016
+ERR668326	MD243	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	P-element	0	0	absent	Between 1994 and 2016
+ERR668326	MD243	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Shellder	16.34	14.62	present	Between 1994 and 2016
+ERR668326	MD243	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Spoink	18.5	16.02	present	Between 1994 and 2016
+ERR668327	MD255	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	P-element	0	0	absent	Between 1994 and 2016
+ERR668327	MD255	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Shellder	12.79	11.56	present	Between 1994 and 2016
+ERR668327	MD255	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Spoink	8.16	6.82	present	Between 1994 and 2016
+ERR668316	MD03	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	P-element	0	0	absent	Between 1994 and 2016
+ERR668316	MD03	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Shellder	17.18	15.25	present	Between 1994 and 2016
+ERR668316	MD03	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Spoink	17.41	15.24	present	Between 1994 and 2016
+ERR668319	MD197	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	P-element	0	0	absent	Between 1994 and 2016
+ERR668319	MD197	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Shellder	14	12.52	present	Between 1994 and 2016
+ERR668319	MD197	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2002	Madagascar	-19	46	Spoink	15.94	14.06	present	Between 1994 and 2016
+SRR22548185	Sey03	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2003	Seychelles	-5	55	P-element	0	0	absent	Between 1994 and 2016
+SRR22548185	Sey03	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2003	Seychelles	-5	55	Shellder	0.05	0	absent	Between 1994 and 2016
+SRR22548185	Sey03	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2003	Seychelles	-5	55	Spoink	4.07	0.81	absent	Between 1994 and 2016
+SRR3091605	QLD(AU)	https://doi.org/10.1534/genetics.115.185496	PRJNA307610	Sedghifar2016	2004	Australia	-29	149	P-element	13.24	12.98	present	Between 1994 and 2016
+SRR3091605	QLD(AU)	https://doi.org/10.1534/genetics.115.185496	PRJNA307610	Sedghifar2016	2004	Australia	-29	149	Shellder	9.79	8.45	present	Between 1994 and 2016
+SRR3091605	QLD(AU)	https://doi.org/10.1534/genetics.115.185496	PRJNA307610	Sedghifar2016	2004	Australia	-29	149	Spoink	21.87	17.1	present	Between 1994 and 2016
+SRR3091579	TAS(AU)	https://doi.org/10.1534/genetics.115.185496	PRJNA307610	Sedghifar2016	2004	Tasmania, Australia	-42	147	P-element	1.19	1.18	absent	Between 1994 and 2016
+SRR3091579	TAS(AU)	https://doi.org/10.1534/genetics.115.185496	PRJNA307610	Sedghifar2016	2004	Tasmania, Australia	-42	147	Shellder	6.79	5.81	present	Between 1994 and 2016
+SRR3091579	TAS(AU)	https://doi.org/10.1534/genetics.115.185496	PRJNA307610	Sedghifar2016	2004	Tasmania, Australia	-42	147	Spoink	18.25	14.56	present	Between 1994 and 2016
+ERR668310	NS64	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	P-element	0	0	absent	Between 1994 and 2016
+ERR668310	NS64	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Shellder	22.03	19.53	present	Between 1994 and 2016
+ERR668310	NS64	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Spoink	19.8	17.4	present	Between 1994 and 2016
+ERR668314	NS111	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	P-element	0	0	absent	Between 1994 and 2016
+ERR668314	NS111	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Shellder	20.91	18.85	present	Between 1994 and 2016
+ERR668314	NS111	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Spoink	10.86	9.5	present	Between 1994 and 2016
+ERR668315	NS116	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	P-element	0	0	absent	Between 1994 and 2016
+ERR668315	NS116	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Shellder	17.05	15.24	present	Between 1994 and 2016
+ERR668315	NS116	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Spoink	17.65	15.37	present	Between 1994 and 2016
+ERR668308	NS49	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	P-element	0	0	absent	Between 1994 and 2016
+ERR668308	NS49	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Shellder	10.88	9.85	present	Between 1994 and 2016
+ERR668308	NS49	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Spoink	16.36	14.45	present	Between 1994 and 2016
+ERR668312	NS95	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	P-element	0	0	absent	Between 1994 and 2016
+ERR668312	NS95	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Shellder	12.89	11.43	present	Between 1994 and 2016
+ERR668312	NS95	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Spoink	20.62	18.14	present	Between 1994 and 2016
+ERR668313	NS96	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	P-element	0	0	absent	Between 1994 and 2016
+ERR668313	NS96	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Shellder	7.97	7.31	present	Between 1994 and 2016
+ERR668313	NS96	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Spoink	17.44	15.27	present	Between 1994 and 2016
+ERR668305	NS11	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	P-element	0	0	absent	Between 1994 and 2016
+ERR668305	NS11	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Shellder	12.38	11	present	Between 1994 and 2016
+ERR668305	NS11	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Spoink	26.25	22.8	present	Between 1994 and 2016
+ERR668306	NS19	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	P-element	0	0	absent	Between 1994 and 2016
+ERR668306	NS19	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Shellder	10.97	9.68	present	Between 1994 and 2016
+ERR668306	NS19	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Spoink	15.85	13.81	present	Between 1994 and 2016
+ERR668307	NS37	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	P-element	0	0	absent	Between 1994 and 2016
+ERR668307	NS37	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Shellder	22.52	19.97	present	Between 1994 and 2016
+ERR668307	NS37	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Spoink	14.44	12.57	present	Between 1994 and 2016
+ERR668309	NS63	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	P-element	0	0	absent	Between 1994 and 2016
+ERR668309	NS63	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Shellder	13.53	12.09	present	Between 1994 and 2016
+ERR668309	NS63	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Spoink	15.18	13.08	present	Between 1994 and 2016
+ERR668311	NS89	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	P-element	0	0	absent	Between 1994 and 2016
+ERR668311	NS89	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Shellder	10.09	8.94	present	Between 1994 and 2016
+ERR668311	NS89	https://doi.org/10.1002/ece3.6134	PRJEB7673	Signor2020	2006	Kenya	1	38	Spoink	24.73	21.87	present	Between 1994 and 2016
+SRR22548188	Haw07	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2007	Hawaii	22	-158	P-element	0	0	absent	Between 1994 and 2016
+SRR22548188	Haw07	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2007	Hawaii	22	-158	Shellder	0.05	0	absent	Between 1994 and 2016
+SRR22548188	Haw07	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2007	Hawaii	22	-158	Spoink	2.38	0.74	absent	Between 1994 and 2016
+SRR22548197	Egy08	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2008	Egypt	31	30	P-element	0	0	absent	Between 1994 and 2016
+SRR22548197	Egy08	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2008	Egypt	31	30	Shellder	12.18	10.47	present	Between 1994 and 2016
+SRR22548197	Egy08	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2008	Egypt	31	30	Spoink	26.26	21.13	present	Between 1994 and 2016
+SRR22548194	May09	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2009	Mayotte	-13	45	P-element	0	0	absent	Between 1994 and 2016
+SRR22548194	May09	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2009	Mayotte	-13	45	Shellder	0.05	0	absent	Between 1994 and 2016
+SRR22548194	May09	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2009	Mayotte	-13	45	Spoink	3.95	0.95	absent	Between 1994 and 2016
+SRR22548193	Fra09	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2009	France	48	2	P-element	0	0	absent	Between 1994 and 2016
+SRR22548193	Fra09	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2009	France	48	2	Shellder	0.05	0	absent	Between 1994 and 2016
+SRR22548193	Fra09	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2009	France	48	2	Spoink	4.39	0.93	absent	Between 1994 and 2016
+ERR694697	c211	https://doi.org/10.1073/pnas.1500758112	PRJEB7936	Kofler2015	2010	Florida, USA	27	-81	P-element	7.38	7.25	present	Between 1994 and 2016
+ERR694697	c211	https://doi.org/10.1073/pnas.1500758112	PRJEB7936	Kofler2015	2010	Florida, USA	27	-81	Shellder	13.27	11.38	present	Between 1994 and 2016
+ERR694697	c211	https://doi.org/10.1073/pnas.1500758112	PRJEB7936	Kofler2015	2010	Florida, USA	27	-81	Spoink	17.23	14.92	present	Between 1994 and 2016
+ERR694694	basepop	https://doi.org/10.1073/pnas.1500758112	PRJEB7936	Kofler2015	2010	Florida, USA	27	-81	P-element	0.9	0.89	absent	Between 1994 and 2016
+ERR694694	basepop	https://doi.org/10.1073/pnas.1500758112	PRJEB7936	Kofler2015	2010	Florida, USA	27	-81	Shellder	14.75	12.78	present	Between 1994 and 2016
+ERR694694	basepop	https://doi.org/10.1073/pnas.1500758112	PRJEB7936	Kofler2015	2010	Florida, USA	27	-81	Spoink	23.19	17.86	present	Between 1994 and 2016
+ERR694695	c116	https://doi.org/10.1073/pnas.1500758112	PRJEB7936	Kofler2015	2010	Florida, USA	27	-81	P-element	4.79	4.69	present	Between 1994 and 2016
+ERR694695	c116	https://doi.org/10.1073/pnas.1500758112	PRJEB7936	Kofler2015	2010	Florida, USA	27	-81	Shellder	18	15.5	present	Between 1994 and 2016
+ERR694695	c116	https://doi.org/10.1073/pnas.1500758112	PRJEB7936	Kofler2015	2010	Florida, USA	27	-81	Spoink	25.3	21.55	present	Between 1994 and 2016
+SRR22548182	Aus11	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2011	Australia	-29	149	P-element	0	0	absent	Between 1994 and 2016
+SRR22548182	Aus11	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2011	Australia	-29	149	Shellder	0.39	0.29	absent	Between 1994 and 2016
+SRR22548182	Aus11	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2011	Australia	-29	149	Spoink	2.18	0.47	absent	Between 1994 and 2016
+SRR3084252	FL(US)	https://doi.org/10.1534/genetics.115.185496	PRJNA307610	Sedghifar2016	2011	Florida, USA	27	-81	P-element	2.4	2.37	present	Between 1994 and 2016
+SRR3084252	FL(US)	https://doi.org/10.1534/genetics.115.185496	PRJNA307610	Sedghifar2016	2011	Florida, USA	27	-81	Shellder	6.36	5.32	present	Between 1994 and 2016
+SRR3084252	FL(US)	https://doi.org/10.1534/genetics.115.185496	PRJNA307610	Sedghifar2016	2011	Florida, USA	27	-81	Spoink	14.05	11.24	present	Between 1994 and 2016
+SRR3091655	RI(US)	https://doi.org/10.1534/genetics.115.185496	PRJNA307610	Sedghifar2016	2011	Rhode Island, USA	42	-71	P-element	2.18	2.13	present	Between 1994 and 2016
+SRR3091655	RI(US)	https://doi.org/10.1534/genetics.115.185496	PRJNA307610	Sedghifar2016	2011	Rhode Island, USA	42	-71	Shellder	6.04	5.13	present	Between 1994 and 2016
+SRR3091655	RI(US)	https://doi.org/10.1534/genetics.115.185496	PRJNA307610	Sedghifar2016	2011	Rhode Island, USA	42	-71	Spoink	21.38	15.93	present	Between 1994 and 2016
+SRR3585779	SZ232	https://doi.org/10.1002/ece3.6134	PRJNA318623	Signor2020	2012	California, USA	37	-121	P-element	42.32	42.02	present	Between 1994 and 2016
+SRR3585779	SZ232	https://doi.org/10.1002/ece3.6134	PRJNA318623	Signor2020	2012	California, USA	37	-121	Shellder	10.56	8.95	present	Between 1994 and 2016
+SRR3585779	SZ232	https://doi.org/10.1002/ece3.6134	PRJNA318623	Signor2020	2012	California, USA	37	-121	Spoink	32.08	27.67	present	Between 1994 and 2016
+SRR3585391	SZ244	https://doi.org/10.1002/ece3.6134	PRJNA318623	Signor2020	2012	California, USA	37	-121	P-element	0.05	0.05	absent	Between 1994 and 2016
+SRR3585391	SZ244	https://doi.org/10.1002/ece3.6134	PRJNA318623	Signor2020	2012	California, USA	37	-121	Shellder	8.2	7.08	present	Between 1994 and 2016
+SRR3585391	SZ244	https://doi.org/10.1002/ece3.6134	PRJNA318623	Signor2020	2012	California, USA	37	-121	Spoink	37.15	31.45	present	Between 1994 and 2016
+SRR3585440	SZ45	https://doi.org/10.1002/ece3.6134	PRJNA318623	Signor2020	2012	California, USA	37	-121	P-element	25.53	25.29	present	Between 1994 and 2016
+SRR3585440	SZ45	https://doi.org/10.1002/ece3.6134	PRJNA318623	Signor2020	2012	California, USA	37	-121	Shellder	7.33	6.03	present	Between 1994 and 2016
+SRR3585440	SZ45	https://doi.org/10.1002/ece3.6134	PRJNA318623	Signor2020	2012	California, USA	37	-121	Spoink	24.34	19.92	present	Between 1994 and 2016
+SRR22548181	Mor12	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2012	Morocco	33	-6	P-element	0	0	absent	Between 1994 and 2016
+SRR22548181	Mor12	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2012	Morocco	33	-6	Shellder	0.35	0.25	absent	Between 1994 and 2016
+SRR22548181	Mor12	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2012	Morocco	33	-6	Spoink	4.18	0.8	absent	Between 1994 and 2016
+SRR22548176	Egy12	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2012	Egypt	31	30	P-element	0	0	absent	Between 1994 and 2016
+SRR22548176	Egy12	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2012	Egypt	31	30	Shellder	13.5	11.58	present	Between 1994 and 2016
+SRR22548176	Egy12	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2012	Egypt	31	30	Spoink	16.31	12.44	present	Between 1994 and 2016
+SRR22548190	Cam16	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2016	Cameroon	5	13	P-element	0	0	absent	Between 1994 and 2016
+SRR22548190	Cam16	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2016	Cameroon	5	13	Shellder	0.05	0	absent	Between 1994 and 2016
+SRR22548190	Cam16	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2016	Cameroon	5	13	Spoink	3.45	0.18	absent	Between 1994 and 2016
+SRR22548192	Mor16	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2016	Morocco	33	-6	P-element	0	0	absent	Between 1994 and 2016
+SRR22548192	Mor16	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2016	Morocco	33	-6	Shellder	0.05	0	absent	Between 1994 and 2016
+SRR22548192	Mor16	https://doi.org/10.1093/molbev/msad152	PRJNA905841	Courret2023	2016	Morocco	33	-6	Spoink	3.69	0.96	absent	Between 1994 and 2016
+SRR11456793	18CHAALES15	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	8.53	8.35	present	After 2016
+SRR11456793	18CHAALES15	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	10.26	8.86	present	After 2016
+SRR11456793	18CHAALES15	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	22.45	17.17	present	After 2016
+SRR11456771	18KARI03	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	12.21	11.86	present	After 2016
+SRR11456771	18KARI03	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	10.22	8.84	present	After 2016
+SRR11456771	18KARI03	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	9.58	7.34	present	After 2016
+SRR11456760	18KARI04	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	11.04	10.85	present	After 2016
+SRR11456760	18KARI04	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	11.57	9.99	present	After 2016
+SRR11456760	18KARI04	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	14.3	10.07	present	After 2016
+SRR11456753	18KARI05	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	9.48	9.28	present	After 2016
+SRR11456753	18KARI05	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	9.7	8.37	present	After 2016
+SRR11456753	18KARI05	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	17.75	13.26	present	After 2016
+SRR11456752	18KARI06	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	11.74	11.54	present	After 2016
+SRR11456752	18KARI06	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	11.95	10.34	present	After 2016
+SRR11456752	18KARI06	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	14.06	10.13	present	After 2016
+SRR11456751	18KARI09	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	9.49	9.29	present	After 2016
+SRR11456751	18KARI09	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	12.67	11.01	present	After 2016
+SRR11456751	18KARI09	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	21.4	15.67	present	After 2016
+SRR11456750	18KARI10	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	11.94	11.71	present	After 2016
+SRR11456750	18KARI10	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	10.77	9.31	present	After 2016
+SRR11456750	18KARI10	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	21.5	16.74	present	After 2016
+SRR11456803	18KARI26	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	9.98	9.81	present	After 2016
+SRR11456803	18KARI26	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	13.46	11.7	present	After 2016
+SRR11456803	18KARI26	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	13.49	9.63	present	After 2016
+SRR11456802	18KARI37	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	13.65	13.46	present	After 2016
+SRR11456802	18KARI37	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	13.69	11.94	present	After 2016
+SRR11456802	18KARI37	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	23.28	16.64	present	After 2016
+SRR11456801	18KARITANA20	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	16.26	15.96	present	After 2016
+SRR11456801	18KARITANA20	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	10.55	9.15	present	After 2016
+SRR11456801	18KARITANA20	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	25.24	19.2	present	After 2016
+SRR11456800	18MPALA02	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	7.75	7.56	present	After 2016
+SRR11456800	18MPALA02	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	7.2	6.24	present	After 2016
+SRR11456800	18MPALA02	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	17.23	12.36	present	After 2016
+SRR11456799	18MPALA02B	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	11.16	10.94	present	After 2016
+SRR11456799	18MPALA02B	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	9.66	8.31	present	After 2016
+SRR11456799	18MPALA02B	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	24.45	18.81	present	After 2016
+SRR11456797	18MPALA03	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	10.62	10.39	present	After 2016
+SRR11456797	18MPALA03	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	11.42	9.89	present	After 2016
+SRR11456797	18MPALA03	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	13.7	9.21	present	After 2016
+SRR11456796	18MPALA05	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	11.11	10.84	present	After 2016
+SRR11456796	18MPALA05	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	14.6	12.69	present	After 2016
+SRR11456796	18MPALA05	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	14.24	9.65	present	After 2016
+SRR11456794	18MPALA09	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	10.54	10.29	present	After 2016
+SRR11456794	18MPALA09	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	12.73	11.13	present	After 2016
+SRR11456794	18MPALA09	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	16.54	12.07	present	After 2016
+SRR11456792	18MPALA11	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	8.22	8.07	present	After 2016
+SRR11456792	18MPALA11	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	10.7	9.28	present	After 2016
+SRR11456792	18MPALA11	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	17.96	12.84	present	After 2016
+SRR11456791	18MPALA12	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	11.87	11.61	present	After 2016
+SRR11456791	18MPALA12	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	10.85	9.39	present	After 2016
+SRR11456791	18MPALA12	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	18.3	13.23	present	After 2016
+SRR11456790	18MPALA13	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	13.42	13.25	present	After 2016
+SRR11456790	18MPALA13	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	12.41	10.8	present	After 2016
+SRR11456790	18MPALA13	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	18.77	13.93	present	After 2016
+SRR11456789	18MU04	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Senegal	15	-15	P-element	10.48	10.26	present	After 2016
+SRR11456789	18MU04	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Senegal	15	-15	Shellder	10.09	8.72	present	After 2016
+SRR11456789	18MU04	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Senegal	15	-15	Spoink	21.55	16.34	present	After 2016
+SRR11456788	18MU05	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Senegal	15	-15	P-element	10.25	10.04	present	After 2016
+SRR11456788	18MU05	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Senegal	15	-15	Shellder	8.98	7.76	present	After 2016
+SRR11456788	18MU05	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Senegal	15	-15	Spoink	15.42	10.81	present	After 2016
+SRR11456787	18NANY04	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Senegal	15	-15	P-element	11.15	10.89	present	After 2016
+SRR11456787	18NANY04	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Senegal	15	-15	Shellder	14.19	12.2	present	After 2016
+SRR11456787	18NANY04	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Senegal	15	-15	Spoink	22.54	15.43	present	After 2016
+SRR11456778	KARI25	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	P-element	12.67	12.42	present	After 2016
+SRR11456778	KARI25	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Shellder	12.5	10.79	present	After 2016
+SRR11456778	KARI25	https://doi.org/10.1093/gbe/evaa084	PRJNA622255	Serrato-Capuchina2020	2018	Kenya	1	38	Spoink	16.08	10.43	present	After 2016
+ERR9452541	dsim_27_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3	P-element	10.88	10.74	present	After 2016
+ERR9452541	dsim_27_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3	Shellder	12.14	10.51	present	After 2016
+ERR9452541	dsim_27_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3	Spoink	17.53	14.5	present	After 2016
+ERR9452754	dsim_31_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3	P-element	16.54	16.32	present	After 2016
+ERR9452754	dsim_31_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3	Shellder	6.24	5.34	present	After 2016
+ERR9452754	dsim_31_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3	Spoink	14.34	11.73	present	After 2016
+ERR9439680	dsim_28_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3	P-element	11.62	11.44	present	After 2016
+ERR9439680	dsim_28_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3	Shellder	10.45	8.87	present	After 2016
+ERR9439680	dsim_28_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3	Spoink	6.7	5.25	present	After 2016
+ERR9453536	dsim_29_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3	P-element	16.59	16.38	present	After 2016
+ERR9453536	dsim_29_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3	Shellder	10.32	8.68	present	After 2016
+ERR9453536	dsim_29_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3	Spoink	19.06	15.56	present	After 2016
+ERR9436064	dsim_25_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3	P-element	9.28	9.18	present	After 2016
+ERR9436064	dsim_25_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3	Shellder	11.36	9.81	present	After 2016
+ERR9436064	dsim_25_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3	Spoink	14.38	11.9	present	After 2016
+ERR9452532	dsim_26_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3	P-element	18.05	17.83	present	After 2016
+ERR9452532	dsim_26_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3	Shellder	10.85	9.42	present	After 2016
+ERR9452532	dsim_26_F0	https://www.genome.org/cgi/doi/10.1101/gr.277383.122	PRJEB51956	McNeil2023	2020	Spain	40	-3	Spoink	11.13	9.1	present	After 2016

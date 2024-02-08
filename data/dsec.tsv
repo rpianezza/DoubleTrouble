@@ -1,0 +1,130 @@
+Sample	library_name	island	lat	long	year	TE	All_reads	HQ_reads	presence
+SRR5860583	PNF4	Praslin	-4.325	55.73	2012	P-element	0	-0.5	absent
+SRR5860583	PNF4	Praslin	-4.325	55.73	2012	Shellder	7.77	6.91	present
+SRR5860583	PNF4	Praslin	-4.325	55.73	2012	Spoink	22.03	17.27	present
+SRR5860625	DenisNF155	Denis	-3.811	55.666	2012	P-element	0	-0.5	absent
+SRR5860625	DenisNF155	Denis	-3.811	55.666	2012	Shellder	10.16	8.89	present
+SRR5860625	DenisNF155	Denis	-3.811	55.666	2012	Spoink	26.03	21.43	present
+SRR5860626	DenisNoni10	Denis	-3.811	55.666	2012	P-element	0.01	-0.5	absent
+SRR5860626	DenisNoni10	Denis	-3.811	55.666	2012	Shellder	0.07	-0.5	absent
+SRR5860626	DenisNoni10	Denis	-3.811	55.666	2012	Spoink	2.03	0.72	absent
+SRR5860628	DenisNoni60	Denis	-3.811	55.666	2012	P-element	0.01	-0.5	absent
+SRR5860628	DenisNoni60	Denis	-3.811	55.666	2012	Shellder	13.81	12.35	present
+SRR5860628	DenisNoni60	Denis	-3.811	55.666	2012	Spoink	30.1	24.72	present
+SRR5860631	Denis124	Denis	-3.811	55.666	2012	P-element	0.01	-0.5	absent
+SRR5860631	Denis124	Denis	-3.811	55.666	2012	Shellder	10.99	9.66	present
+SRR5860631	Denis124	Denis	-3.811	55.666	2012	Spoink	30.23	25.26	present
+SRR5860632	Denis7_2	Denis	-3.811	55.666	2012	P-element	0	-0.5	absent
+SRR5860632	Denis7_2	Denis	-3.811	55.666	2012	Shellder	6.71	5.98	present
+SRR5860632	Denis7_2	Denis	-3.811	55.666	2012	Spoink	30.08	24.98	present
+SRR5860645	Anro_B7	Mahé	-4.734	55.508	2012	P-element	0	-0.5	absent
+SRR5860645	Anro_B7	Mahé	-4.734	55.508	2012	Shellder	0.07	-0.5	absent
+SRR5860645	Anro_B7	Mahé	-4.734	55.508	2012	Spoink	0.86	-0.5	absent
+SRR5860656	LD16	La Digue	-4.363	55.831	2012	P-element	0	-0.5	absent
+SRR5860656	LD16	La Digue	-4.363	55.831	2012	Shellder	0.06	-0.5	absent
+SRR5860656	LD16	La Digue	-4.363	55.831	2012	Spoink	0.96	-0.5	absent
+SRR5860659	mariane_1	Mariane	-4.34	55.919	2012	P-element	0	-0.5	absent
+SRR5860659	mariane_1	Mariane	-4.34	55.919	2012	Shellder	0.07	-0.5	absent
+SRR5860659	mariane_1	Mariane	-4.34	55.919	2012	Spoink	0.97	-0.5	absent
+SRR5860661	Anro_B2	Mahé	-4.734	55.508	2012	P-element	0	-0.5	absent
+SRR5860661	Anro_B2	Mahé	-4.734	55.508	2012	Shellder	0.05	-0.5	absent
+SRR5860661	Anro_B2	Mahé	-4.734	55.508	2012	Spoink	0.88	-0.5	absent
+SRR5860663	Anro_B6	Mahé	-4.734	55.508	2012	P-element	0	-0.5	absent
+SRR5860663	Anro_B6	Mahé	-4.734	55.508	2012	Shellder	0.09	-0.5	absent
+SRR5860663	Anro_B6	Mahé	-4.734	55.508	2012	Spoink	0.82	-0.5	absent
+SRR5860667	PNF11	Praslin	-4.325	55.73	2012	P-element	0	-0.5	absent
+SRR5860667	PNF11	Praslin	-4.325	55.73	2012	Shellder	9.36	8.29	present
+SRR5860667	PNF11	Praslin	-4.325	55.73	2012	Spoink	23.38	19.31	present
+SRR5860671	Denis135	Denis	-3.811	55.666	2012	P-element	0	-0.5	absent
+SRR5860671	Denis135	Denis	-3.811	55.666	2012	Shellder	9.91	8.84	present
+SRR5860671	Denis135	Denis	-3.811	55.666	2012	Spoink	26.26	21.25	present
+SRR5860570	maria_3	Mariane	-4.34	55.919	2012	P-element	0	-0.5	absent
+SRR5860570	maria_3	Mariane	-4.34	55.919	2012	Shellder	0.07	-0.5	absent
+SRR5860570	maria_3	Mariane	-4.34	55.919	2012	Spoink	0.99	-0.5	absent
+SRR5860573	Anro_B8	Mahé	-4.734	55.508	2012	P-element	0	-0.5	absent
+SRR5860573	Anro_B8	Mahé	-4.734	55.508	2012	Shellder	0.07	-0.5	absent
+SRR5860573	Anro_B8	Mahé	-4.734	55.508	2012	Spoink	0.86	-0.5	absent
+SRR5860584	LD15	La Digue	-4.363	55.831	2012	P-element	0	-0.5	absent
+SRR5860584	LD15	La Digue	-4.363	55.831	2012	Shellder	0.07	-0.5	absent
+SRR5860584	LD15	La Digue	-4.363	55.831	2012	Spoink	1.01	-0.5	absent
+SRR5860627	DenisDNJ6	Denis	-3.811	55.666	2012	P-element	0.01	-0.5	absent
+SRR5860627	DenisDNJ6	Denis	-3.811	55.666	2012	Shellder	21.97	19.21	present
+SRR5860627	DenisDNJ6	Denis	-3.811	55.666	2012	Spoink	27.59	22.7	present
+SRR5860633	DenisNF13	Denis	-3.811	55.666	2012	P-element	0	-0.5	absent
+SRR5860633	DenisNF13	Denis	-3.811	55.666	2012	Shellder	9.26	8.24	present
+SRR5860633	DenisNF13	Denis	-3.811	55.666	2012	Spoink	25.38	21.62	present
+SRR5860639	DenisNF100	Denis	-3.811	55.666	2012	P-element	0.02	-0.5	absent
+SRR5860639	DenisNF100	Denis	-3.811	55.666	2012	Shellder	0.08	-0.5	absent
+SRR5860639	DenisNF100	Denis	-3.811	55.666	2012	Spoink	2.13	0.52	absent
+SRR5860640	DenisNF123	Denis	-3.811	55.666	2012	P-element	0	-0.5	absent
+SRR5860640	DenisNF123	Denis	-3.811	55.666	2012	Shellder	0.11	-0.5	absent
+SRR5860640	DenisNF123	Denis	-3.811	55.666	2012	Spoink	2.88	1.01	absent
+SRR5860643	DenisAMT	Denis	-3.811	55.666	2012	P-element	0	-0.5	absent
+SRR5860643	DenisAMT	Denis	-3.811	55.666	2012	Shellder	5.61	5.01	present
+SRR5860643	DenisAMT	Denis	-3.811	55.666	2012	Spoink	26.54	22.19	present
+SRR5860657	LD13	La Digue	-4.363	55.831	2012	P-element	0	-0.5	absent
+SRR5860657	LD13	La Digue	-4.363	55.831	2012	Shellder	0.08	-0.5	absent
+SRR5860657	LD13	La Digue	-4.363	55.831	2012	Spoink	0.95	-0.5	absent
+SRR5860662	LD12	La Digue	-4.363	55.831	2012	P-element	0	-0.5	absent
+SRR5860662	LD12	La Digue	-4.363	55.831	2012	Shellder	0.08	-0.5	absent
+SRR5860662	LD12	La Digue	-4.363	55.831	2012	Spoink	0.97	-0.5	absent
+SRR5860666	PNF10	Praslin	-4.325	55.73	2012	P-element	0	-0.5	absent
+SRR5860666	PNF10	Praslin	-4.325	55.73	2012	Shellder	10.47	9.24	present
+SRR5860666	PNF10	Praslin	-4.325	55.73	2012	Spoink	25.54	20.5	present
+SRR5860669	Denis7_8	Denis	-3.811	55.666	2012	P-element	0	-0.5	absent
+SRR5860669	Denis7_8	Denis	-3.811	55.666	2012	Shellder	6.71	5.98	present
+SRR5860669	Denis7_8	Denis	-3.811	55.666	2012	Spoink	30.11	24.98	present
+SRR5860670	DenisMCL	Denis	-3.811	55.666	2012	P-element	0	-0.5	absent
+SRR5860670	DenisMCL	Denis	-3.811	55.666	2012	Shellder	8.11	7.2	present
+SRR5860670	DenisMCL	Denis	-3.811	55.666	2012	Spoink	31.4	25.66	present
+SRR5860672	PNF8	Praslin	-4.325	55.73	2012	P-element	0	-0.5	absent
+SRR5860672	PNF8	Praslin	-4.325	55.73	2012	Shellder	8.95	7.86	present
+SRR5860672	PNF8	Praslin	-4.325	55.73	2012	Spoink	26.55	21.34	present
+SRR5860675	PNF7	Praslin	-4.325	55.73	2012	P-element	0	-0.5	absent
+SRR5860675	PNF7	Praslin	-4.325	55.73	2012	Shellder	9.24	8.06	present
+SRR5860675	PNF7	Praslin	-4.325	55.73	2012	Spoink	30.82	24.83	present
+SRR5860582	LD8	La Digue	-4.363	55.831	2012	P-element	0	-0.5	absent
+SRR5860582	LD8	La Digue	-4.363	55.831	2012	Shellder	0.08	-0.5	absent
+SRR5860582	LD8	La Digue	-4.363	55.831	2012	Spoink	1	-0.5	absent
+SRR5860629	DenisAT3	Denis	-3.811	55.666	2012	P-element	0.01	-0.5	absent
+SRR5860629	DenisAT3	Denis	-3.811	55.666	2012	Shellder	11.33	10.12	present
+SRR5860629	DenisAT3	Denis	-3.811	55.666	2012	Spoink	24.36	19.96	present
+SRR5860630	DenisJT1	Denis	-3.811	55.666	2012	P-element	0	-0.5	absent
+SRR5860630	DenisJT1	Denis	-3.811	55.666	2012	Shellder	6.52	5.78	present
+SRR5860630	DenisJT1	Denis	-3.811	55.666	2012	Spoink	25.08	20.31	present
+SRR5860634	DenisNF66	Denis	-3.811	55.666	2012	P-element	0.01	-0.5	absent
+SRR5860634	DenisNF66	Denis	-3.811	55.666	2012	Shellder	6.18	5.59	present
+SRR5860634	DenisNF66	Denis	-3.811	55.666	2012	Spoink	27.36	22.58	present
+SRR5860644	DenisNF134	Denis	-3.811	55.666	2012	P-element	0.02	-0.5	absent
+SRR5860644	DenisNF134	Denis	-3.811	55.666	2012	Shellder	10.61	9.43	present
+SRR5860644	DenisNF134	Denis	-3.811	55.666	2012	Spoink	30.24	25.8	present
+SRR5860658	LD14	La Digue	-4.363	55.831	2012	P-element	0.01	-0.5	absent
+SRR5860658	LD14	La Digue	-4.363	55.831	2012	Shellder	0.07	-0.5	absent
+SRR5860658	LD14	La Digue	-4.363	55.831	2012	Spoink	0.92	-0.5	absent
+SRR5860660	Anro_B1	Mahé	-4.734	55.508	2012	P-element	0	-0.5	absent
+SRR5860660	Anro_B1	Mahé	-4.734	55.508	2012	Shellder	0.06	-0.5	absent
+SRR5860660	Anro_B1	Mahé	-4.734	55.508	2012	Spoink	0.84	-0.5	absent
+SRR5860664	LD11_sech	La Digue	-4.363	55.831	2012	P-element	0	-0.5	absent
+SRR5860664	LD11_sech	La Digue	-4.363	55.831	2012	Shellder	0.06	-0.5	absent
+SRR5860664	LD11_sech	La Digue	-4.363	55.831	2012	Spoink	0.93	-0.5	absent
+SRR5860665	Anro_B3	Mahé	-4.734	55.508	2012	P-element	0	-0.5	absent
+SRR5860665	Anro_B3	Mahé	-4.734	55.508	2012	Shellder	0.06	-0.5	absent
+SRR5860665	Anro_B3	Mahé	-4.734	55.508	2012	Spoink	0.85	-0.5	absent
+SRR5860668	DenisNoni101	Denis	-3.811	55.666	2012	P-element	0.05	-0.5	absent
+SRR5860668	DenisNoni101	Denis	-3.811	55.666	2012	Shellder	15.63	13.69	present
+SRR5860668	DenisNoni101	Denis	-3.811	55.666	2012	Spoink	27.85	23.35	present
+SRR5860673	PNF5	Praslin	-4.325	55.73	2012	P-element	0	-0.5	absent
+SRR5860673	PNF5	Praslin	-4.325	55.73	2012	Shellder	11.17	9.86	present
+SRR5860673	PNF5	Praslin	-4.325	55.73	2012	Spoink	21	16.74	present
+SRR5860674	PNF3	Praslin	-4.325	55.73	2012	P-element	0	-0.5	absent
+SRR5860674	PNF3	Praslin	-4.325	55.73	2012	Shellder	9.54	8.44	present
+SRR5860674	PNF3	Praslin	-4.325	55.73	2012	Spoink	26.49	22.12	present
+SRR5860676	Anro_B5	Mahé	-4.734	55.508	2012	P-element	0	-0.5	absent
+SRR5860676	Anro_B5	Mahé	-4.734	55.508	2012	Shellder	0.08	-0.5	absent
+SRR5860676	Anro_B5	Mahé	-4.734	55.508	2012	Spoink	0.86	-0.5	absent
+SRR14138506	Denis72	Denis	-3.811	55.666	2012	P-element	0	-0.5	absent
+SRR14138506	Denis72	Denis	-3.811	55.666	2012	Shellder	0.05	-0.5	absent
+SRR14138506	Denis72	Denis	-3.811	55.666	2012	Spoink	2.92	-0.5	absent
+SRR14138507	Anro71	Mahé	-4.734	55.508	2012	P-element	0	-0.5	absent
+SRR14138507	Anro71	Mahé	-4.734	55.508	2012	Shellder	0.05	-0.5	absent
+SRR14138507	Anro71	Mahé	-4.734	55.508	2012	Spoink	4.85	-0.5	absent
