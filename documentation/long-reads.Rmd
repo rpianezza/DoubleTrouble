@@ -1,0 +1,136 @@
+---
+title: "Spoink and Shellder invasion in long reads assemblies"
+output: rmarkdown::github_document
+editor_options: 
+  markdown: 
+    wrap: sentence
+    author: Riccardo
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(knitr))
+suppressPackageStartupMessages(library(kableExtra))
+suppressPackageStartupMessages(library(ggpubr))
+theme_set(theme_bw())
+```
+
+
+```
+less path/rm.ori.out | sed 's/  */ /g' | cut -c2- | > output
+```
+
+## D.sim.sz129
+
+```{r}
+(sz129 <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsim/insertions/D.sim.SZ129.fa.fai", col_names = c("contig", "length", "x", "y", "z")) %>% arrange(desc(length)) %>% select(contig, length) %>% filter(length > 10000000))
+```
+
+```{r}
+sim_RM <- read_table("/Volumes/EXT-RICCARDO/DoubleTrouble/Dsim/insertions/D.sim.sz129.fa.ori.out.txt", col_names = c("SWscore", "div", "del", "ins", "contig", "position_in_query_begin", "position_in_query_end", "position_in_query_left",  "strand", "te", "repeat_class/family", "position_in_repeat_begin", "position_in_repeat_end", "position_in_repeat_left")) %>% mutate(position_in_repeat_begin = str_replace(position_in_repeat_begin, "\\(", ""), position_in_repeat_begin = str_replace(position_in_repeat_begin, "\\)", ""), position_in_repeat_left = str_replace(position_in_repeat_left, "\\(", ""), position_in_repeat_left = str_replace(position_in_repeat_left, "\\)", ""), position_in_query_left = str_replace(position_in_query_left, "\\(", ""), position_in_query_left = str_replace(position_in_query_left, "\\)", ""), position_in_repeat_end = str_replace(position_in_repeat_end, "\\(", ""), position_in_repeat_end = str_replace(position_in_repeat_end, "\\)", ""), position_in_query_begin = str_replace(position_in_query_begin, "\\(", ""), position_in_query_begin = str_replace(position_in_query_begin, "\\)", ""), position_in_query_end = str_replace(position_in_query_end, "\\(", ""), position_in_query_end = str_replace(position_in_query_end, "\\)", "")) %>%
+rename(start = position_in_query_begin, end = position_in_query_end, qstart = 
+position_in_repeat_begin, qend = position_in_repeat_end) %>% type_convert()
+
+(sim <- sim_RM %>% select(te, contig, strand, start, end, qstart, qend, div) %>% mutate(telen = ifelse(te=="Spoink", 5216, 6635), fraglen = end-start, lenfraction = fraglen/telen))
+```
+
+```{r}
+(sim_good <- sim %>% filter(fraglen > 1000 & div < 10) %>% arrange(te) %>% select(te, contig, start, lenfraction) %>% inner_join(sz129, by="contig"))
+
+positive_cont <- sim_good %>% select(contig) %>% distinct() %>% inner_join(sz129, by="contig")
+
+dummy_end <- tibble(te = "Spoink", length = sz129$length, lenfraction = 0)
+dummy_end <- dummy_end %>% inner_join(sz129, by="length") %>% rename(start=length)
+dummy_start <- tibble(te = "Spoink", start = 0, lenfraction = 0, contig = positive_cont$contig)
+dummy <- bind_rows(dummy_end, dummy_start)
+
+(sim_plot <- bind_rows(sim_good, dummy))
+
+(p<-ggplot(sim_plot,aes(x = start, y = 0, xend = start, yend = lenfraction, color=te))+
+  geom_segment(size=1)+facet_grid(~contig, scales="free_x",space="free_x",labeller = labeller(contig = c(tig00000022_pilon_pilon = "contig 22", tig00000297_pilon_pilon = "contig 297", tig00000001_pilon_pilon = "contig 1", tig00000015_pilon_pilon = "contig 15", tig00000022_pilon_pilon = "contig 22", 	tig00000301_pilon_pilon = "contig 301")))+
+  xlab("position")+ylab("length fraction of TE insertion [0-1]")+
+  scale_colour_manual(values=c("#6A3D9A","lightpink1"))+
+  scale_x_continuous(breaks=c(0,5000000,10000000,15000000,20000000,25000000,30000000),
+                     labels=c("0","5m","10m","15m","20m","25m","30m"))+
+  theme(legend.position = "bottom")+
+  scale_y_continuous(breaks=c(0, 0.25, 0.5, 0.75, 1.0)))
+```
+
+```{r}
+#ggsave("/Volumes/EXT-RICCARDO/DoubleTrouble/figures/dsim.svg", plot = dsim_figure, width = 7, height = 9, dpi=300)
+```
+
+```{r}
+(s129 <- read_table("/Volumes/EXT-RICCARDO/DoubleTrouble/Dmau/RM/D.sim.sz129.fa.ori.out", col_names = c("SWscore", "div", "del", "ins", "contig", "position_in_query_begin", "position_in_query_end", "position_in_query_left",  "strand", "te", "repeat_class/family", "position_in_repeat_begin", "position_in_repeat_end", "position_in_repeat_left")) %>% mutate(len = ifelse(position_in_query_begin>position_in_query_end, position_in_query_begin-position_in_query_end, position_in_query_end-position_in_query_begin), contig = gsub("_pilon_pilon", "", contig)) %>% filter(te %in% c("Shellder","Spoink")) %>% filter(len > 3000, div < 10) %>% rename(begin=position_in_query_begin, end=position_in_query_end) %>% select(te, contig, begin, end))
+
+write_tsv(s129, "/Volumes/EXT-RICCARDO/DoubleTrouble/Dsim/sz129_spoink_shell.tsv")
+```
+
+## Dmel
+
+Command to convert RM into tsv and add a column with the strain name based on the file name.
+```
+for file in *.ori.out; do 
+    filename=$(basename "$file" | cut -d. -f3)
+    less "$file" | sed 's/  */ /g' | cut -c2- | awk -v filename="$filename" '{print filename, $0}' > "${file%.ori.out}.output"
+done
+```
+
+
+```{r}
+dmel_lr <- read_table("/Volumes/EXT-RICCARDO/DoubleTrouble/Dmel/long-reads/dmel-lr-rm.tsv", col_names = c("strain","SWscore", "div", "del", "ins", "contig", "position_in_query_begin", "position_in_query_end", "position_in_query_left",  "strand", "te", "repeat_class/family", "position_in_repeat_begin", "position_in_repeat_end", "position_in_repeat_left"))
+
+dmel_lr_meta_spoink <- read_tsv("/Volumes/EXT-RICCARDO/DoubleTrouble/Dmel/long-reads/longread-summary.txt", col_names = c("strain", "year", "location", "type", "count")) %>% select(strain, year) %>% distinct() %>% mutate(te = "Spoink")
+dmel_lr_meta_shellder <- dmel_lr_meta_spoink %>% mutate(te = "Shellder")
+dmel_lr_meta_P <- dmel_lr_meta_spoink %>% mutate(te = "PPI251")
+dmel_lr_meta <- bind_rows(dmel_lr_meta_spoink, dmel_lr_meta_shellder, dmel_lr_meta_P)
+
+dmel_insertions <- dmel_lr %>% filter(te %in% c("Shellder","Spoink","PPI251")) %>% mutate(len = ifelse(position_in_query_begin>position_in_query_end, position_in_query_begin-position_in_query_end, position_in_query_end-position_in_query_begin)) %>% filter(len > 750, div < 10)
+
+dmel_spoink <- dmel_insertions %>% group_by(strain, te) %>% summarise(insertions = n())
+dmel_shellder <- dmel_lr %>% select(strain) %>% unique() %>% mutate(insertions = -0.2, te = "Shellder")
+
+dmel_plottable <- bind_rows(dmel_spoink, dmel_shellder) %>% right_join(dmel_lr_meta, by=c("strain","te")) %>% mutate(insertions = ifelse(is.na(insertions), -0.2, insertions), year = ifelse(is.na(year), 0, year), presence = ifelse(insertions > 1, "present", "absent"), te=ifelse(te=="PPI251", "P-element", te))
+dmel_plottable$te <- factor(dmel_plottable$te, levels = c("Shellder", "Spoink", "P-element"))
+
+(dmel_lr_plot <- ggplot(dmel_plottable, aes(x=reorder(strain, year), y=insertions, fill = presence)) +
+    geom_bar(stat="identity") +
+    ylab("copynumber") +
+    facet_grid(te ~.) +
+    scale_fill_manual(values=c("darkgreen", "red"))+
+    theme(axis.text.x = element_text(angle = 90), axis.title.x = element_blank(), legend.position = "top"))
+
+#ggsave("/Volumes/EXT-RICCARDO/DoubleTrouble/figures/sup-figures/dmel-lr/dmel-lr.png", dmel_lr_plot, dpi = 300)
+```
+
+## D.mau
+
+```{r}
+(r31 <- read_table("/Volumes/EXT-RICCARDO/DoubleTrouble/Dmau/RM/mau/D.mau.r31.fa.ori.out.renamed", col_names = c("SWscore", "div", "del", "ins", "contig", "position_in_query_begin", "position_in_query_end", "position_in_query_left",  "strand", "te", "repeat_class/family", "position_in_repeat_begin", "position_in_repeat_end", "position_in_repeat_left")) %>% mutate(len = ifelse(position_in_query_begin>position_in_query_end, position_in_query_begin-position_in_query_end, position_in_query_end-position_in_query_begin)) %>% filter(te %in% c("Shellder","Spoink")) %>% filter(len > 3000, div < 10) %>% rename(begin=position_in_query_begin, end=position_in_query_end) %>% select(te, contig, begin, end))
+
+write_tsv(r31, "/Volumes/EXT-RICCARDO/DoubleTrouble/Dmau/r31_spoink_shell.tsv")
+```
+
+```{r}
+dummy_mau <- tibble(strain = c("01","01"), te = c("Shellder", "Spoink"), insertions = c(-1,-1))
+dummy_mau_P <- tibble(strain = c("01","r31","r32","r39","r61"), te = "P-element", insertions = -1)
+
+(mau_lr <- read_table("/Volumes/EXT-RICCARDO/DoubleTrouble/Dmau/RM/D.mau.lr.tsv", col_names = c("strain","SWscore", "div", "del", "ins", "contig", "position_in_query_begin", "position_in_query_end", "position_in_query_left",  "strand", "te", "repeat_class/family", "position_in_repeat_begin", "position_in_repeat_end", "position_in_repeat_left")) %>% mutate(len = ifelse(position_in_query_begin>position_in_query_end, position_in_query_begin-position_in_query_end, position_in_query_end-position_in_query_begin)) %>% filter(te %in% c("Shellder","Spoink","PPI251")) %>% filter(len > 750, div < 10) %>% rename(begin=position_in_query_begin, end=position_in_query_end) %>% select(strain, te) %>% group_by(strain, te) %>% summarise(insertions = n()) %>% bind_rows(dummy_mau) %>% bind_rows(dummy_mau_P) %>% arrange(strain) %>% mutate(presence = ifelse(insertions > 1, "present", "absent")))
+
+mau_lr$te <- factor(mau_lr$te, levels = c("Shellder", "Spoink", "P-element"))
+
+(dmau_lr_plot <- ggplot(mau_lr, aes(x=strain, y=insertions, fill = presence)) +
+    geom_bar(stat="identity") +
+    ylab("copynumber") +
+    facet_grid(te ~.) +
+    scale_fill_manual(values=c("darkgreen", "red"))+
+    theme(axis.text.x = element_text(angle = 90), axis.title.x = element_blank(), legend.position = "top"))
+
+ggsave("/Volumes/EXT-RICCARDO/DoubleTrouble/figures/sup-figures/dmau-lr/dmau-lr.png", dmau_lr_plot, dpi = 300, width = 3)
+```
+
+
