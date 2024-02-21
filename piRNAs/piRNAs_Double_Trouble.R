@@ -6,7 +6,7 @@ df <- read.table("/Users/ascarpa/Downloads/Double_trouble_local/piRNAs/fastq/bam
 names(df) <- c("Run", "te","pos","pirna")
 
 df_Shellder <- subset(df, te=="Shellder")
-df_Stalker4 <- subset(df, te=="STALKER4")
+df_TABOR <- subset(df, te=="TABOR")
 df_Spoink <- subset(df, te=="Spoink")
 df_Opus <- subset(df, te=="OPUS")
 
@@ -46,18 +46,18 @@ ggarrange(g_Shellder+ theme(strip.text = element_text(size = 36))+ xlab(""), g_S
 
 
 
-ylow=min(df_Stalker4$pirna)
-yhigh=max(df_Stalker4$pirna)
+ylow=min(df_TABOR$pirna)
+yhigh=max(df_TABOR$pirna)
 
-g_Stalker4 <- ggplot(df_Stalker4,aes(x=pos,y=pirna))+
+g_TABOR <- ggplot(df_TABOR,aes(x=pos,y=pirna))+
   geom_segment(aes(xend=pos),yend=0)+
   ylim(ylow,yhigh)+
-  ggtitle("Stalker-4")+
+  ggtitle("Tabor")+
   ylab("piRNA abundance [pmp]")+
   xlab("position of piRNA (5' end)")+
   theme(text = element_text(size=24))
 
-plot(g_Stalker4)
+plot(g_TABOR)
 
 
 ylow=min(df_Opus$pirna)
@@ -80,8 +80,8 @@ df_pingpong <- read.table("/Users/ascarpa/Downloads/Double_trouble_local/piRNAs/
 names(df_pingpong) <- c("Run", "te", "sense", "pos", "frequency")
 df_Spoink_pingpong <- subset(df_pingpong, te=="Spoink")
 df_Shellder_pingpong <- subset(df_pingpong, te=="Shellder")
-df_Stalker4_pingpong <- subset(df_pingpong, te=="STALKER4")
-df_Opuse_pingpong <- subset(df_pingpong, te=="OPUS")
+df_TABOR_pingpong <- subset(df_pingpong, te=="TABOR")
+df_Opus_pingpong <- subset(df_pingpong, te=="OPUS")
 
 
 
@@ -91,10 +91,8 @@ df_as_Spoink <- subset(df_Spoink_pingpong, sense == "as")
 df_s_Shellder <- subset(df_Shellder_pingpong, sense == "s")
 df_as_Shellder <- subset(df_Shellder_pingpong, sense == "as")
 
-df_as_Stalker4 <- subset(df_STALKER4_pingpong, sense == "as")
-df_as_Opus <- subset(df_PPI251_pingpong, sense == "as")
-
-
+df_as_TABOR <- subset(df_TABOR_pingpong, sense == "as")
+df_as_Opus <- subset(df_Opus_pingpong, sense == "as")
 
 
 df_as_Spoink$color <- ifelse(df_as_Spoink$pos == 10, "#DC143C", "grey")
@@ -119,16 +117,16 @@ g_pingpong_Shellder <- ggplot(df_as_Shellder,aes(x=pos,y=frequency, fill = color
 
 plot(g_pingpong_Shellder)
 
-df_as_Stalker4$color <- ifelse(df_as_Stalker4$pos == 10, "#02367B", "grey")
-g_pingpong_Stalker4 <- ggplot(df_as_Stalker4,aes(x=pos,y=frequency, fill = color))+
+df_as_TABOR$color <- ifelse(df_as_TABOR$pos == 10, "#02367B", "grey")
+g_pingpong_TABOR <- ggplot(df_as_TABOR,aes(x=pos,y=frequency, fill = color))+
   geom_col()+
-  ggtitle("Antisense piRNAs Stalker-4")+
+  ggtitle("Antisense piRNAs Tabor")+
   ylab("ping-pong signature")+
   xlab("overlap")+
   scale_fill_identity() +
   theme(text = element_text(size=24))
 
-plot(g_pingpong_Stalker4)
+plot(g_pingpong_TABOR)
 
 df_as_Opus$color <- ifelse(df_as_Opus$pos == 10, "#DC143C", "grey")
 g_pingpong_Opus <- ggplot(df_as_Opus,aes(x=pos,y=frequency, fill = color))+
@@ -143,17 +141,15 @@ plot(g_pingpong_Opus)
 
 
 
-
-
-ggarrange(g_Stalker4 + theme(strip.text = element_text(size = 36)),
+ggarrange(g_TABOR + theme(strip.text = element_text(size = 36)),
           g_Shellder + theme(strip.text = element_text(size = 36)) + ylab(""),
           g_Spoink + theme(strip.text = element_text(size = 36)) + ylab(""),
           g_Opus + theme(strip.text = element_text(size = 36)) + ylab(""),
-          g_pingpong_Stalker4 + theme(strip.text = element_text(size = 36)) + ggtitle(" "),
+          g_pingpong_TABOR + theme(strip.text = element_text(size = 36)) + ggtitle(" "),
           g_pingpong_Shellder + theme(strip.text = element_text(size = 36)) + ggtitle(" ")+ ylab(""),
           g_pingpong_Spoink + theme(strip.text = element_text(size = 36)) + ggtitle(" ") + ylab(""),
           g_pingpong_Opus + theme(strip.text = element_text(size = 36)) + ggtitle(" ") + ylab(""),
           ncol = 4, nrow = 2, align = ("v"),
-          labels = c("A", "", "", "", "B", "", "", ""),
+          labels = c("", "", "", "", "", "", "", ""),
           heights = c(2,2), widths = c(2,2)
           )
