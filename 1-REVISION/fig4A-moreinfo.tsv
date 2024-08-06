@@ -1,9 +1,9 @@
 genus	species	file	accession	te	contig	start	end	strand	SW	similarity	pident	length	length_prop
-Drosophila	mauritiana	D.mau.r32.fa	PENDING	Shellder	contig_294	985791	992430	+	60161	1	99.91	6639	1.001
-Drosophila	mauritiana	D.mau.r39.fa	PENDING	Shellder	contig_178	556919	563558	+	60161	1	99.91	6639	1.001
-Drosophila	mauritiana	D.mau.r31.fa	PENDING	Shellder	contig_516	1341958	1348597	C	60096	0.998919565831685	99.864	6639	1.001
-Drosophila	mauritiana	D.mau.r61.fa	PENDING	Shellder	contig_1	4692696	4699335	C	59901	0.9956782633267399	99.91	6639	1.001
-Drosophila	mauritiana	D.mau.r61.fa	PENDING	Shellder	contig_244	19227851	19234490	C	59901	0.9956782633267399	99.91	6639	1.001
+Drosophila	mauritiana	D.mau.r32.fa	GCA_039654705.1	Shellder	contig_294	985791	992430	+	60161	1	99.91	6639	1.001
+Drosophila	mauritiana	D.mau.r39.fa	GCA_039654655.1	Shellder	contig_178	556919	563558	+	60161	1	99.91	6639	1.001
+Drosophila	mauritiana	D.mau.r31.fa	GCA_039654645.1	Shellder	contig_516	1341958	1348597	C	60096	0.998919565831685	99.864	6639	1.001
+Drosophila	mauritiana	D.mau.r61.fa	GCA_039654665.1	Shellder	contig_1	4692696	4699335	C	59901	0.9956782633267399	99.91	6639	1.001
+Drosophila	mauritiana	D.mau.r61.fa	GCA_039654665.1	Shellder	contig_244	19227851	19234490	C	59901	0.9956782633267399	99.91	6639	1.001
 Drosophila	simulans	D.sim.sz232.fa	GCA_039725755.1	Shellder	tig00000792_pilon_pilon	449884	456517	+	59872	0.9951962234670302	99.91	6636	1
 Drosophila	teissieri	D.teissieri.273.3.fa	GCA_018903625.1	Shellder	JAEIGJ010000103.1	656892	663531	C	59867	0.9951131131463905	99.864	6639	1.001
 Drosophila	simulans	D.sim.sz129.fa	GCA_039725605.1	Shellder	tig00000262_pilon_pilon	6650	13278	+	59660	0.9916723458719103	99.789	6637	1
