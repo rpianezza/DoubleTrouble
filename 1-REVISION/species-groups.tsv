@@ -1,10 +1,10 @@
 assembly	name	genus	species	group
 GCA_018904525.1	D.erecta	Drosophila	erecta	melanogaster
 GCA_018904475.1	D.mau.01	Drosophila	mauritiana	melanogaster
-PENDING	D.mau.r31	Drosophila	mauritiana	melanogaster
-PENDING	D.mau.r32	Drosophila	mauritiana	melanogaster
-PENDING	D.mau.r39	Drosophila	mauritiana	melanogaster
-PENDING	D.mau.r61	Drosophila	mauritiana	melanogaster
+GCA_039654645.1	D.mau.r31	Drosophila	mauritiana	melanogaster
+GCA_039654705.1	D.mau.r32	Drosophila	mauritiana	melanogaster
+GCA_039654655.1	D.mau.r39	Drosophila	mauritiana	melanogaster
+GCA_039654665.1	D.mau.r61	Drosophila	mauritiana	melanogaster
 GCA_020141505.1	D.mel.es.ten	Drosophila	melanogaster	melanogaster
 GCA_000001215.4	D.mel.iso1	Drosophila	melanogaster	melanogaster
 GCA_015852585.1	D.mel.pi2	Drosophila	melanogaster	melanogaster
