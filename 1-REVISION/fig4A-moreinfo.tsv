@@ -1,4 +1,4 @@
-genus	species	file	accession	te	contig	start	end	strand	SW	similarity	pident	length	length_prop
+genus	species	file	accession	te	contig	start	end	strand	SW	similarity (SW prop)	pident	length	length_prop
 Drosophila	mauritiana	D.mau.r32.fa	GCA_039654705.1	Shellder	contig_294	985791	992430	+	60161	1	99.91	6639	1.001
 Drosophila	mauritiana	D.mau.r39.fa	GCA_039654655.1	Shellder	contig_178	556919	563558	+	60161	1	99.91	6639	1.001
 Drosophila	mauritiana	D.mau.r31.fa	GCA_039654645.1	Shellder	contig_516	1341958	1348597	C	60096	0.998919565831685	99.864	6639	1.001
