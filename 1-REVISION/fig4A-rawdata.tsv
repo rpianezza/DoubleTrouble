@@ -1,4 +1,4 @@
-file	te	contig	start	end	strand	SW	similarity	pident	length_prop
+file	te	contig	start	end	strand	SW	similarity (SW prop)	pident	length_prop
 A.communis.fa	PPI251	contig_1409_1	92121	92276	+	359	0.013323931116389548	64.74	0.05
 A.communis.fa	Shellder	contig_1336_1	23410	26694	+	7421	0.12335233789331959	69.48	0.5
 A.communis.fa	Spoink	contig_839_1	191949	194209	C	7871	0.16177498252969952	72.96	0.43
